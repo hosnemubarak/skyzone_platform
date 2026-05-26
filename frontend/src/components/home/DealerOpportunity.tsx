@@ -1,15 +1,23 @@
 "use client";
 
 import { ArrowRight, TrendingUp, Truck, HandshakeIcon, BadgeDollarSign } from "lucide-react";
+import { motion } from "framer-motion";
 import SectionHeader from "@/components/ui/SectionHeader";
 import ScrollReveal from "@/components/ui/ScrollReveal";
 import Button from "@/components/ui/Button";
+import MouseGlow from "@/components/ui/MouseGlow";
 
 const benefits = [
   { icon: TrendingUp, text: "High profit margins" },
   { icon: Truck, text: "Fast & reliable supply chain" },
   { icon: HandshakeIcon, text: "Dedicated dealer support" },
   { icon: BadgeDollarSign, text: "Exclusive dealer pricing" },
+];
+
+const stats = [
+  { title: "Priority Stock", desc: "Guaranteed product allocation" },
+  { title: "Expert Training", desc: "Technical workshops & support" },
+  { title: "Marketing Kits", desc: "Digital assets & print designs" },
 ];
 
 export default function DealerOpportunity() {
@@ -30,11 +38,16 @@ export default function DealerOpportunity() {
               support, and marketing resources to grow your business.
             </p>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-8">
-              {benefits.map((b) => (
+              {benefits.map((b, index) => (
                 <div key={b.text} className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-lg bg-accent/15 flex items-center justify-center shrink-0">
+                  <motion.div
+                    className="w-10 h-10 rounded-lg bg-accent/15 flex items-center justify-center shrink-0"
+                    whileInView={{ scale: [0.8, 1.1, 1] }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.5, delay: index * 0.1 }}
+                  >
                     <b.icon className="w-5 h-5 text-accent" />
-                  </div>
+                  </motion.div>
                   <span className="text-sm font-medium text-text-dark">{b.text}</span>
                 </div>
               ))}
@@ -53,7 +66,8 @@ export default function DealerOpportunity() {
           {/* Visual card */}
           <ScrollReveal direction="right">
             <div className="bg-gradient-to-br from-primary to-primary-dark rounded-2xl p-10 text-white relative overflow-hidden">
-              <div className="absolute inset-0 hero-grid-pattern opacity-30" />
+              <div className="absolute inset-0 hero-grid-pattern-animated opacity-30" />
+              <MouseGlow color="rgba(244, 180, 0, 0.1)" size={350} />
               <div className="relative">
                 <span className="inline-block bg-accent/20 text-accent text-sm font-semibold px-4 py-1.5 rounded-full mb-6">
                   Dealer Program
@@ -65,20 +79,26 @@ export default function DealerOpportunity() {
                   We provide everything you need to succeed — from product training
                   and marketing materials to competitive pricing and priority stock allocation.
                 </p>
-                <div className="mt-8 grid grid-cols-1 sm:grid-cols-3 gap-6 border-t border-white/10 pt-6">
-                  <div>
-                    <p className="text-sm font-heading font-semibold text-accent">Priority Stock</p>
-                    <p className="text-xs text-white/60 mt-1">Guaranteed product allocation</p>
-                  </div>
-                  <div>
-                    <p className="text-sm font-heading font-semibold text-accent">Expert Training</p>
-                    <p className="text-xs text-white/60 mt-1">Technical workshops & support</p>
-                  </div>
-                  <div>
-                    <p className="text-sm font-heading font-semibold text-accent">Marketing Kits</p>
-                    <p className="text-xs text-white/60 mt-1">Digital assets & print designs</p>
-                  </div>
-                </div>
+                <motion.div
+                  className="mt-8 grid grid-cols-1 sm:grid-cols-3 gap-6 border-t border-white/10 pt-6"
+                  initial="hidden"
+                  whileInView="visible"
+                  viewport={{ once: true }}
+                >
+                  {stats.map((stat, index) => (
+                    <motion.div
+                      key={stat.title}
+                      initial={{ opacity: 0, y: 20 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      viewport={{ once: true }}
+                      transition={{ duration: 0.5, delay: 0.2 * index, ease: "easeOut" as const }}
+
+                    >
+                      <p className="text-sm font-heading font-semibold text-accent">{stat.title}</p>
+                      <p className="text-xs text-white/60 mt-1">{stat.desc}</p>
+                    </motion.div>
+                  ))}
+                </motion.div>
               </div>
             </div>
           </ScrollReveal>

@@ -153,3 +153,311 @@ h1, h2, h3, h4, h5, h6 {
   visibility: visible;
   transform: translateY(0);
 }
+
+/* ===== Particle Rise Animation ===== */
+@keyframes particle-rise {
+  0% {
+    transform: translateY(100vh) translateX(0) scale(0);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+    transform: translateY(90vh) translateX(0) scale(1);
+  }
+  90% {
+    opacity: 0.5;
+  }
+  100% {
+    transform: translateY(-10vh) translateX(30px) scale(0.5);
+    opacity: 0;
+  }
+}
+
+.particle {
+  position: absolute;
+  bottom: 0;
+  border-radius: 50%;
+  animation: particle-rise linear infinite;
+  will-change: transform, opacity;
+}
+
+/* ===== Shimmer / Shine Effect ===== */
+@keyframes shimmer-sweep {
+  0% {
+    transform: translateX(-100%) rotate(25deg);
+  }
+  100% {
+    transform: translateX(200%) rotate(25deg);
+  }
+}
+
+.shimmer-effect::after {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 50%;
+  height: 200%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.08),
+    rgba(255, 255, 255, 0.15),
+    rgba(255, 255, 255, 0.08),
+    transparent
+  );
+  transform: translateX(-100%) rotate(25deg);
+  transition: none;
+}
+
+*:hover > .shimmer-effect::after {
+  animation: shimmer-sweep 0.8s ease-out forwards;
+}
+
+/* ===== Float Animation ===== */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.float-animation {
+  animation: float 3s ease-in-out infinite;
+}
+
+/* ===== Gradient Shift (for CTA background) ===== */
+@keyframes gradient-shift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.animated-gradient-bg {
+  background-size: 200% 200%;
+  animation: gradient-shift 6s ease infinite;
+}
+
+/* ===== Icon Ring Rotate ===== */
+@keyframes icon-ring-rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.icon-ring-animated::before {
+  content: "";
+  position: absolute;
+  inset: -2px;
+  border-radius: 50%;
+  background: conic-gradient(
+    var(--color-accent),
+    var(--color-electric),
+    var(--color-accent-dark),
+    var(--color-accent)
+  );
+  animation: icon-ring-rotate 3s linear infinite;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+*:hover > .icon-ring-animated::before,
+.icon-ring-animated:hover::before {
+  opacity: 1;
+}
+
+.icon-ring-animated::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: inherit;
+  z-index: 1;
+}
+
+/* ===== Glow Pulse ===== */
+@keyframes glow-pulse {
+  0%, 100% {
+    box-shadow: 0 0 20px rgba(244, 180, 0, 0.2);
+  }
+  50% {
+    box-shadow: 0 0 35px rgba(244, 180, 0, 0.4);
+  }
+}
+
+.glow-pulse-accent {
+  animation: glow-pulse 2s ease-in-out infinite;
+}
+
+/* ===== Animated Gradient Border ===== */
+@keyframes border-gradient-rotate {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.animated-border-gradient {
+  position: relative;
+}
+
+.animated-border-gradient::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  padding: 2px;
+  border-radius: inherit;
+  background: linear-gradient(
+    60deg,
+    var(--color-accent),
+    var(--color-electric),
+    var(--color-accent-dark),
+    var(--color-accent)
+  );
+  background-size: 300% 300%;
+  animation: border-gradient-rotate 4s linear infinite;
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask-composite: exclude;
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+*:hover > .animated-border-gradient::before,
+.animated-border-gradient:hover::before {
+  opacity: 1;
+}
+
+/* ===== Hero Gradient Line ===== */
+@keyframes hero-line-shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+.hero-gradient-line {
+  height: 2px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--color-accent),
+    var(--color-electric),
+    var(--color-accent),
+    transparent
+  );
+  background-size: 200% 100%;
+  animation: hero-line-shimmer 3s linear infinite;
+}
+
+/* ===== Grid Drift Animation ===== */
+@keyframes grid-drift {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 60px 60px;
+  }
+}
+
+.hero-grid-pattern-animated {
+  background-image:
+    linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+  background-size: 60px 60px;
+  animation: grid-drift 8s linear infinite;
+}
+
+/* ===== Text Shimmer ===== */
+@keyframes text-shimmer {
+  0% {
+    background-position: -200% center;
+  }
+  100% {
+    background-position: 200% center;
+  }
+}
+
+.text-shimmer-effect {
+  background: linear-gradient(
+    90deg,
+    currentColor 0%,
+    currentColor 40%,
+    var(--color-accent) 50%,
+    currentColor 60%,
+    currentColor 100%
+  );
+  background-size: 200% auto;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: text-shimmer 3s linear infinite;
+}
+
+/* ===== Badge Glow Pulse ===== */
+@keyframes badge-glow {
+  0%, 100% {
+    box-shadow: 0 0 5px rgba(244, 180, 0, 0.3), inset 0 0 5px rgba(244, 180, 0, 0.1);
+  }
+  50% {
+    box-shadow: 0 0 15px rgba(244, 180, 0, 0.5), inset 0 0 10px rgba(244, 180, 0, 0.15);
+  }
+}
+
+.badge-glow {
+  animation: badge-glow 2.5s ease-in-out infinite;
+}
+
+/* ===== Reduced Motion ===== */
+@media (prefers-reduced-motion: reduce) {
+  .particle,
+  .float-animation,
+  .animated-gradient-bg,
+  .hero-gradient-line,
+  .hero-grid-pattern-animated,
+  .text-shimmer-effect,
+  .badge-glow,
+  .glow-pulse-accent,
+  .whatsapp-pulse {
+    animation: none !important;
+  }
+
+  .shimmer-effect::after {
+    display: none;
+  }
+
+  .icon-ring-animated::before {
+    display: none;
+  }
+
+  .animated-border-gradient::before {
+    display: none;
+  }
+}
+
+/* ===== Mobile: Disable heavy effects ===== */
+@media (max-width: 768px) {
+  .particle:nth-child(n+10) {
+    display: none;
+  }
+}

@@ -2,6 +2,7 @@
 
 import { useState, useMemo } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { FileText, Download, Eye, Search, X, ShieldCheck, Award, FileSpreadsheet } from "lucide-react";
 import ScrollReveal from "@/components/ui/ScrollReveal";
 
@@ -47,11 +48,21 @@ export default function CertificatesPageContent({ certificates }: CertificatesPa
     <>
       {/* Page Hero */}
       <section className="relative bg-primary pt-32 pb-16 md:pt-40 md:pb-20 overflow-hidden">
+        {/* Background image */}
+        <Image
+          src="/images/hero-bg.png"
+          alt=""
+          fill
+          className="object-cover opacity-20 pointer-events-none z-0"
+          priority
+        />
+        {/* Gradient overlay */}
+        <div className="absolute inset-0 bg-gradient-to-r from-primary/95 via-primary/80 to-primary/45 z-0" />
         {/* Background visual details */}
-        <div className="absolute inset-0 hero-grid-pattern opacity-10" />
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-electric/15 rounded-full blur-[120px] pointer-events-none" />
+        <div className="absolute inset-0 hero-grid-pattern opacity-10 z-0" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-electric/15 rounded-full blur-[120px] pointer-events-none z-0" />
 
-        <div className="relative max-w-[1200px] mx-auto px-5">
+        <div className="relative max-w-[1200px] mx-auto px-5 z-10">
           <div className="flex items-center gap-2 text-white/50 text-sm mb-4">
             <Link href="/" className="hover:text-accent transition-colors">Home</Link>
             <span>/</span>

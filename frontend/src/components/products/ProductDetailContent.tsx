@@ -205,8 +205,18 @@ export default function ProductDetailContent({ product, relatedProducts }: Props
       </div>
 
       {/* Page Breadcrumb Header */}
-      <section className="bg-primary py-8 pt-32 border-b border-white/5">
-        <div className="max-w-[1200px] mx-auto px-5">
+      <section className="relative bg-primary py-8 pt-32 border-b border-white/5 overflow-hidden">
+        {/* Background image */}
+        <Image
+          src="/images/hero-bg.png"
+          alt=""
+          fill
+          className="object-cover opacity-20 pointer-events-none z-0"
+          priority
+        />
+        {/* Gradient overlay */}
+        <div className="absolute inset-0 bg-gradient-to-r from-primary/95 via-primary/80 to-primary/45 z-0" />
+        <div className="relative max-w-[1200px] mx-auto px-5 z-10">
           <div className="flex items-center gap-2 text-white/50 text-sm">
             <Link href="/" className="hover:text-accent transition-colors flex items-center gap-1">Home</Link>
             <ChevronRight className="w-4 h-4 text-white/30" />

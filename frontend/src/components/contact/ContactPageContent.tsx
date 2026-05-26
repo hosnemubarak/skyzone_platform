@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, type FormEvent } from "react";
+import Image from "next/image";
 import { MapPin, Phone, Mail, Clock, MessageCircle, Send } from "lucide-react";
 import SocialIcon from "@/components/ui/SocialIcon";
 import ScrollReveal from "@/components/ui/ScrollReveal";
@@ -57,8 +58,18 @@ export default function ContactPageContent() {
   return (
     <>
       {/* Page Hero */}
-      <section className="bg-primary pt-32 pb-16 md:pt-40 md:pb-20">
-        <div className="max-w-[1200px] mx-auto px-5">
+      <section className="relative bg-primary pt-32 pb-16 md:pt-40 md:pb-20 overflow-hidden">
+        {/* Background image */}
+        <Image
+          src="/images/hero-bg.png"
+          alt=""
+          fill
+          className="object-cover opacity-20 pointer-events-none z-0"
+          priority
+        />
+        {/* Gradient overlay */}
+        <div className="absolute inset-0 bg-gradient-to-r from-primary/95 via-primary/80 to-primary/45 z-0" />
+        <div className="relative max-w-[1200px] mx-auto px-5 z-10">
           <div className="flex items-center gap-2 text-white/50 text-sm mb-4">
             <a href="/" className="hover:text-accent transition-colors">Home</a>
             <span>/</span>

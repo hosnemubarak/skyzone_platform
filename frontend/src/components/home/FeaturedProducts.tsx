@@ -1,12 +1,44 @@
 "use client";
 
-import { useMemo } from "react";
+import { useMemo, useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
+import { motion, useInView } from "framer-motion";
 import SectionHeader from "@/components/ui/SectionHeader";
 import ScrollReveal from "@/components/ui/ScrollReveal";
 import { products } from "@/data/products";
+
+function AnimatedTitle() {
+  const text = "Top-Selling Products";
+  const ref = useRef<HTMLSpanElement>(null);
+  const isInView = useInView(ref, { once: true });
+  const [displayText, setDisplayText] = useState("");
+
+  useEffect(() => {
+    if (!isInView) return;
+    let i = 0;
+    const interval = setInterval(() => {
+      setDisplayText(text.slice(0, i + 1));
+      i++;
+      if (i >= text.length) {
+        clearInterval(interval);
+      }
+    }, 70);
+    return () => clearInterval(interval);
+  }, [isInView]);
+
+  return (
+    <span ref={ref} className="inline-flex items-center min-h-[36px] md:min-h-[44px]">
+      <span>{displayText}</span>
+      <motion.span
+        animate={{ opacity: [0, 1, 0] }}
+        transition={{ repeat: Infinity, duration: 0.8, ease: "easeInOut" }}
+        className="inline-block w-[3px] h-[1.8rem] md:h-[2.4rem] ml-1 bg-accent"
+      />
+    </span>
+  );
+}
 
 export default function FeaturedProducts() {
   const featured = useMemo(() => {
@@ -58,7 +90,7 @@ export default function FeaturedProducts() {
       <div className="max-w-[1200px] mx-auto px-5">
         <SectionHeader
           label="Featured Products"
-          title="Top-Selling Products"
+          title={<AnimatedTitle />}
           subtitle="Discover our most popular energy solutions trusted for high performance and reliability across Bangladesh"
         />
 

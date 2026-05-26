@@ -8,17 +8,8 @@ import { ArrowRight, Phone } from "lucide-react";
 export default function Hero() {
   return (
     <section className="relative min-h-[70vh] md:min-h-[80vh] bg-primary overflow-hidden flex items-center">
-      {/* Background image fallback */}
-      <Image
-        src="/images/hero-bg.png"
-        alt=""
-        fill
-        className="object-cover opacity-20"
-        priority
-      />
-
       {/* Background Video */}
-      <div className="absolute inset-0 w-full h-full overflow-hidden pointer-events-none opacity-40">
+      <div className="absolute inset-0 w-full h-full overflow-hidden pointer-events-none opacity-80">
         <iframe
           src="https://www.youtube.com/embed/TzfnlPxCZv0?autoplay=1&mute=1&loop=1&playlist=TzfnlPxCZv0&controls=0&showinfo=0&rel=0&playsinline=1"
           className="absolute top-1/2 left-1/2 w-[177.77vh] h-[100vh] min-w-full min-h-full -translate-x-1/2 -translate-y-1/2 scale-115"

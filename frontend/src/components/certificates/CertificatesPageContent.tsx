@@ -53,11 +53,11 @@ export default function CertificatesPageContent({ certificates }: CertificatesPa
           src="/images/hero-bg.png"
           alt=""
           fill
-          className="object-cover opacity-20 pointer-events-none z-0"
+          className="object-cover opacity-40 pointer-events-none z-0"
           priority
         />
         {/* Gradient overlay */}
-        <div className="absolute inset-0 bg-gradient-to-r from-primary/95 via-primary/80 to-primary/45 z-0" />
+        <div className="absolute inset-0 bg-gradient-to-r from-primary/90 via-primary/70 to-primary/30 z-0" />
         {/* Background visual details */}
         <div className="absolute inset-0 hero-grid-pattern opacity-10 z-0" />
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-electric/15 rounded-full blur-[120px] pointer-events-none z-0" />

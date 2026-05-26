@@ -42,11 +42,11 @@ export default function AboutPage() {
           src="/images/hero-bg.png"
           alt=""
           fill
-          className="object-cover opacity-20 pointer-events-none z-0"
+          className="object-cover opacity-40 pointer-events-none z-0"
           priority
         />
         {/* Gradient overlay */}
-        <div className="absolute inset-0 bg-gradient-to-r from-primary/95 via-primary/80 to-primary/45 z-0" />
+        <div className="absolute inset-0 bg-gradient-to-r from-primary/90 via-primary/70 to-primary/30 z-0" />
         <div className="relative max-w-[1200px] mx-auto px-5 z-10">
           <div className="flex items-center gap-2 text-white/50 text-sm mb-4">
             <a href="/" className="hover:text-accent transition-colors">Home</a>

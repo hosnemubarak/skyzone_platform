@@ -10,7 +10,7 @@ export default function Hero() {
     <section className="relative min-h-[70vh] md:min-h-[80vh] bg-primary overflow-hidden flex items-center">
       {/* Background image */}
       <Image
-        src="/images/solar-hero-bg.png"
+        src="/images/hero-bg.png"
         alt=""
         fill
         className="object-cover opacity-90"

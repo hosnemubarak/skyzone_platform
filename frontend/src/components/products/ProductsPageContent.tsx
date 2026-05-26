@@ -114,7 +114,7 @@ export default function ProductsPageContent() {
       <section className="relative bg-primary pt-32 pb-16 md:pt-40 md:pb-20 overflow-hidden">
         {/* Background image */}
         <Image
-          src="/images/solar-hero-bg.png"
+          src="/images/products-hero-bg.png"
           alt=""
           fill
           className="object-cover opacity-40 pointer-events-none z-0"

@@ -208,7 +208,7 @@ export default function ProductDetailContent({ product, relatedProducts }: Props
       <section className="relative bg-primary py-8 pt-32 border-b border-white/5 overflow-hidden">
         {/* Background image */}
         <Image
-          src="/images/hero-bg.png"
+          src="/images/solar-hero-bg.png"
           alt=""
           fill
           className="object-cover opacity-40 pointer-events-none z-0"

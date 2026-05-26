@@ -13,7 +13,7 @@ export default function Hero() {
         src="/images/hero-bg.png"
         alt=""
         fill
-        className="object-cover opacity-65"
+        className="object-cover opacity-90"
         priority
       />
 
@@ -21,7 +21,7 @@ export default function Hero() {
       <div className="absolute inset-0 hero-grid-pattern" />
 
       {/* Gradient overlay */}
-      <div className="absolute inset-0 bg-gradient-to-r from-primary/90 via-primary/70 to-primary/30" />
+      <div className="absolute inset-0 bg-gradient-to-r from-primary/85 via-primary/45 to-transparent" />
 
       {/* Content */}
       <div className="relative w-full max-w-[1200px] mx-auto px-5 flex items-center">

@@ -87,13 +87,13 @@ export default function RootLayout({
 
   return (
     <html lang="en" className={`${inter.variable} ${poppins.variable}`} suppressHydrationWarning>
-      <head>
+      <body className="antialiased" suppressHydrationWarning>
         <script
+          id="schema-jsonld"
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+          suppressHydrationWarning
         />
-      </head>
-      <body className="antialiased" suppressHydrationWarning>
         <Header />
         <main className="overflow-x-hidden">{children}</main>
         <Footer />

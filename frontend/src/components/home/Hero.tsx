@@ -22,7 +22,7 @@ export default function Hero() {
       <div className="absolute inset-0 hero-grid-pattern" />
 
       {/* Gradient overlay */}
-      <div className="absolute inset-0 bg-gradient-to-r from-primary via-primary/90 to-primary/60" />
+      <div className="absolute inset-0 bg-gradient-to-r from-primary/80 via-primary/40 to-transparent" />
 
       {/* Content */}
       <div className="relative w-full max-w-[1200px] mx-auto px-5 flex items-center">

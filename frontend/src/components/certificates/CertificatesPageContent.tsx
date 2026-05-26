@@ -23,7 +23,6 @@ interface CertificatesPageContentProps {
 export default function CertificatesPageContent({ certificates }: CertificatesPageContentProps) {
   const [searchQuery, setSearchQuery] = useState("");
   const [activeType, setActiveType] = useState<"all" | "Certificate" | "Test Report">("all");
-  const [activeModel, setActiveModel] = useState<"all" | "XZ-6.6kW" | "XZ-11.2kW & XZ-9.2kW">("all");
 
   // Filtering logic
   const filteredCertificates = useMemo(() => {
@@ -40,15 +39,9 @@ export default function CertificatesPageContent({ certificates }: CertificatesPa
       // 2. Type Filter
       const matchesType = activeType === "all" || cert.type === activeType;
 
-      // 3. Model Filter
-      const matchesModel =
-        activeModel === "all" ||
-        (activeModel === "XZ-6.6kW" && cert.model.includes("6.6kW")) ||
-        (activeModel === "XZ-11.2kW & XZ-9.2kW" && (cert.model.includes("11.2kW") || cert.model.includes("9.2kW")));
-
-      return matchesSearch && matchesType && matchesModel;
+      return matchesSearch && matchesType;
     });
-  }, [certificates, searchQuery, activeType, activeModel]);
+  }, [certificates, searchQuery, activeType]);
 
   return (
     <>
@@ -136,40 +129,6 @@ export default function CertificatesPageContent({ certificates }: CertificatesPa
                   }`}
                 >
                   Test Reports
-                </button>
-              </div>
-
-              {/* Model Filters */}
-              <div className="flex items-center bg-bg-light p-1 rounded-xl border border-gray-100">
-                <button
-                  onClick={() => setActiveModel("all")}
-                  className={`px-4 py-1.5 rounded-lg text-xs font-semibold transition-all cursor-pointer ${
-                    activeModel === "all"
-                      ? "bg-white text-primary shadow-sm"
-                      : "text-gray-500 hover:text-text-dark"
-                  }`}
-                >
-                  All Models
-                </button>
-                <button
-                  onClick={() => setActiveModel("XZ-6.6kW")}
-                  className={`px-4 py-1.5 rounded-lg text-xs font-semibold transition-all cursor-pointer ${
-                    activeModel === "XZ-6.6kW"
-                      ? "bg-white text-primary shadow-sm"
-                      : "text-gray-500 hover:text-text-dark"
-                  }`}
-                >
-                  XZ-6.6kW
-                </button>
-                <button
-                  onClick={() => setActiveModel("XZ-11.2kW & XZ-9.2kW")}
-                  className={`px-4 py-1.5 rounded-lg text-xs font-semibold transition-all cursor-pointer ${
-                    activeModel === "XZ-11.2kW & XZ-9.2kW"
-                      ? "bg-white text-primary shadow-sm"
-                      : "text-gray-500 hover:text-text-dark"
-                  }`}
-                >
-                  XZ-11.2/9.2kW
                 </button>
               </div>
             </div>
@@ -322,7 +281,6 @@ export default function CertificatesPageContent({ certificates }: CertificatesPa
                   onClick={() => {
                     setSearchQuery("");
                     setActiveType("all");
-                    setActiveModel("all");
                   }}
                   className="bg-primary text-white text-sm font-bold px-6 py-2.5 rounded-full hover:bg-primary-dark transition-all shadow cursor-pointer"
                 >

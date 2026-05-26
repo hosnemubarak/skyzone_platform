@@ -38,8 +38,8 @@ export const companyInfo = {
   whatsapp: "https://wa.me/8801833994455",
   mapLink: "https://www.google.com/maps/place/Amtala+More,+New+Market,+Chattogram/@22.3363139,91.832025,21z/data=!4m15!1m8!3m7!1s0x30ad2758116bfeb5:0x23c12eea36357f30!2sShah+Amanat+City+Corporation+Super+Market,+Chittagong!3b1!8m2!3d22.33665!4d91.8325572!16s%2Fg%2F12llkmv5g!3m5!1s0x30ad27a11fde6211:0xb2539814db308a39!8m2!3d22.3363729!4d91.8322532!16s%2Fg%2F11vc8fpnyb?entry=ttu&g_ep=EgoyMDI2MDUyMC4wIKXMDSoASAFQAw%3D%3D",
   social: {
-    facebook: "#",
-    linkedin: "#",
+    facebook: "https://www.facebook.com/profile.php?id=61588722129691",
+    linkedin: "https://www.linkedin.com/company/115884271/",
     youtube: "#",
   },
   founded: "2026",

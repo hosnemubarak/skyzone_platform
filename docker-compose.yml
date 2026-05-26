@@ -1,0 +1,77 @@
+version: '3.8'
+
+services:
+  db:
+    image: postgres:15-alpine
+    container_name: skyzone_db
+    restart: always
+    environment:
+      POSTGRES_DB: ${DB_NAME:-skyzone}
+      POSTGRES_USER: ${DB_USER:-skyzone_user}
+      POSTGRES_PASSWORD: ${DB_PASSWORD:-skyzone_pass}
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${DB_USER:-skyzone_user} -d ${DB_NAME:-skyzone}"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  backend:
+    build: ./backend
+    container_name: skyzone_backend
+    restart: always
+    expose:
+      - "8000"
+    ports:
+      - "127.0.0.1:8000:8000"
+    env_file: .env
+    environment:
+      - DB_HOST=db
+    volumes:
+      - django_media:/app/media
+      - django_static:/app/staticfiles
+    depends_on:
+      db:
+        condition: service_healthy
+
+  frontend:
+    build: ./frontend
+    container_name: skyzone_frontend
+    restart: always
+    expose:
+      - "3000"
+    ports:
+      - "127.0.0.1:3000:3000"
+    env_file: .env
+    depends_on:
+      - backend
+
+  mailserver:
+    image: analogic/poste.io
+    container_name: skyzone_mailserver
+    hostname: mail.skyzoneintl.com
+    restart: always
+    ports:
+      # Mail Ports (Bypassing Nginx, exposed directly to VPS)
+      - "25:25"
+      - "110:110"
+      - "143:143"
+      - "587:587"
+      - "993:993"
+      - "995:995"
+      - "4190:4190"
+      # Web UI & Admin Panel (Proxied via Nginx)
+      - "127.0.0.1:8080:80"
+    environment:
+      - TZ=${TZ:-Asia/Dhaka}
+      - HTTPS=OFF
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - mail_data:/data
+
+volumes:
+  postgres_data:
+  django_media:
+  django_static:
+  mail_data:

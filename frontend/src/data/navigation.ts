@@ -21,6 +21,7 @@ export const navigation: NavItem[] = [
       icon: category.icon,
     })),
   },
+  { label: "Certificates", href: "/certificates" },
   { label: "Contact", href: "/contact" },
 ];
 

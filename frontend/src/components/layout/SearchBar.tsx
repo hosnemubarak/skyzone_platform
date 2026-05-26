@@ -122,11 +122,11 @@ export default function SearchBar({ isOpen, onClose }: SearchBarProps) {
     : [];
 
   const popularSuggestions = [
-    "Argon Series",
-    "Zapher Series",
+    "Argon",
+    "Zapher",
     "Inverter",
-    "Lithium Battery",
-    "Solar Pump VFD",
+    "Powerwall",
+    "Xentra VFD",
   ];
 
   return (

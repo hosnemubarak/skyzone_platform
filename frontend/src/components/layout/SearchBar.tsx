@@ -177,9 +177,10 @@ export default function SearchBar({ isOpen, onClose }: SearchBarProps) {
                   <button
                     type="button"
                     onClick={onClose}
-                    className="text-xs text-gray-400 bg-bg-light px-2.5 py-1.5 rounded-lg font-medium hover:bg-gray-200 hover:text-text-dark transition-all shrink-0 uppercase tracking-wider"
+                    className="w-8 h-8 rounded-full bg-gray-100 hover:bg-gray-200 text-gray-500 hover:text-text-dark flex items-center justify-center transition-all shrink-0 cursor-pointer"
+                    aria-label="Close search"
                   >
-                    Esc
+                    <X className="w-4.5 h-4.5" />
                   </button>
                 </form>
 

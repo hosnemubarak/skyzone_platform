@@ -10,10 +10,10 @@ export default function Hero() {
     <section className="relative min-h-[70vh] md:min-h-[80vh] bg-primary overflow-hidden flex items-center">
       {/* Background image */}
       <Image
-        src="/images/solar-sunrise-hero-bg.png"
+        src="/images/hero-bg.png"
         alt=""
         fill
-        className="object-cover opacity-90"
+        className="object-cover opacity-50"
         priority
       />
 
@@ -55,7 +55,8 @@ export default function Hero() {
           >
             Sky Zone International is your trusted partner for premium solar
             panels, inverters, batteries, and electrical equipment. We deliver
-            certified quality products with nationwide distribution across Bangladesh.
+            certified quality products with nationwide distribution across
+            Bangladesh.
           </motion.p>
 
           <motion.div
@@ -83,8 +84,6 @@ export default function Hero() {
           </motion.div>
         </div>
       </div>
-
-
     </section>
   );
 }

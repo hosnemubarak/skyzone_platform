@@ -39,8 +39,8 @@ export default function Header() {
       >
         <div className="max-w-[1200px] mx-auto px-5 h-full flex items-center justify-between">
           {/* Logo */}
-          <Link href="/" className="flex items-center gap-3 shrink-0 group">
-            <div className="relative w-12 h-12 flex items-center justify-center bg-white rounded-lg overflow-hidden shadow-sm transition-transform duration-300 group-hover:scale-105">
+          <Link href="/" className="flex items-center gap-2 sm:gap-3 shrink-0 group">
+            <div className="relative w-9 h-9 sm:w-12 sm:h-12 flex items-center justify-center bg-white rounded-lg overflow-hidden shadow-sm transition-transform duration-300 group-hover:scale-105">
               <Image
                 src="/images/logo.png"
                 alt="Sky Zone International Logo"
@@ -51,7 +51,7 @@ export default function Header() {
                 priority
               />
             </div>
-            <span className="font-heading font-bold text-xl text-white tracking-tight">
+            <span className="font-heading font-bold text-base sm:text-lg md:text-xl text-white tracking-tight">
               Sky Zone <span className="text-accent transition-colors group-hover:text-accent-dark">International</span>
             </span>
           </Link>

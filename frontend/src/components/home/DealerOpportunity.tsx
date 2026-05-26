@@ -29,7 +29,7 @@ export default function DealerOpportunity() {
               Get access to premium energy products at exclusive prices, dedicated
               support, and marketing resources to grow your business.
             </p>
-            <div className="grid grid-cols-2 gap-4 mt-8">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-8">
               {benefits.map((b) => (
                 <div key={b.text} className="flex items-center gap-3">
                   <div className="w-10 h-10 rounded-lg bg-accent/15 flex items-center justify-center shrink-0">

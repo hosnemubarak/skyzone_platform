@@ -62,13 +62,13 @@ export default function AboutPreview() {
                 className="w-full h-auto rounded-xl"
               />
               {/* Floating badge */}
-              <div className="absolute bottom-6 left-6 bg-white/95 backdrop-blur rounded-xl p-4 shadow-lg border border-gray-100 flex items-center gap-3">
-                <CheckCircle className="w-8 h-8 text-accent shrink-0" />
+              <div className="absolute bottom-4 left-4 sm:bottom-6 sm:left-6 bg-white/95 backdrop-blur rounded-xl p-3 sm:p-4 shadow-lg border border-gray-100 flex items-center gap-2 sm:gap-3">
+                <CheckCircle className="w-6 h-6 sm:w-8 sm:h-8 text-accent shrink-0" />
                 <div>
-                  <p className="text-sm font-heading font-bold text-primary leading-tight">
+                  <p className="text-xs sm:text-sm font-heading font-bold text-primary leading-tight">
                     Certified Partner
                   </p>
-                  <p className="text-xs text-gray-500 mt-0.5">Global Quality Standards</p>
+                  <p className="text-[10px] sm:text-xs text-gray-500 mt-0.5">Global Quality Standards</p>
                 </div>
               </div>
             </div>

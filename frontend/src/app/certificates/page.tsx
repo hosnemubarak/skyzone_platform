@@ -20,50 +20,35 @@ function parseCertificateFile(filename: string): CertificateData {
   let model = "";
   let category = "Inverter Accessories";
 
-  // Check if there is a serial number at start (e.g. SZNTC2604067SV00)
-  const serialMatch = nameWithoutExt.match(/^(SZ\w+)/i);
+  // Check if there is a serial number at start (e.g. szntc2604067sv00)
+  const serialMatch = nameWithoutExt.match(/^(szntc\w+)/i);
   if (serialMatch) {
-    serialNumber = serialMatch[1];
+    serialNumber = serialMatch[1].toUpperCase();
   }
 
-  // Clean Chinese characters and extra formatting
-  let cleanParts = nameWithoutExt
-    .replace(/[^\x00-\x7F]+/g, "") // remove non-ascii
-    .replace(/_/g, " ")
-    .trim();
-
-  // If there's a serial number, remove it from the cleaning text
-  if (serialNumber) {
-    cleanParts = cleanParts.replace(serialNumber, "").trim();
-  }
-
-  // Categorize based on file content
-  if (cleanParts.toLowerCase().includes("report")) {
+  // Determine Type (Certificate vs Report)
+  if (nameWithoutExt.toLowerCase().includes("report")) {
     type = "Test Report";
   } else {
     type = "Certificate";
   }
 
   // Detect standards
-  if (cleanParts.toLowerCase().includes("62109")) {
+  if (nameWithoutExt.toLowerCase().includes("62109")) {
     standard = "EN IEC 62109-1 & 2 (Safety of power converters)";
-  } else if (cleanParts.toLowerCase().includes("61683")) {
+  } else if (nameWithoutExt.toLowerCase().includes("61683")) {
     standard = "IEC 61683 (Procedure for measuring efficiency)";
-  } else if (cleanParts.toLowerCase().includes("lvd")) {
+  } else if (nameWithoutExt.toLowerCase().includes("ce-lvd")) {
     standard = "CE-LVD (Low Voltage Directive)";
   }
 
   // Detect models
-  if (cleanParts.toLowerCase().includes("6.6kw") || cleanParts.toLowerCase().includes("12000pv")) {
+  if (nameWithoutExt.toLowerCase().includes("6.6kw") || nameWithoutExt.toLowerCase().includes("12000pv")) {
     model = "XZ-6.6kW-12000pV";
     category = "Hybrid Inverter";
   } else if (
-    cleanParts.toLowerCase().includes("11_2kw") || 
-    cleanParts.toLowerCase().includes("11.2kw") || 
-    cleanParts.toLowerCase().includes("9_2kw") || 
-    cleanParts.toLowerCase().includes("9.2kw") ||
-    cleanParts.toLowerCase().includes("11 2kw") ||
-    cleanParts.toLowerCase().includes("9 2kw")
+    nameWithoutExt.toLowerCase().includes("11.2kw") || 
+    nameWithoutExt.toLowerCase().includes("9.2kw")
   ) {
     model = "XZ-11.2kW & XZ-9.2kW";
     category = "Hybrid Inverter";
@@ -85,7 +70,10 @@ function parseCertificateFile(filename: string): CertificateData {
     const certSuffix = serialNumber.endsWith("67SV00") ? "Part 1" : "Part 2";
     title = `MPPT Solar Inverter Compliance Certificate (${certSuffix})`;
   } else {
-    title = cleanParts;
+    // Fallback formatting
+    title = nameWithoutExt
+      .replace(/-/g, " ")
+      .replace(/\b\w/g, (c) => c.toUpperCase());
   }
 
   return {

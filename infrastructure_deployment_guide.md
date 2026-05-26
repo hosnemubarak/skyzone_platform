@@ -50,8 +50,8 @@ sudo ufw enable
 ## 3. Clone Project & Configure Environment
 
 ```bash
-git clone <repository_url> /var/www/skyzone_platform
-cd /var/www/skyzone_platform
+git clone <repository_url> /opt/skyzone_platform
+cd /opt/skyzone_platform
 
 # Create environment file
 cp .env.example .env

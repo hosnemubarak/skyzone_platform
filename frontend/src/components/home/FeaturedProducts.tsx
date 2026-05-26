@@ -10,7 +10,7 @@ import ScrollReveal from "@/components/ui/ScrollReveal";
 import { products } from "@/data/products";
 
 function AnimatedTitle() {
-  const text = "Top-Selling Products";
+  const text = "Featured Products";
   const ref = useRef<HTMLSpanElement>(null);
   const isInView = useInView(ref, { once: true });
   const [displayText, setDisplayText] = useState("");
@@ -89,7 +89,6 @@ export default function FeaturedProducts() {
     <section className="bg-bg-light py-16 md:py-24">
       <div className="max-w-[1200px] mx-auto px-5">
         <SectionHeader
-          label="Featured Products"
           title={<AnimatedTitle />}
           subtitle="Discover our most popular energy solutions trusted for high performance and reliability across Bangladesh"
         />

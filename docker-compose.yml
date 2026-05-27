@@ -69,6 +69,7 @@ services:
     volumes:
       - /etc/localtime:/etc/localtime:ro
       - mail_data:/data
+      - /etc/letsencrypt:/etc/letsencrypt:ro
       - /etc/letsencrypt/live/mail.skyzoneintl.com/fullchain.pem:/data/ssl/server.crt:ro
       - /etc/letsencrypt/live/mail.skyzoneintl.com/privkey.pem:/data/ssl/server.key:ro
 

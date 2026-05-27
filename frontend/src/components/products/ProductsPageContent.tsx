@@ -17,27 +17,16 @@ export default function ProductsPageContent() {
   const searchParams = useSearchParams();
   const router = useRouter();
 
-  // Sync category & search from URL parameters
-  const searchQuery = searchParams.get("search") || "";
-  const categoryParam = searchParams.get("category") || "all";
-
-  // State controls for category, status, and sorting
-  const [activeCategory, setActiveCategory] = useState(categoryParam);
-  const [statusFilter, setStatusFilter] = useState<"all" | "available" | "coming-soon">("all");
-  const [sortOrder, setSortOrder] = useState<"name-asc" | "name-desc">("name-asc");
-
-  // Sync category state with URL parameter if it changes
+  const [mounted, setMounted] = useState(false);
   useEffect(() => {
-    setActiveCategory(categoryParam);
-  }, [categoryParam]);
+    setMounted(true);
+  }, []);
 
-  // Load initial status and sort from URL if present
-  useEffect(() => {
-    const status = searchParams.get("status") as "all" | "available" | "coming-soon" || "all";
-    const sort = searchParams.get("sort") as "name-asc" | "name-desc" || "name-asc";
-    setStatusFilter(status);
-    setSortOrder(sort);
-  }, [searchParams]);
+  // Retrieve parameters directly from URL after mount to avoid server hydration mismatches and out-of-sync state bugs
+  const searchQuery = mounted ? (searchParams.get("search") || "") : "";
+  const activeCategory = mounted ? (searchParams.get("category") || "all") : "all";
+  const statusFilter = mounted ? (searchParams.get("status") as "all" | "available" | "coming-soon" || "all") : "all";
+  const sortOrder = mounted ? (searchParams.get("sort") as "name-asc" | "name-desc" || "name-asc") : "name-asc";
 
   // Update URL search parameters
   const updateURL = (category: string, status: string, sort: string) => {
@@ -51,17 +40,14 @@ export default function ProductsPageContent() {
   };
 
   const handleCategoryClick = (categorySlug: string) => {
-    setActiveCategory(categorySlug);
     updateURL(categorySlug, statusFilter, sortOrder);
   };
 
   const handleStatusChange = (status: "all" | "available" | "coming-soon") => {
-    setStatusFilter(status);
     updateURL(activeCategory, status, sortOrder);
   };
 
   const handleSortChange = (sort: "name-asc" | "name-desc") => {
-    setSortOrder(sort);
     updateURL(activeCategory, statusFilter, sort);
   };
 
@@ -363,8 +349,6 @@ export default function ProductsPageContent() {
               <div className="mt-6 flex justify-center gap-3">
                 <button
                   onClick={() => {
-                    setStatusFilter("all");
-                    setSortOrder("name-asc");
                     const params = new URLSearchParams();
                     if (searchQuery) params.set("search", searchQuery);
                     if (activeCategory !== "all") params.set("category", activeCategory);

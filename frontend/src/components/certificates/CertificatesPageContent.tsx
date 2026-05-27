@@ -7,7 +7,7 @@ import { FileText, Download, Eye, Search, X, ShieldCheck, Award, FileSpreadsheet
 import { motion } from "framer-motion";
 import ParticleField from "@/components/ui/ParticleField";
 import MouseGlow from "@/components/ui/MouseGlow";
-import ShimmerEffect from "@/components/ui/ShimmerEffect";
+
 
 export interface CertificateData {
   filename: string;
@@ -199,8 +199,7 @@ export default function CertificatesPageContent({ certificates }: CertificatesPa
             >
               {filteredCertificates.map((cert, idx) => (
                 <motion.div key={cert.filename} variants={itemVariants}>
-                  <div className="relative bg-white rounded-2xl overflow-hidden shadow-[0_4px_25px_rgba(0,0,0,0.03)] border border-gray-100 hover:-translate-y-1.5 hover:shadow-[0_15px_35px_rgba(0,0,0,0.08)] transition-all duration-300 group flex flex-col h-full animated-border-gradient">
-                    <ShimmerEffect />
+                  <div className="relative bg-white rounded-2xl overflow-hidden shadow-[0_4px_25px_rgba(0,0,0,0.03)] border border-gray-100 hover:-translate-y-1.5 hover:shadow-[0_15px_35px_rgba(0,0,0,0.08)] transition-all duration-300 group flex flex-col h-full">
 
                     {/* CSS Certificate Document Preview Thumbnail */}
                     <div className="relative p-6 bg-gradient-to-b from-gray-50 to-gray-100 flex items-center justify-center h-[240px] border-b border-gray-100">

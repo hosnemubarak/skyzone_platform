@@ -79,7 +79,7 @@ export default function AboutPage() {
         <div className="max-w-[1200px] mx-auto px-5">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <ScrollReveal direction="left">
-              <div className="relative rounded-xl overflow-hidden shadow-2xl animated-border-gradient hover:shadow-[0_30px_60px_rgba(11,42,74,0.2)] transition-all duration-500">
+              <div className="relative rounded-xl overflow-hidden shadow-2xl hover:shadow-[0_30px_60px_rgba(11,42,74,0.2)] transition-all duration-500">
                 <Image
                   src="/images/about-team.png"
                   alt="Sky Zone International team"
@@ -113,7 +113,7 @@ export default function AboutPage() {
           <SectionHeader label="Our Purpose" title="Mission &amp; Vision" />
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-12">
             <ScrollReveal direction="left">
-              <div className="bg-white rounded-xl p-8 shadow-[0_4px_24px_rgba(0,0,0,0.08)] h-full animated-border-gradient shimmer-effect hover:-translate-y-1 transition-all duration-300">
+              <div className="bg-white rounded-xl p-8 shadow-[0_4px_24px_rgba(0,0,0,0.08)] h-full hover:-translate-y-1 transition-all duration-300">
                 <div className="w-14 h-14 rounded-full bg-accent/15 flex items-center justify-center icon-ring-animated relative">
                   <Target className="w-7 h-7 text-accent relative z-10" />
                 </div>
@@ -124,7 +124,7 @@ export default function AboutPage() {
               </div>
             </ScrollReveal>
             <ScrollReveal direction="right">
-              <div className="bg-white rounded-xl p-8 shadow-[0_4px_24px_rgba(0,0,0,0.08)] h-full animated-border-gradient shimmer-effect hover:-translate-y-1 transition-all duration-300">
+              <div className="bg-white rounded-xl p-8 shadow-[0_4px_24px_rgba(0,0,0,0.08)] h-full hover:-translate-y-1 transition-all duration-300">
                 <div className="w-14 h-14 rounded-full bg-electric/15 flex items-center justify-center icon-ring-animated relative">
                   <Eye className="w-7 h-7 text-electric relative z-10" />
                 </div>
@@ -145,7 +145,7 @@ export default function AboutPage() {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mt-12">
             {coreValues.map((val, i) => (
               <ScrollReveal key={val.title} delay={i * 0.1}>
-                <div className="group bg-bg-light rounded-xl p-6 text-center hover:-translate-y-1 transition-all duration-300 h-full animated-border-gradient">
+                <div className="group bg-bg-light rounded-xl p-6 text-center hover:-translate-y-1 transition-all duration-300 h-full">
                   <div className="w-14 h-14 rounded-full bg-electric/10 text-electric mx-auto flex items-center justify-center icon-ring-animated relative group-hover:bg-electric/20 transition-colors">
                     <val.icon className="w-7 h-7 relative z-10" />
                   </div>
@@ -166,7 +166,7 @@ export default function AboutPage() {
             {certifications.map((cert, i) => (
               <ScrollReveal key={cert.title} delay={i * 0.1}>
                 <div
-                  className="bg-white rounded-xl p-6 text-center shadow-sm hover:-translate-y-2 transition-all duration-300 animated-border-gradient float-animation"
+                  className="bg-white rounded-xl p-6 text-center shadow-sm hover:-translate-y-2 transition-all duration-300 float-animation"
                   style={{ animationDelay: `${i * 0.5}s` }}
                 >
                   <BadgeCheck className="w-12 h-12 text-accent mx-auto" />
@@ -196,7 +196,7 @@ export default function AboutPage() {
 
                     {/* Content card */}
                     <div className={`ml-12 md:ml-0 md:w-[45%] ${i % 2 === 0 ? "md:pr-12" : "md:pl-12"}`}>
-                      <div className="bg-bg-light rounded-xl p-6 shadow-sm hover:shadow-lg transition-all animated-border-gradient">
+                      <div className="bg-bg-light rounded-xl p-6 shadow-sm hover:shadow-lg transition-all">
                         <span className="text-accent font-heading font-bold text-lg">{item.year}</span>
                         <h4 className="font-heading font-semibold text-text-dark mt-1">{item.title}</h4>
                         <p className="text-sm text-gray-500 mt-2">{item.desc}</p>

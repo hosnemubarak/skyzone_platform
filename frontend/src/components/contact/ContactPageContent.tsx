@@ -210,7 +210,7 @@ export default function ContactPageContent() {
             <ScrollReveal direction="right">
               <div className="space-y-6">
                 {/* Info Card */}
-                <div className="bg-primary rounded-xl p-8 text-white animated-border-gradient">
+                <div className="bg-primary rounded-xl p-8 text-white">
                   <h3 className="font-heading font-semibold text-xl">Contact Information</h3>
                   <div className="space-y-6 mt-6">
                     {[

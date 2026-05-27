@@ -11,7 +11,7 @@ import { products, productCategories } from "@/data/products";
 import { motion } from "framer-motion";
 import ParticleField from "@/components/ui/ParticleField";
 import MouseGlow from "@/components/ui/MouseGlow";
-import ShimmerEffect from "@/components/ui/ShimmerEffect";
+
 
 export default function ProductsPageContent() {
   const searchParams = useSearchParams();
@@ -291,9 +291,8 @@ export default function ProductsPageContent() {
               >
                 <Link
                   href={`/products/${product.slug}`}
-                  className="relative block bg-white rounded-2xl overflow-hidden shadow-[0_4px_20px_rgba(0,0,0,0.04)] hover:-translate-y-1 hover:shadow-[0_12px_30px_rgba(0,0,0,0.08)] transition-all duration-300 group h-full animated-border-gradient"
+                  className="relative block bg-white rounded-2xl overflow-hidden shadow-[0_4px_20px_rgba(0,0,0,0.04)] hover:-translate-y-1 hover:shadow-[0_12px_30px_rgba(0,0,0,0.08)] transition-all duration-300 group h-full"
                 >
-                  <ShimmerEffect />
                   <div className="relative h-[220px] overflow-hidden bg-gray-50 flex items-center justify-center">
                     <Image
                       src={product.image}

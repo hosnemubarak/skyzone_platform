@@ -31,7 +31,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { submitInquiry } from "@/services/api/inquiries";
 import ParticleField from "@/components/ui/ParticleField";
 import MouseGlow from "@/components/ui/MouseGlow";
-import ShimmerEffect from "@/components/ui/ShimmerEffect";
+
 
 interface Props {
   product: Product;
@@ -253,7 +253,7 @@ export default function ProductDetailContent({ product, relatedProducts }: Props
                   <div>
                     {activeImage === 0 && (
                       <div
-                        className="relative h-[360px] sm:h-[420px] md:h-[460px] w-full rounded-2xl overflow-hidden bg-bg-light border border-gray-100 flex items-center justify-center cursor-zoom-in group select-none shadow-sm animated-border-gradient"
+                        className="relative h-[360px] sm:h-[420px] md:h-[460px] w-full rounded-2xl overflow-hidden bg-bg-light border border-gray-100 flex items-center justify-center cursor-zoom-in group select-none shadow-sm"
                         onMouseMove={handleMouseMove}
                         onMouseLeave={handleMouseLeave}
                       >
@@ -285,7 +285,7 @@ export default function ProductDetailContent({ product, relatedProducts }: Props
                     )}
 
                     {activeImage === 1 && (
-                      <div className="relative h-[360px] sm:h-[420px] md:h-[460px] w-full rounded-2xl overflow-hidden bg-slate-900 border border-slate-800 text-white font-mono p-6 flex flex-col justify-between hero-grid-pattern shadow-sm animated-border-gradient">
+                      <div className="relative h-[360px] sm:h-[420px] md:h-[460px] w-full rounded-2xl overflow-hidden bg-slate-900 border border-slate-800 text-white font-mono p-6 flex flex-col justify-between hero-grid-pattern shadow-sm">
                         <div className="absolute inset-0 opacity-10 bg-[radial-gradient(#38bdf8_1px,transparent_1px)] [background-size:16px_16px]" />
                         
                         <div className="flex justify-between items-start z-10 border-b border-white/10 pb-3">
@@ -333,7 +333,7 @@ export default function ProductDetailContent({ product, relatedProducts }: Props
                     )}
 
                     {activeImage === 2 && (
-                      <div className="relative h-[360px] sm:h-[420px] md:h-[460px] w-full rounded-2xl overflow-hidden bg-gradient-to-br from-primary-deeper to-primary border border-gray-200 p-6 flex flex-col justify-between text-white shadow-md animated-border-gradient">
+                      <div className="relative h-[360px] sm:h-[420px] md:h-[460px] w-full rounded-2xl overflow-hidden bg-gradient-to-br from-primary-deeper to-primary border border-gray-200 p-6 flex flex-col justify-between text-white shadow-md">
                         <div className="absolute top-0 right-0 w-36 h-36 bg-accent/10 rounded-full blur-3xl" />
                         <div className="border-b border-white/10 pb-3 flex justify-between items-center z-10">
                           <span className="text-xs md:text-sm text-accent font-bold tracking-widest flex items-center gap-1.5">
@@ -382,7 +382,7 @@ export default function ProductDetailContent({ product, relatedProducts }: Props
                     )}
 
                     {activeImage === 3 && (
-                      <div className="relative h-[360px] sm:h-[420px] md:h-[460px] w-full rounded-2xl overflow-hidden bg-bg-light border border-gray-200 p-6 flex flex-col justify-between text-text-dark shadow-sm animated-border-gradient">
+                      <div className="relative h-[360px] sm:h-[420px] md:h-[460px] w-full rounded-2xl overflow-hidden bg-bg-light border border-gray-200 p-6 flex flex-col justify-between text-text-dark shadow-sm">
                         <div className="border-b border-gray-200 pb-3 flex justify-between items-center">
                           <span className="text-xs md:text-sm text-primary font-bold tracking-widest flex items-center gap-1.5">
                             <Box className="w-4 h-4 text-electric" />
@@ -729,7 +729,7 @@ export default function ProductDetailContent({ product, relatedProducts }: Props
                 <ScrollReveal>
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                     {product.features.map((feature, i) => (
-                      <div key={i} className="flex gap-4 bg-white p-6 rounded-2xl border border-gray-200/60 shadow-sm group hover:border-electric/30 transition-all animated-border-gradient">
+                      <div key={i} className="flex gap-4 bg-white p-6 rounded-2xl border border-gray-200/60 shadow-sm group hover:border-electric/30 transition-all">
                         <div className="w-10 h-10 rounded-full bg-electric/10 flex items-center justify-center text-electric shrink-0 group-hover:bg-electric group-hover:text-white transition-all icon-ring-animated relative">
                           <CheckCircle className="w-5 h-5" />
                         </div>

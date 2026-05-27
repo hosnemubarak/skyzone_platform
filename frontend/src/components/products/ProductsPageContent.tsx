@@ -252,84 +252,104 @@ export default function ProductsPageContent() {
           </div>
 
           {/* Grid of Product Cards — Motion stagger container */}
-          <motion.div
-            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8"
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.05 }}
-            variants={{
-              hidden: {},
-              visible: { transition: { staggerChildren: 0.06 } },
-            }}
-          >
-            {filteredProducts.map((product) => (
-              <motion.div
-                key={product.id}
-                variants={{
-                  hidden: { opacity: 0, y: 30, scale: 0.96 },
-                  visible: {
-                    opacity: 1,
-                    y: 0,
-                    scale: 1,
-                    transition: { duration: 0.5, ease: "easeOut" as const },
-                  },
-                }}
-              >
-                <Link
-                  href={`/products/${product.slug}`}
-                  className="relative block bg-white rounded-2xl overflow-hidden shadow-[0_4px_20px_rgba(0,0,0,0.04)] hover:-translate-y-1 hover:shadow-[0_12px_30px_rgba(0,0,0,0.08)] transition-all duration-300 group h-full"
-                >
-                  <div className="relative h-[220px] overflow-hidden bg-gray-50 flex items-center justify-center">
-                    <Image
-                      src={product.image}
-                      alt={product.name}
-                      fill
-                      className="object-cover group-hover:scale-105 transition-transform duration-500"
-                    />
-                    {!product.published ? (
-                      <span className="absolute top-3 left-3 bg-amber-500 text-white text-[10px] font-bold px-3 py-1 rounded-full shadow-md z-10 animate-pulse uppercase tracking-wider">
-                        Coming Soon
-                      </span>
-                    ) : product.badge && (
-                      <span className="absolute top-3 left-3 bg-accent text-primary text-[10px] font-bold px-3 py-1 rounded-full shadow-md uppercase tracking-wider">
-                        {product.badge}
-                      </span>
-                    )}
-                    <span className="absolute top-3 right-3 bg-primary/80 text-white text-[10px] font-bold px-3 py-1 rounded-full backdrop-blur-sm shadow-sm uppercase tracking-wider">
-                      {product.category}
-                    </span>
+          {!mounted ? (
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+              {[...Array(6)].map((_, i) => (
+                <div key={i} className="bg-white rounded-2xl p-5 h-[390px] animate-pulse flex flex-col justify-between shadow-[0_4px_20px_rgba(0,0,0,0.02)]">
+                  <div>
+                    <div className="bg-gray-100 h-[220px] rounded-xl mb-4 w-full" />
+                    <div className="bg-gray-100 h-6 w-3/4 rounded-md mb-3" />
+                    <div className="bg-gray-100 h-4 w-5/6 rounded-md mb-2" />
+                    <div className="bg-gray-100 h-4 w-2/3 rounded-md" />
                   </div>
-                  <div className="p-5 flex flex-col justify-between">
-                    <div>
-                      <h3 className="font-heading font-bold text-lg text-text-dark group-hover:text-electric transition-colors line-clamp-1">
-                        {product.name}
-                      </h3>
-                      <p className="text-sm text-gray-500 mt-2 line-clamp-2 leading-relaxed">
-                        {product.shortDescription}
-                      </p>
-                      <div className="flex flex-wrap gap-1.5 mt-4">
-                        {product.specs.slice(0, 3).map((spec) => (
-                          <span
-                            key={spec.label}
-                            className="text-[10px] bg-gray-100 text-gray-600 px-2.5 py-1 rounded-md font-semibold"
-                          >
-                            {spec.label}: {spec.value}
-                          </span>
-                        ))}
+                  <div className="flex justify-between items-center mt-6 pt-4 border-t border-gray-100">
+                    <div className="bg-gray-100 h-5 w-24 rounded-md" />
+                    <div className="bg-gray-100 h-5 w-20 rounded-md" />
+                  </div>
+                </div>
+              ))}
+            </div>
+          ) : (
+            <motion.div
+              key={`${activeCategory}-${statusFilter}-${sortOrder}-${searchQuery}`}
+              className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8"
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, amount: 0.05 }}
+              variants={{
+                hidden: {},
+                visible: { transition: { staggerChildren: 0.06 } },
+              }}
+            >
+              {filteredProducts.map((product) => (
+                <motion.div
+                  key={product.id}
+                  variants={{
+                    hidden: { opacity: 0, y: 30, scale: 0.96 },
+                    visible: {
+                      opacity: 1,
+                      y: 0,
+                      scale: 1,
+                      transition: { duration: 0.5, ease: "easeOut" as const },
+                    },
+                  }}
+                >
+                  <Link
+                    href={`/products/${product.slug}`}
+                    className="relative block bg-white rounded-2xl overflow-hidden shadow-[0_4px_20px_rgba(0,0,0,0.04)] hover:-translate-y-1 hover:shadow-[0_12px_30px_rgba(0,0,0,0.08)] transition-all duration-300 group h-full"
+                  >
+                    <div className="relative h-[220px] overflow-hidden bg-gray-50 flex items-center justify-center">
+                      <Image
+                        src={product.image}
+                        alt={product.name}
+                        fill
+                        className="object-cover group-hover:scale-105 transition-transform duration-500"
+                      />
+                      {!product.published ? (
+                        <span className="absolute top-3 left-3 bg-amber-500 text-white text-[10px] font-bold px-3 py-1 rounded-full shadow-md z-10 animate-pulse uppercase tracking-wider">
+                          Coming Soon
+                        </span>
+                      ) : product.badge && (
+                        <span className="absolute top-3 left-3 bg-accent text-primary text-[10px] font-bold px-3 py-1 rounded-full shadow-md uppercase tracking-wider">
+                          {product.badge}
+                        </span>
+                      )}
+                      <span className="absolute top-3 right-3 bg-primary/80 text-white text-[10px] font-bold px-3 py-1 rounded-full backdrop-blur-sm shadow-sm uppercase tracking-wider">
+                        {product.category}
+                      </span>
+                    </div>
+                    <div className="p-5 flex flex-col justify-between">
+                      <div>
+                        <h3 className="font-heading font-bold text-lg text-text-dark group-hover:text-electric transition-colors line-clamp-1">
+                          {product.name}
+                        </h3>
+                        <p className="text-sm text-gray-500 mt-2 line-clamp-2 leading-relaxed">
+                          {product.shortDescription}
+                        </p>
+                        <div className="flex flex-wrap gap-1.5 mt-4">
+                          {product.specs.slice(0, 3).map((spec) => (
+                            <span
+                              key={spec.label}
+                              className="text-[10px] bg-gray-100 text-gray-600 px-2.5 py-1 rounded-md font-semibold"
+                            >
+                              {spec.label}: {spec.value}
+                            </span>
+                          ))}
+                        </div>
+                      </div>
+                      <div className="flex justify-between items-center mt-6 pt-4 border-t border-gray-100/70">
+                        <span className="text-sm font-bold text-primary">{product.priceRange}</span>
+                        <span className="text-electric font-semibold text-sm flex items-center gap-1 group-hover:gap-2 transition-all">
+                          View Details
+                          <ArrowRight className="w-4 h-4" />
+                        </span>
                       </div>
                     </div>
-                    <div className="flex justify-between items-center mt-6 pt-4 border-t border-gray-100/70">
-                      <span className="text-sm font-bold text-primary">{product.priceRange}</span>
-                      <span className="text-electric font-semibold text-sm flex items-center gap-1 group-hover:gap-2 transition-all">
-                        View Details
-                        <ArrowRight className="w-4 h-4" />
-                      </span>
-                    </div>
-                  </div>
-                </Link>
-              </motion.div>
-            ))}
-          </motion.div>
+                  </Link>
+                </motion.div>
+              ))}
+            </motion.div>
+          )}
 
           {/* Empty state panel */}
           {filteredProducts.length === 0 && (

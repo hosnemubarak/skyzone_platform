@@ -4,14 +4,9 @@ import { useState, useEffect, useMemo } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { useSearchParams, useRouter } from "next/navigation";
-import { ArrowRight, Search, X, ChevronDown } from "lucide-react";
-import ScrollReveal from "@/components/ui/ScrollReveal";
+import { ArrowRight, Search, X } from "lucide-react";
 import Dropdown from "@/components/ui/Dropdown";
 import { products, productCategories } from "@/data/products";
-import { motion } from "framer-motion";
-import ParticleField from "@/components/ui/ParticleField";
-import MouseGlow from "@/components/ui/MouseGlow";
-
 
 export default function ProductsPageContent() {
   const searchParams = useSearchParams();
@@ -112,47 +107,19 @@ export default function ProductsPageContent() {
         />
         {/* Gradient overlay */}
         <div className="absolute inset-0 bg-gradient-to-r from-primary/90 via-primary/70 to-primary/30 z-0" />
-        {/* Animated grid pattern overlay */}
-        <div className="hero-grid-pattern-animated absolute inset-0 z-0 pointer-events-none" />
-        {/* Particle field */}
-        <ParticleField count={12} className="absolute inset-0 z-0" />
-        {/* Mouse glow effect */}
-        <MouseGlow color="rgba(244, 180, 0, 0.08)" size={400} />
         <div className="relative max-w-[1200px] mx-auto px-5 z-10">
-          {/* Animated badge */}
-          <motion.div
-            initial={{ opacity: 0, y: 15 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-          >
-            <span className="inline-flex items-center gap-2 bg-accent/10 border border-accent/20 text-accent text-xs font-bold px-3.5 py-1.5 rounded-full mb-4 badge-glow">
-              📦 Product Catalog
-            </span>
-          </motion.div>
           <div className="flex items-center gap-2 text-white/50 text-sm mb-4">
             <Link href="/" className="hover:text-accent transition-colors">Home</Link>
             <span>/</span>
             <span className="text-white">Products</span>
           </div>
-          <motion.h1
-            className="text-4xl md:text-5xl font-heading font-bold text-white"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-          >
+          <h1 className="text-4xl md:text-5xl font-heading font-bold text-white">
             Our Products
-          </motion.h1>
-          <motion.p
-            className="text-lg text-white/70 mt-4 max-w-2xl"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.4 }}
-          >
+          </h1>
+          <p className="text-lg text-white/70 mt-4 max-w-2xl">
             Explore our comprehensive range of solar panels, inverters, batteries, and electrical equipment from globally trusted brands.
-          </motion.p>
+          </p>
         </div>
-        {/* Hero gradient line at bottom */}
-        <div className="hero-gradient-line" />
       </section>
 
       {/* Category Tab Selector */}
@@ -251,114 +218,68 @@ export default function ProductsPageContent() {
             </div>
           </div>
 
-          {/* Grid of Product Cards — Motion stagger container */}
-          {!mounted ? (
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-              {[...Array(6)].map((_, i) => (
-                <div key={i} className="bg-white rounded-2xl p-5 h-[390px] animate-pulse flex flex-col justify-between shadow-[0_4px_20px_rgba(0,0,0,0.02)]">
+          {/* Grid of Product Cards */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+            {filteredProducts.map((product) => (
+              <Link
+                key={product.id}
+                href={`/products/${product.slug}`}
+                className="block bg-white rounded-2xl overflow-hidden shadow-[0_4px_20px_rgba(0,0,0,0.04)] hover:-translate-y-1 hover:shadow-[0_12px_30px_rgba(0,0,0,0.08)] transition-all duration-300 group h-full"
+              >
+                <div className="relative h-[220px] overflow-hidden bg-gray-50 flex items-center justify-center">
+                  <Image
+                    src={product.image}
+                    alt={product.name}
+                    fill
+                    className="object-cover group-hover:scale-105 transition-transform duration-500"
+                  />
+                  {!product.published ? (
+                    <span className="absolute top-3 left-3 bg-amber-500 text-white text-[10px] font-bold px-3 py-1 rounded-full shadow-md z-10 animate-pulse uppercase tracking-wider">
+                      Coming Soon
+                    </span>
+                  ) : product.badge && (
+                    <span className="absolute top-3 left-3 bg-accent text-primary text-[10px] font-bold px-3 py-1 rounded-full shadow-md uppercase tracking-wider">
+                      {product.badge}
+                    </span>
+                  )}
+                  <span className="absolute top-3 right-3 bg-primary/80 text-white text-[10px] font-bold px-3 py-1 rounded-full backdrop-blur-sm shadow-sm uppercase tracking-wider">
+                    {product.category}
+                  </span>
+                </div>
+                <div className="p-5 flex flex-col justify-between">
                   <div>
-                    <div className="bg-gray-100 h-[220px] rounded-xl mb-4 w-full" />
-                    <div className="bg-gray-100 h-6 w-3/4 rounded-md mb-3" />
-                    <div className="bg-gray-100 h-4 w-5/6 rounded-md mb-2" />
-                    <div className="bg-gray-100 h-4 w-2/3 rounded-md" />
+                    <h3 className="font-heading font-bold text-lg text-text-dark group-hover:text-electric transition-colors line-clamp-1">
+                      {product.name}
+                    </h3>
+                    <p className="text-sm text-gray-500 mt-2 line-clamp-2 leading-relaxed">
+                      {product.shortDescription}
+                    </p>
+                    <div className="flex flex-wrap gap-1.5 mt-4">
+                      {product.specs.slice(0, 3).map((spec) => (
+                        <span
+                          key={spec.label}
+                          className="text-[10px] bg-gray-100 text-gray-600 px-2.5 py-1 rounded-md font-semibold"
+                        >
+                          {spec.label}: {spec.value}
+                        </span>
+                      ))}
+                    </div>
                   </div>
-                  <div className="flex justify-between items-center mt-6 pt-4 border-t border-gray-100">
-                    <div className="bg-gray-100 h-5 w-24 rounded-md" />
-                    <div className="bg-gray-100 h-5 w-20 rounded-md" />
+                  <div className="flex justify-between items-center mt-6 pt-4 border-t border-gray-100/70">
+                    <span className="text-sm font-bold text-primary">{product.priceRange}</span>
+                    <span className="text-electric font-semibold text-sm flex items-center gap-1 group-hover:gap-2 transition-all">
+                      View Details
+                      <ArrowRight className="w-4 h-4" />
+                    </span>
                   </div>
                 </div>
-              ))}
-            </div>
-          ) : (
-            <motion.div
-              key={`${activeCategory}-${statusFilter}-${sortOrder}-${searchQuery}`}
-              className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8"
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, amount: 0.05 }}
-              variants={{
-                hidden: {},
-                visible: { transition: { staggerChildren: 0.06 } },
-              }}
-            >
-              {filteredProducts.map((product) => (
-                <motion.div
-                  key={product.id}
-                  variants={{
-                    hidden: { opacity: 0, y: 30, scale: 0.96 },
-                    visible: {
-                      opacity: 1,
-                      y: 0,
-                      scale: 1,
-                      transition: { duration: 0.5, ease: "easeOut" as const },
-                    },
-                  }}
-                >
-                  <Link
-                    href={`/products/${product.slug}`}
-                    className="relative block bg-white rounded-2xl overflow-hidden shadow-[0_4px_20px_rgba(0,0,0,0.04)] hover:-translate-y-1 hover:shadow-[0_12px_30px_rgba(0,0,0,0.08)] transition-all duration-300 group h-full"
-                  >
-                    <div className="relative h-[220px] overflow-hidden bg-gray-50 flex items-center justify-center">
-                      <Image
-                        src={product.image}
-                        alt={product.name}
-                        fill
-                        className="object-cover group-hover:scale-105 transition-transform duration-500"
-                      />
-                      {!product.published ? (
-                        <span className="absolute top-3 left-3 bg-amber-500 text-white text-[10px] font-bold px-3 py-1 rounded-full shadow-md z-10 animate-pulse uppercase tracking-wider">
-                          Coming Soon
-                        </span>
-                      ) : product.badge && (
-                        <span className="absolute top-3 left-3 bg-accent text-primary text-[10px] font-bold px-3 py-1 rounded-full shadow-md uppercase tracking-wider">
-                          {product.badge}
-                        </span>
-                      )}
-                      <span className="absolute top-3 right-3 bg-primary/80 text-white text-[10px] font-bold px-3 py-1 rounded-full backdrop-blur-sm shadow-sm uppercase tracking-wider">
-                        {product.category}
-                      </span>
-                    </div>
-                    <div className="p-5 flex flex-col justify-between">
-                      <div>
-                        <h3 className="font-heading font-bold text-lg text-text-dark group-hover:text-electric transition-colors line-clamp-1">
-                          {product.name}
-                        </h3>
-                        <p className="text-sm text-gray-500 mt-2 line-clamp-2 leading-relaxed">
-                          {product.shortDescription}
-                        </p>
-                        <div className="flex flex-wrap gap-1.5 mt-4">
-                          {product.specs.slice(0, 3).map((spec) => (
-                            <span
-                              key={spec.label}
-                              className="text-[10px] bg-gray-100 text-gray-600 px-2.5 py-1 rounded-md font-semibold"
-                            >
-                              {spec.label}: {spec.value}
-                            </span>
-                          ))}
-                        </div>
-                      </div>
-                      <div className="flex justify-between items-center mt-6 pt-4 border-t border-gray-100/70">
-                        <span className="text-sm font-bold text-primary">{product.priceRange}</span>
-                        <span className="text-electric font-semibold text-sm flex items-center gap-1 group-hover:gap-2 transition-all">
-                          View Details
-                          <ArrowRight className="w-4 h-4" />
-                        </span>
-                      </div>
-                    </div>
-                  </Link>
-                </motion.div>
-              ))}
-            </motion.div>
-          )}
+              </Link>
+            ))}
+          </div>
 
           {/* Empty state panel */}
           {filteredProducts.length === 0 && (
-            <motion.div
-              initial={{ opacity: 0, scale: 0.95 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.4 }}
-              className="text-center py-24 bg-white rounded-2xl shadow-[0_8px_30px_rgba(0,0,0,0.03)] px-5"
-            >
+            <div className="text-center py-24 bg-white rounded-2xl shadow-[0_8px_30px_rgba(0,0,0,0.03)] px-5">
               <div className="w-16 h-16 bg-primary/5 rounded-full flex items-center justify-center mx-auto mb-4 text-primary">
                 <Search className="w-8 h-8 text-primary" />
               </div>
@@ -379,7 +300,7 @@ export default function ProductsPageContent() {
                   Reset Status Filter
                 </button>
               </div>
-            </motion.div>
+            </div>
           )}
 
         </div>

@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo } from "react";
+import { useState, useEffect, useMemo } from "react";
 import { cn } from "@/lib/utils";
 
 interface ParticleFieldProps {
@@ -19,7 +19,14 @@ interface Particle {
 }
 
 export default function ParticleField({ count = 18, className }: ParticleFieldProps) {
+  const [mounted, setMounted] = useState(false);
+  
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
   const particles: Particle[] = useMemo(() => {
+    if (!mounted) return [];
     return Array.from({ length: count }, (_, i) => ({
       id: i,
       left: `${Math.random() * 100}%`,
@@ -29,11 +36,11 @@ export default function ParticleField({ count = 18, className }: ParticleFieldPr
       opacity: Math.random() * 0.5 + 0.2,
       color: i % 3 === 0 ? "var(--color-accent)" : i % 3 === 1 ? "var(--color-electric)" : "rgba(255,255,255,0.6)",
     }));
-  }, [count]);
+  }, [count, mounted]);
 
   return (
     <div className={cn("absolute inset-0 overflow-hidden pointer-events-none", className)}>
-      {particles.map((p) => (
+      {mounted && particles.map((p) => (
         <span
           key={p.id}
           className="particle"

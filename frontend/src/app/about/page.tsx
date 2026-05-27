@@ -69,9 +69,6 @@ export default function AboutPage() {
             Building Bangladesh&apos;s energy future with trusted products, expert service, and a commitment to excellence.
           </p>
         </div>
-
-        {/* Hero gradient line */}
-        <div className="hero-gradient-line" />
       </section>
 
       {/* Company Overview */}
@@ -229,8 +226,6 @@ export default function AboutPage() {
             </div>
           </ScrollReveal>
         </div>
-        {/* Hero gradient line */}
-        <div className="hero-gradient-line" />
       </section>
     </>
   );

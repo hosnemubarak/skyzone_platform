@@ -6,7 +6,7 @@ import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { motion, useInView } from "framer-motion";
 import SectionHeader from "@/components/ui/SectionHeader";
-import ShimmerEffect from "@/components/ui/ShimmerEffect";
+
 import { products } from "@/data/products";
 
 /* ── Animated title with typewriter effect ── */
@@ -161,8 +161,7 @@ export default function FeaturedProducts() {
                   href={`/products/${product.slug}`}
                   className="relative block bg-white rounded-xl overflow-hidden shadow-[0_4px_24px_rgba(0,0,0,0.08)] hover:-translate-y-1 hover:shadow-xl transition-all duration-300 group"
                 >
-                  {/* Shimmer overlay */}
-                  <ShimmerEffect />
+
 
                   {/* Image */}
                   <div className="relative h-[220px] overflow-hidden bg-bg-light">

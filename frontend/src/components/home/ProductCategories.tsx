@@ -103,7 +103,7 @@ export default function ProductCategories() {
                 <MagneticCard className="h-full">
                   <Link
                     href={`/products?category=${cat.slug}`}
-                    className="animated-border-gradient block bg-primary p-6 rounded-xl text-white group hover:-translate-y-1 transition-all duration-300 shadow-[0_4px_24px_rgba(0,0,0,0.08)] hover:shadow-xl h-full"
+                    className="block bg-primary p-6 rounded-xl text-white group hover:-translate-y-1 transition-all duration-300 shadow-[0_4px_24px_rgba(0,0,0,0.08)] hover:shadow-xl h-full"
                   >
                     <div className="icon-ring-animated relative w-12 h-12 rounded-full bg-accent/20 flex items-center justify-center">
                       <IconComp className="relative z-10 w-6 h-6 text-accent" />

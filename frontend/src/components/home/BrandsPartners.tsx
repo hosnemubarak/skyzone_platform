@@ -4,7 +4,7 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 import SectionHeader from "@/components/ui/SectionHeader";
 import ScrollReveal from "@/components/ui/ScrollReveal";
-import ShimmerEffect from "@/components/ui/ShimmerEffect";
+
 
 const badges = [
   {
@@ -54,9 +54,7 @@ export default function BrandsPartners() {
         />
 
         <ScrollReveal direction="up" delay={0.1}>
-          <div className="relative max-w-3xl mx-auto mt-12 bg-white border border-gray-100 rounded-2xl p-8 md:p-12 shadow-[0_15px_40px_rgba(0,0,0,0.03)] flex flex-col md:flex-row items-center gap-8 md:gap-12 float-animation animated-border-gradient">
-            {/* Shimmer overlay */}
-            <ShimmerEffect />
+          <div className="relative max-w-3xl mx-auto mt-12 bg-white border border-gray-100 rounded-2xl p-8 md:p-12 shadow-[0_15px_40px_rgba(0,0,0,0.03)] flex flex-col md:flex-row items-center gap-8 md:gap-12 float-animation">
 
             <div className="relative w-48 h-24 md:w-56 md:h-28 shrink-0 flex items-center justify-center bg-bg-light/60 rounded-xl overflow-hidden p-4 border border-gray-100">
               <Image

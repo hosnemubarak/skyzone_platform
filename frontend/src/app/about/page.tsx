@@ -47,7 +47,16 @@ export default function AboutPage() {
         />
         {/* Gradient overlay */}
         <div className="absolute inset-0 bg-gradient-to-r from-primary/90 via-primary/70 to-primary/30 z-0" />
+        {/* Animated grid pattern overlay */}
+        <div className="hero-grid-pattern-animated absolute inset-0 z-0" />
+        {/* Radial blue glow */}
+        <div className="absolute top-1/2 right-1/4 w-[500px] h-[500px] bg-electric/10 rounded-full blur-[100px] pointer-events-none z-0" />
+
         <div className="relative max-w-[1200px] mx-auto px-5 z-10">
+          {/* Badge */}
+          <span className="inline-flex items-center gap-2 bg-accent/10 border border-accent/20 text-accent text-xs font-bold px-3.5 py-1.5 rounded-full mb-4 badge-glow">
+            <BadgeCheck className="w-3.5 h-3.5" /> About Sky Zone
+          </span>
           <div className="flex items-center gap-2 text-white/50 text-sm mb-4">
             <a href="/" className="hover:text-accent transition-colors">Home</a>
             <span>/</span>
@@ -60,6 +69,9 @@ export default function AboutPage() {
             Building Bangladesh&apos;s energy future with trusted products, expert service, and a commitment to excellence.
           </p>
         </div>
+
+        {/* Hero gradient line */}
+        <div className="hero-gradient-line" />
       </section>
 
       {/* Company Overview */}
@@ -67,7 +79,7 @@ export default function AboutPage() {
         <div className="max-w-[1200px] mx-auto px-5">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <ScrollReveal direction="left">
-              <div className="relative rounded-xl overflow-hidden shadow-2xl">
+              <div className="relative rounded-xl overflow-hidden shadow-2xl animated-border-gradient hover:shadow-[0_30px_60px_rgba(11,42,74,0.2)] transition-all duration-500">
                 <Image
                   src="/images/about-team.png"
                   alt="Sky Zone International team"
@@ -98,12 +110,12 @@ export default function AboutPage() {
       {/* Mission & Vision */}
       <section className="py-16 md:py-20 bg-bg-light">
         <div className="max-w-[1200px] mx-auto px-5">
-          <SectionHeader label="Our Purpose" title="Mission & Vision" />
+          <SectionHeader label="Our Purpose" title="Mission &amp; Vision" />
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-12">
             <ScrollReveal direction="left">
-              <div className="bg-white rounded-xl p-8 shadow-[0_4px_24px_rgba(0,0,0,0.08)] h-full">
-                <div className="w-14 h-14 rounded-full bg-accent/15 flex items-center justify-center">
-                  <Target className="w-7 h-7 text-accent" />
+              <div className="bg-white rounded-xl p-8 shadow-[0_4px_24px_rgba(0,0,0,0.08)] h-full animated-border-gradient shimmer-effect hover:-translate-y-1 transition-all duration-300">
+                <div className="w-14 h-14 rounded-full bg-accent/15 flex items-center justify-center icon-ring-animated relative">
+                  <Target className="w-7 h-7 text-accent relative z-10" />
                 </div>
                 <h3 className="font-heading font-semibold text-xl mt-5 text-text-dark">Our Mission</h3>
                 <p className="text-gray-600 mt-3 leading-relaxed">
@@ -112,9 +124,9 @@ export default function AboutPage() {
               </div>
             </ScrollReveal>
             <ScrollReveal direction="right">
-              <div className="bg-white rounded-xl p-8 shadow-[0_4px_24px_rgba(0,0,0,0.08)] h-full">
-                <div className="w-14 h-14 rounded-full bg-electric/15 flex items-center justify-center">
-                  <Eye className="w-7 h-7 text-electric" />
+              <div className="bg-white rounded-xl p-8 shadow-[0_4px_24px_rgba(0,0,0,0.08)] h-full animated-border-gradient shimmer-effect hover:-translate-y-1 transition-all duration-300">
+                <div className="w-14 h-14 rounded-full bg-electric/15 flex items-center justify-center icon-ring-animated relative">
+                  <Eye className="w-7 h-7 text-electric relative z-10" />
                 </div>
                 <h3 className="font-heading font-semibold text-xl mt-5 text-text-dark">Our Vision</h3>
                 <p className="text-gray-600 mt-3 leading-relaxed">
@@ -133,9 +145,9 @@ export default function AboutPage() {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mt-12">
             {coreValues.map((val, i) => (
               <ScrollReveal key={val.title} delay={i * 0.1}>
-                <div className="bg-bg-light rounded-xl p-6 text-center hover:-translate-y-1 transition-all duration-300 h-full">
-                  <div className="w-14 h-14 rounded-full bg-electric/10 text-electric mx-auto flex items-center justify-center">
-                    <val.icon className="w-7 h-7" />
+                <div className="group bg-bg-light rounded-xl p-6 text-center hover:-translate-y-1 transition-all duration-300 h-full animated-border-gradient">
+                  <div className="w-14 h-14 rounded-full bg-electric/10 text-electric mx-auto flex items-center justify-center icon-ring-animated relative group-hover:bg-electric/20 transition-colors">
+                    <val.icon className="w-7 h-7 relative z-10" />
                   </div>
                   <h4 className="font-heading font-semibold mt-4 text-text-dark">{val.title}</h4>
                   <p className="text-sm text-gray-500 mt-2">{val.desc}</p>
@@ -153,7 +165,10 @@ export default function AboutPage() {
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mt-12">
             {certifications.map((cert, i) => (
               <ScrollReveal key={cert.title} delay={i * 0.1}>
-                <div className="bg-white rounded-xl p-6 text-center shadow-sm hover:-translate-y-1 transition-all duration-300">
+                <div
+                  className="bg-white rounded-xl p-6 text-center shadow-sm hover:-translate-y-2 transition-all duration-300 animated-border-gradient float-animation"
+                  style={{ animationDelay: `${i * 0.5}s` }}
+                >
                   <BadgeCheck className="w-12 h-12 text-accent mx-auto" />
                   <h4 className="font-heading font-semibold text-text-dark mt-3">{cert.title}</h4>
                   <p className="text-sm text-gray-500 mt-1">{cert.subtitle}</p>
@@ -177,11 +192,11 @@ export default function AboutPage() {
                 <ScrollReveal key={item.year} direction={i % 2 === 0 ? "left" : "right"} delay={i * 0.1}>
                   <div className={`relative flex ${i % 2 === 0 ? "md:justify-start" : "md:justify-end"}`}>
                     {/* Dot */}
-                    <div className="absolute left-[20px] md:left-1/2 w-4 h-4 rounded-full bg-accent border-4 border-white shadow-md -translate-x-1/2 top-6 z-10" />
+                    <div className="absolute left-[20px] md:left-1/2 w-4 h-4 rounded-full bg-accent border-4 border-white shadow-md -translate-x-1/2 top-6 z-10 float-animation" />
 
                     {/* Content card */}
                     <div className={`ml-12 md:ml-0 md:w-[45%] ${i % 2 === 0 ? "md:pr-12" : "md:pl-12"}`}>
-                      <div className="bg-bg-light rounded-xl p-6 shadow-sm hover:shadow-md transition-shadow">
+                      <div className="bg-bg-light rounded-xl p-6 shadow-sm hover:shadow-lg transition-all animated-border-gradient">
                         <span className="text-accent font-heading font-bold text-lg">{item.year}</span>
                         <h4 className="font-heading font-semibold text-text-dark mt-1">{item.title}</h4>
                         <p className="text-sm text-gray-500 mt-2">{item.desc}</p>
@@ -196,22 +211,26 @@ export default function AboutPage() {
       </section>
 
       {/* CTA */}
-      <section className="bg-gradient-to-r from-primary to-primary-dark py-16 md:py-20">
+      <section className="relative bg-gradient-to-r from-primary to-primary-dark py-16 md:py-20 overflow-hidden animated-gradient-bg">
         <div className="max-w-[1200px] mx-auto px-5 text-center">
           <ScrollReveal>
-            <h2 className="text-3xl font-heading font-bold text-white">
+            <h2 className="text-3xl font-heading font-bold text-white text-shimmer-effect">
               Ready to Work With Us?
             </h2>
             <p className="text-white/70 mt-3 max-w-xl mx-auto">
               Partner with Sky Zone International for reliable energy solutions and expert support.
             </p>
-            <div className="mt-6">
-              <Button variant="primary" href="/contact" icon={<ArrowRight className="w-4 h-4" />}>
-                Get in Touch
-              </Button>
+            <div className="mt-6 inline-block">
+              <div className="glow-pulse-accent rounded-full inline-block">
+                <Button variant="primary" href="/contact" icon={<ArrowRight className="w-4 h-4" />}>
+                  Get in Touch
+                </Button>
+              </div>
             </div>
           </ScrollReveal>
         </div>
+        {/* Hero gradient line */}
+        <div className="hero-gradient-line" />
       </section>
     </>
   );

@@ -29,6 +29,9 @@ import { cn } from "@/lib/utils";
 import { companyInfo } from "@/data/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import { submitInquiry } from "@/services/api/inquiries";
+import ParticleField from "@/components/ui/ParticleField";
+import MouseGlow from "@/components/ui/MouseGlow";
+import ShimmerEffect from "@/components/ui/ShimmerEffect";
 
 interface Props {
   product: Product;
@@ -216,6 +219,12 @@ export default function ProductDetailContent({ product, relatedProducts }: Props
         />
         {/* Gradient overlay */}
         <div className="absolute inset-0 bg-gradient-to-r from-primary/90 via-primary/70 to-primary/30 z-0" />
+        {/* Animated grid pattern overlay */}
+        <div className="hero-grid-pattern-animated absolute inset-0 z-0 pointer-events-none" />
+        {/* Particle field */}
+        <ParticleField count={8} className="absolute inset-0 z-0" />
+        {/* Mouse glow effect */}
+        <MouseGlow color="rgba(244, 180, 0, 0.06)" size={350} />
         <div className="relative max-w-[1200px] mx-auto px-5 z-10">
           <div className="flex items-center gap-2 text-white/50 text-sm">
             <Link href="/" className="hover:text-accent transition-colors flex items-center gap-1">Home</Link>
@@ -225,6 +234,8 @@ export default function ProductDetailContent({ product, relatedProducts }: Props
             <span className="text-white truncate max-w-[200px] md:max-w-none font-medium">{product.name}</span>
           </div>
         </div>
+        {/* Hero gradient line at bottom */}
+        <div className="hero-gradient-line" />
       </section>
 
       {/* Product Details Section */}
@@ -233,7 +244,7 @@ export default function ProductDetailContent({ product, relatedProducts }: Props
           
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16">
             
-            {/* Left: Image Showcase & Gallery (Grid Span 5) */}
+            {/* Left: Image Showcase & Gallery (Grid Span 6) */}
             <div className="lg:col-span-6">
               <ScrollReveal direction="left">
                 <div className="space-y-4">
@@ -242,7 +253,7 @@ export default function ProductDetailContent({ product, relatedProducts }: Props
                   <div>
                     {activeImage === 0 && (
                       <div
-                        className="relative h-[360px] sm:h-[420px] md:h-[460px] w-full rounded-2xl overflow-hidden bg-bg-light border border-gray-100 flex items-center justify-center cursor-zoom-in group select-none shadow-sm"
+                        className="relative h-[360px] sm:h-[420px] md:h-[460px] w-full rounded-2xl overflow-hidden bg-bg-light border border-gray-100 flex items-center justify-center cursor-zoom-in group select-none shadow-sm animated-border-gradient"
                         onMouseMove={handleMouseMove}
                         onMouseLeave={handleMouseLeave}
                       >
@@ -274,7 +285,7 @@ export default function ProductDetailContent({ product, relatedProducts }: Props
                     )}
 
                     {activeImage === 1 && (
-                      <div className="relative h-[360px] sm:h-[420px] md:h-[460px] w-full rounded-2xl overflow-hidden bg-slate-900 border border-slate-800 text-white font-mono p-6 flex flex-col justify-between hero-grid-pattern shadow-sm">
+                      <div className="relative h-[360px] sm:h-[420px] md:h-[460px] w-full rounded-2xl overflow-hidden bg-slate-900 border border-slate-800 text-white font-mono p-6 flex flex-col justify-between hero-grid-pattern shadow-sm animated-border-gradient">
                         <div className="absolute inset-0 opacity-10 bg-[radial-gradient(#38bdf8_1px,transparent_1px)] [background-size:16px_16px]" />
                         
                         <div className="flex justify-between items-start z-10 border-b border-white/10 pb-3">
@@ -322,7 +333,7 @@ export default function ProductDetailContent({ product, relatedProducts }: Props
                     )}
 
                     {activeImage === 2 && (
-                      <div className="relative h-[360px] sm:h-[420px] md:h-[460px] w-full rounded-2xl overflow-hidden bg-gradient-to-br from-primary-deeper to-primary border border-gray-200 p-6 flex flex-col justify-between text-white shadow-md">
+                      <div className="relative h-[360px] sm:h-[420px] md:h-[460px] w-full rounded-2xl overflow-hidden bg-gradient-to-br from-primary-deeper to-primary border border-gray-200 p-6 flex flex-col justify-between text-white shadow-md animated-border-gradient">
                         <div className="absolute top-0 right-0 w-36 h-36 bg-accent/10 rounded-full blur-3xl" />
                         <div className="border-b border-white/10 pb-3 flex justify-between items-center z-10">
                           <span className="text-xs md:text-sm text-accent font-bold tracking-widest flex items-center gap-1.5">
@@ -365,17 +376,17 @@ export default function ProductDetailContent({ product, relatedProducts }: Props
                         </div>
 
                         <div className="text-xs text-white/40 text-center border-t border-white/10 pt-3 z-10">
-                          Secure Supply &middot; Authorized Bangladesh Importer & Distributor
+                          Secure Supply &middot; Authorized Bangladesh Importer &amp; Distributor
                         </div>
                       </div>
                     )}
 
                     {activeImage === 3 && (
-                      <div className="relative h-[360px] sm:h-[420px] md:h-[460px] w-full rounded-2xl overflow-hidden bg-bg-light border border-gray-200 p-6 flex flex-col justify-between text-text-dark shadow-sm">
+                      <div className="relative h-[360px] sm:h-[420px] md:h-[460px] w-full rounded-2xl overflow-hidden bg-bg-light border border-gray-200 p-6 flex flex-col justify-between text-text-dark shadow-sm animated-border-gradient">
                         <div className="border-b border-gray-200 pb-3 flex justify-between items-center">
                           <span className="text-xs md:text-sm text-primary font-bold tracking-widest flex items-center gap-1.5">
                             <Box className="w-4 h-4 text-electric" />
-                            CARGO & SHIPPING CONTENTS
+                            CARGO &amp; SHIPPING CONTENTS
                           </span>
                           <span className="text-xs text-gray-400">READY</span>
                         </div>
@@ -392,7 +403,7 @@ export default function ProductDetailContent({ product, relatedProducts }: Props
                             </li>
                             <li className="flex items-start gap-2.5">
                               <span className="w-1.5 h-1.5 rounded-full bg-electric shrink-0 mt-2" />
-                              <span><strong>1x</strong> Factory Datasheet & Wiring Guide</span>
+                              <span><strong>1x</strong> Factory Datasheet &amp; Wiring Guide</span>
                             </li>
                             <li className="flex items-start gap-2.5">
                               <span className="w-1.5 h-1.5 rounded-full bg-electric shrink-0 mt-2" />
@@ -423,11 +434,11 @@ export default function ProductDetailContent({ product, relatedProducts }: Props
                           className={cn(
                             "flex flex-col items-center justify-center p-2.5 rounded-xl border text-center transition-all cursor-pointer",
                             activeImage === i
-                              ? "bg-primary border-primary text-white shadow-md"
-                              : "bg-bg-light border-gray-200 hover:border-accent text-gray-500 hover:text-text-dark hover:bg-white"
+                              ? "bg-primary border-primary text-white shadow-md glow-pulse-accent"
+                              : "bg-bg-light border-gray-200 hover:border-accent text-gray-500 hover:text-text-dark hover:bg-white hover:scale-105 transition-transform"
                           )}
                         >
-                          <Icon className="w-4 h-4 mb-1 shrink-0" />
+                          <Icon className={cn("w-4 h-4 mb-1 shrink-0", activeImage === i && "icon-ring-animated relative")} />
                           <span className="text-[11px] md:text-xs font-bold tracking-tight uppercase line-clamp-1">{view.label}</span>
                         </button>
                       );
@@ -438,46 +449,89 @@ export default function ProductDetailContent({ product, relatedProducts }: Props
               </ScrollReveal>
             </div>
 
-            {/* Right: Info, Pricing & Quick Highlights (Grid Span 7) */}
+            {/* Right: Info, Pricing & Quick Highlights (Grid Span 6) */}
             <div className="lg:col-span-6 flex flex-col justify-between">
               <ScrollReveal direction="right">
                 <div>
                   
-                  {/* Category Badge & Badge Tag */}
-                  <div className="flex flex-wrap items-center gap-3">
-                    <span className="inline-flex bg-primary/5 border border-primary/10 text-primary text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">
+                  {/* Category Badge & Badge Tag — stagger animated */}
+                  <motion.div
+                    className="flex flex-wrap items-center gap-3"
+                    initial="hidden"
+                    animate="visible"
+                    variants={{
+                      hidden: {},
+                      visible: { transition: { staggerChildren: 0.08 } },
+                    }}
+                  >
+                    <motion.span
+                      className="inline-flex bg-primary/5 border border-primary/10 text-primary text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider"
+                      variants={{
+                        hidden: { opacity: 0, scale: 0.8 },
+                        visible: { opacity: 1, scale: 1, transition: { type: "spring" as const, stiffness: 300, damping: 18 } },
+                      }}
+                    >
                       {product.category}
-                    </span>
+                    </motion.span>
                     {product.brand && (
-                      <span className="inline-flex bg-blue-50 border border-blue-200 text-blue-700 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">
+                      <motion.span
+                        className="inline-flex bg-blue-50 border border-blue-200 text-blue-700 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider"
+                        variants={{
+                          hidden: { opacity: 0, scale: 0.8 },
+                          visible: { opacity: 1, scale: 1, transition: { type: "spring" as const, stiffness: 300, damping: 18 } },
+                        }}
+                      >
                         {product.brand}
-                      </span>
+                      </motion.span>
                     )}
                     {product.series && (
-                      <span className="inline-flex bg-purple-50 border border-purple-200 text-purple-700 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">
+                      <motion.span
+                        className="inline-flex bg-purple-50 border border-purple-200 text-purple-700 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider"
+                        variants={{
+                          hidden: { opacity: 0, scale: 0.8 },
+                          visible: { opacity: 1, scale: 1, transition: { type: "spring" as const, stiffness: 300, damping: 18 } },
+                        }}
+                      >
                         {product.series}
-                      </span>
+                      </motion.span>
                     )}
                     {!product.published ? (
-                      <span className="inline-flex bg-amber-500 border border-amber-600 text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider animate-pulse">
+                      <motion.span
+                        className="inline-flex bg-amber-500 border border-amber-600 text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider animate-pulse"
+                        variants={{
+                          hidden: { opacity: 0, scale: 0.8 },
+                          visible: { opacity: 1, scale: 1, transition: { type: "spring" as const, stiffness: 300, damping: 18 } },
+                        }}
+                      >
                         Coming Soon
-                      </span>
+                      </motion.span>
                     ) : product.badge && (
-                      <span className="inline-flex bg-accent/20 border border-accent/20 text-accent-dark text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">
+                      <motion.span
+                        className="inline-flex bg-accent/20 border border-accent/20 text-accent-dark text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider"
+                        variants={{
+                          hidden: { opacity: 0, scale: 0.8 },
+                          visible: { opacity: 1, scale: 1, transition: { type: "spring" as const, stiffness: 300, damping: 18 } },
+                        }}
+                      >
                         {product.badge}
-                      </span>
+                      </motion.span>
                     )}
-                  </div>
+                  </motion.div>
 
                   {/* Product Title */}
-                  <h1 className="text-3xl md:text-4xl lg:text-[2.5rem] font-heading font-bold text-text-dark leading-tight mt-4">
+                  <motion.h1
+                    className="text-3xl md:text-4xl lg:text-[2.5rem] font-heading font-bold text-text-dark leading-tight mt-4"
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.5, delay: 0.2 }}
+                  >
                     {product.name}
-                  </h1>
+                  </motion.h1>
 
                   {/* Pricing Range Tag */}
                   <div className="mt-4 flex flex-wrap items-baseline gap-2 pb-5 border-b border-gray-100">
                     <span className="text-xs md:text-sm text-gray-500 uppercase tracking-wider font-semibold">Pricing Status:</span>
-                    <span className="text-2xl md:text-3xl font-bold text-electric">{product.priceRange || "Contact for Price"}</span>
+                    <span className="text-2xl md:text-3xl font-bold text-electric text-shimmer-effect">{product.priceRange || "Contact for Price"}</span>
                     <span className="text-xs md:text-sm text-gray-400 italic font-medium">(B2B wholesale pricing available)</span>
                   </div>
 
@@ -486,15 +540,30 @@ export default function ProductDetailContent({ product, relatedProducts }: Props
                     {product.description}
                   </p>
 
-                  {/* Quick Specs Highlight Cards */}
-                  <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 mt-8">
+                  {/* Quick Specs Highlight Cards — stagger animated */}
+                  <motion.div
+                    className="grid grid-cols-2 sm:grid-cols-3 gap-4 mt-8"
+                    initial="hidden"
+                    animate="visible"
+                    variants={{
+                      hidden: {},
+                      visible: { transition: { staggerChildren: 0.1, delayChildren: 0.3 } },
+                    }}
+                  >
                     {product.specs.slice(0, 3).map((spec) => (
-                      <div key={spec.label} className="bg-bg-light border border-gray-200/60 p-4 rounded-xl">
+                      <motion.div
+                        key={spec.label}
+                        className="bg-bg-light border border-gray-200/60 p-4 rounded-xl"
+                        variants={{
+                          hidden: { opacity: 0, scale: 0.9, y: 10 },
+                          visible: { opacity: 1, scale: 1, y: 0, transition: { duration: 0.4, ease: "easeOut" as const } },
+                        }}
+                      >
                         <span className="block text-xs md:text-sm text-gray-500 font-bold uppercase tracking-wider">{spec.label}</span>
                         <span className="block text-base md:text-lg font-semibold text-text-dark mt-1">{spec.value}</span>
-                      </div>
+                      </motion.div>
                     ))}
-                  </div>
+                  </motion.div>
 
                   {/* Value Props checklist */}
                   <div className="mt-8 space-y-3 bg-accent/5 border border-accent/10 rounded-2xl p-5">
@@ -521,15 +590,17 @@ export default function ProductDetailContent({ product, relatedProducts }: Props
 
                   {/* Action Buttons */}
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-8 w-full">
-                    <Button
-                      variant="primary"
-                      size="md"
-                      onClick={scrollToInquiry}
-                      icon={<Mail className="w-4 h-4" />}
-                      className="w-full justify-center"
-                    >
-                      Inquire Price & Availability
-                    </Button>
+                    <div className="glow-pulse-accent rounded-full">
+                      <Button
+                        variant="primary"
+                        size="md"
+                        onClick={scrollToInquiry}
+                        icon={<Mail className="w-4 h-4" />}
+                        className="w-full justify-center"
+                      >
+                        Inquire Price &amp; Availability
+                      </Button>
+                    </div>
                     <Button
                       variant="outline"
                       size="md"
@@ -569,7 +640,10 @@ export default function ProductDetailContent({ product, relatedProducts }: Props
                 >
                   Technical Specifications
                   {activeTab === "specs" && (
-                    <span className="absolute bottom-0 left-0 right-0 h-0.5 bg-primary rounded-full animate-fade-in" />
+                    <motion.span
+                      layoutId="tab-underline"
+                      className="absolute bottom-0 left-0 right-0 h-0.5 bg-primary rounded-full"
+                    />
                   )}
                 </button>
                 <button
@@ -579,9 +653,12 @@ export default function ProductDetailContent({ product, relatedProducts }: Props
                     activeTab === "features" ? "text-primary font-bold" : "text-gray-400 hover:text-text-dark"
                   )}
                 >
-                  Features & Benefits
+                  Features &amp; Benefits
                   {activeTab === "features" && (
-                    <span className="absolute bottom-0 left-0 right-0 h-0.5 bg-primary rounded-full animate-fade-in" />
+                    <motion.span
+                      layoutId="tab-underline"
+                      className="absolute bottom-0 left-0 right-0 h-0.5 bg-primary rounded-full"
+                    />
                   )}
                 </button>
               </div>
@@ -607,24 +684,36 @@ export default function ProductDetailContent({ product, relatedProducts }: Props
                       )}
                     </div>
 
-                    {/* Specs Table */}
+                    {/* Specs Table — stagger animated */}
                     <div className="bg-white rounded-2xl overflow-hidden border border-gray-200/80 shadow-sm">
                       {filteredSpecs.length > 0 ? (
-                        <div className="divide-y divide-gray-100">
+                        <motion.div
+                          className="divide-y divide-gray-100"
+                          initial="hidden"
+                          animate="visible"
+                          variants={{
+                            hidden: {},
+                            visible: { transition: { staggerChildren: 0.04 } },
+                          }}
+                        >
                           {filteredSpecs.map((spec, i) => (
-                            <div
+                            <motion.div
                               key={spec.label}
                               className={cn(
                                 "flex flex-col sm:flex-row justify-between py-4 px-6 text-sm transition-colors",
                                 i % 2 === 0 ? "bg-bg-light/30" : "bg-white",
                                 "hover:bg-accent/5"
                               )}
+                              variants={{
+                                hidden: { opacity: 0, x: -10 },
+                                visible: { opacity: 1, x: 0, transition: { duration: 0.3, ease: "easeOut" as const } },
+                              }}
                             >
                               <span className="font-bold text-text-dark uppercase tracking-wider text-sm sm:w-[40%]">{spec.label}</span>
                               <span className="text-gray-600 font-medium sm:w-[60%] sm:pl-4 mt-1.5 sm:mt-0 leading-relaxed md:text-base">{spec.value}</span>
-                            </div>
+                            </motion.div>
                           ))}
-                        </div>
+                        </motion.div>
                       ) : (
                         <div className="py-8 text-center text-gray-400 text-sm">
                           No specifications match &ldquo;{specQuery}&rdquo;
@@ -640,8 +729,8 @@ export default function ProductDetailContent({ product, relatedProducts }: Props
                 <ScrollReveal>
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                     {product.features.map((feature, i) => (
-                      <div key={i} className="flex gap-4 bg-white p-6 rounded-2xl border border-gray-200/60 shadow-sm group hover:border-electric/30 transition-all">
-                        <div className="w-10 h-10 rounded-full bg-electric/10 flex items-center justify-center text-electric shrink-0 group-hover:bg-electric group-hover:text-white transition-all">
+                      <div key={i} className="flex gap-4 bg-white p-6 rounded-2xl border border-gray-200/60 shadow-sm group hover:border-electric/30 transition-all animated-border-gradient">
+                        <div className="w-10 h-10 rounded-full bg-electric/10 flex items-center justify-center text-electric shrink-0 group-hover:bg-electric group-hover:text-white transition-all icon-ring-animated relative">
                           <CheckCircle className="w-5 h-5" />
                         </div>
                         <div>
@@ -730,8 +819,24 @@ export default function ProductDetailContent({ product, relatedProducts }: Props
                   </p>
                 </div>
 
-                <div className="mt-10 lg:mt-0 space-y-6">
-                  <div className="flex items-center gap-4">
+                {/* Info items — stagger animated from left */}
+                <motion.div
+                  className="mt-10 lg:mt-0 space-y-6"
+                  initial="hidden"
+                  whileInView="visible"
+                  viewport={{ once: true, amount: 0.3 }}
+                  variants={{
+                    hidden: {},
+                    visible: { transition: { staggerChildren: 0.12 } },
+                  }}
+                >
+                  <motion.div
+                    className="flex items-center gap-4"
+                    variants={{
+                      hidden: { opacity: 0, x: -20 },
+                      visible: { opacity: 1, x: 0, transition: { duration: 0.5, ease: "easeOut" as const } },
+                    }}
+                  >
                     <div className="w-12 h-12 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-accent shrink-0">
                       <Building className="w-6 h-6" />
                     </div>
@@ -739,9 +844,15 @@ export default function ProductDetailContent({ product, relatedProducts }: Props
                       <h4 className="text-base font-bold text-white uppercase tracking-wider">Wholesale Orders Only</h4>
                       <p className="text-sm text-white/60 mt-0.5">Minimum quantities apply for dealer pricing benefits.</p>
                     </div>
-                  </div>
+                  </motion.div>
 
-                  <div className="flex items-center gap-4">
+                  <motion.div
+                    className="flex items-center gap-4"
+                    variants={{
+                      hidden: { opacity: 0, x: -20 },
+                      visible: { opacity: 1, x: 0, transition: { duration: 0.5, ease: "easeOut" as const } },
+                    }}
+                  >
                     <div className="w-12 h-12 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-accent shrink-0">
                       <Phone className="w-6 h-6" />
                     </div>
@@ -749,8 +860,8 @@ export default function ProductDetailContent({ product, relatedProducts }: Props
                       <h4 className="text-base font-bold text-white uppercase tracking-wider">Direct Support Hotlines</h4>
                       <p className="text-sm text-white/60 mt-0.5">{companyInfo.phone} (Commercial Desk)</p>
                     </div>
-                  </div>
-                </div>
+                  </motion.div>
+                </motion.div>
 
                 <div className="text-sm md:text-base text-white/40 mt-8 lg:mt-0">
                   {companyInfo.name} &middot; Jubilee Road, Chittagong
@@ -872,28 +983,30 @@ export default function ProductDetailContent({ product, relatedProducts }: Props
                             {errors.submit}
                           </div>
                         )}
-                        <Button
-                          type="submit"
-                          variant="primary"
-                          size="lg"
-                          disabled={isSubmitting}
-                          className="w-full justify-center"
-                        >
-                          {isSubmitting ? (
-                            <>
-                              <svg className="animate-spin h-5 w-5 text-primary mr-2" fill="none" viewBox="0 0 24 24">
-                                <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
-                                <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z" />
-                              </svg>
-                              Processing Inquiry...
-                            </>
-                          ) : (
-                            <>
-                              Submit Official Request
-                              <Send className="w-4 h-4" />
-                            </>
-                          )}
-                        </Button>
+                        <div className="glow-pulse-accent rounded-full">
+                          <Button
+                            type="submit"
+                            variant="primary"
+                            size="lg"
+                            disabled={isSubmitting}
+                            className="w-full justify-center"
+                          >
+                            {isSubmitting ? (
+                              <>
+                                <svg className="animate-spin h-5 w-5 text-primary mr-2" fill="none" viewBox="0 0 24 24">
+                                  <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
+                                  <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z" />
+                                </svg>
+                                Processing Inquiry...
+                              </>
+                            ) : (
+                              <>
+                                Submit Official Request
+                                <Send className="w-4 h-4" />
+                              </>
+                            )}
+                          </Button>
+                        </div>
                       </div>
 
                     </motion.form>
@@ -902,9 +1015,9 @@ export default function ProductDetailContent({ product, relatedProducts }: Props
                     // Success Message Animation Card
                     <motion.div
                       key="success-card"
-                      initial={{ opacity: 0, scale: 0.95 }}
-                      animate={{ opacity: 1, scale: 1 }}
-                      transition={{ type: "spring", stiffness: 200, damping: 20 }}
+                      initial={{ scale: 0.9, opacity: 0 }}
+                      animate={{ scale: 1, opacity: 1 }}
+                      transition={{ type: "spring" as const, stiffness: 200, damping: 20 }}
                       className="h-full flex flex-col items-center justify-center text-center py-10"
                     >
                       <div className="w-16 h-16 bg-accent/20 border border-accent/20 text-accent rounded-full flex items-center justify-center shadow-lg mb-6 animate-bounce">

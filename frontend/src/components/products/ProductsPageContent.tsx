@@ -8,6 +8,10 @@ import { ArrowRight, Search, X, ChevronDown } from "lucide-react";
 import ScrollReveal from "@/components/ui/ScrollReveal";
 import Dropdown from "@/components/ui/Dropdown";
 import { products, productCategories } from "@/data/products";
+import { motion } from "framer-motion";
+import ParticleField from "@/components/ui/ParticleField";
+import MouseGlow from "@/components/ui/MouseGlow";
+import ShimmerEffect from "@/components/ui/ShimmerEffect";
 
 export default function ProductsPageContent() {
   const searchParams = useSearchParams();
@@ -122,19 +126,47 @@ export default function ProductsPageContent() {
         />
         {/* Gradient overlay */}
         <div className="absolute inset-0 bg-gradient-to-r from-primary/90 via-primary/70 to-primary/30 z-0" />
+        {/* Animated grid pattern overlay */}
+        <div className="hero-grid-pattern-animated absolute inset-0 z-0 pointer-events-none" />
+        {/* Particle field */}
+        <ParticleField count={12} className="absolute inset-0 z-0" />
+        {/* Mouse glow effect */}
+        <MouseGlow color="rgba(244, 180, 0, 0.08)" size={400} />
         <div className="relative max-w-[1200px] mx-auto px-5 z-10">
+          {/* Animated badge */}
+          <motion.div
+            initial={{ opacity: 0, y: 15 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+          >
+            <span className="inline-flex items-center gap-2 bg-accent/10 border border-accent/20 text-accent text-xs font-bold px-3.5 py-1.5 rounded-full mb-4 badge-glow">
+              📦 Product Catalog
+            </span>
+          </motion.div>
           <div className="flex items-center gap-2 text-white/50 text-sm mb-4">
             <Link href="/" className="hover:text-accent transition-colors">Home</Link>
             <span>/</span>
             <span className="text-white">Products</span>
           </div>
-          <h1 className="text-4xl md:text-5xl font-heading font-bold text-white">
+          <motion.h1
+            className="text-4xl md:text-5xl font-heading font-bold text-white"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+          >
             Our Products
-          </h1>
-          <p className="text-lg text-white/70 mt-4 max-w-2xl">
+          </motion.h1>
+          <motion.p
+            className="text-lg text-white/70 mt-4 max-w-2xl"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.4 }}
+          >
             Explore our comprehensive range of solar panels, inverters, batteries, and electrical equipment from globally trusted brands.
-          </p>
+          </motion.p>
         </div>
+        {/* Hero gradient line at bottom */}
+        <div className="hero-gradient-line" />
       </section>
 
       {/* Category Tab Selector */}
@@ -143,10 +175,10 @@ export default function ProductsPageContent() {
           <div className="flex flex-wrap gap-2 md:gap-3 items-center">
             <button
               onClick={() => handleCategoryClick("all")}
-              className={`px-5 py-2 rounded-full text-sm font-semibold transition-all cursor-pointer ${
+              className={`px-5 py-2 rounded-full text-sm font-semibold transition-all duration-300 cursor-pointer ${
                 activeCategory === "all"
-                  ? "bg-primary text-white shadow-sm"
-                  : "bg-bg-light text-text-dark hover:bg-primary/10"
+                  ? "bg-primary text-white shadow-md"
+                  : "bg-bg-light text-text-dark hover:bg-primary/10 hover:scale-105"
               }`}
             >
               All Products
@@ -157,10 +189,10 @@ export default function ProductsPageContent() {
                 <button
                   key={cat.slug}
                   onClick={() => handleCategoryClick(cat.slug)}
-                  className={`px-5 py-2 rounded-full text-sm font-semibold transition-all cursor-pointer ${
+                  className={`px-5 py-2 rounded-full text-sm font-semibold transition-all duration-300 cursor-pointer ${
                     activeCategory === cat.slug
-                      ? "bg-primary text-white shadow-sm"
-                      : "bg-bg-light text-text-dark hover:bg-primary/10"
+                      ? "bg-primary text-white shadow-md"
+                      : "bg-bg-light text-text-dark hover:bg-primary/10 hover:scale-105"
                   }`}
                 >
                   {cat.name}
@@ -233,14 +265,35 @@ export default function ProductsPageContent() {
             </div>
           </div>
 
-          {/* Grid of Product Cards */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-            {filteredProducts.map((product, i) => (
-              <ScrollReveal key={product.id} delay={i * 0.05}>
+          {/* Grid of Product Cards — Motion stagger container */}
+          <motion.div
+            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8"
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.05 }}
+            variants={{
+              hidden: {},
+              visible: { transition: { staggerChildren: 0.06 } },
+            }}
+          >
+            {filteredProducts.map((product) => (
+              <motion.div
+                key={product.id}
+                variants={{
+                  hidden: { opacity: 0, y: 30, scale: 0.96 },
+                  visible: {
+                    opacity: 1,
+                    y: 0,
+                    scale: 1,
+                    transition: { duration: 0.5, ease: "easeOut" as const },
+                  },
+                }}
+              >
                 <Link
                   href={`/products/${product.slug}`}
-                  className="block bg-white rounded-2xl overflow-hidden shadow-[0_4px_20px_rgba(0,0,0,0.04)] hover:-translate-y-1 hover:shadow-[0_12px_30px_rgba(0,0,0,0.08)] transition-all duration-300 group h-full"
+                  className="relative block bg-white rounded-2xl overflow-hidden shadow-[0_4px_20px_rgba(0,0,0,0.04)] hover:-translate-y-1 hover:shadow-[0_12px_30px_rgba(0,0,0,0.08)] transition-all duration-300 group h-full animated-border-gradient"
                 >
+                  <ShimmerEffect />
                   <div className="relative h-[220px] overflow-hidden bg-gray-50 flex items-center justify-center">
                     <Image
                       src={product.image}
@@ -289,13 +342,18 @@ export default function ProductsPageContent() {
                     </div>
                   </div>
                 </Link>
-              </ScrollReveal>
+              </motion.div>
             ))}
-          </div>
+          </motion.div>
 
           {/* Empty state panel */}
           {filteredProducts.length === 0 && (
-            <div className="text-center py-24 bg-white rounded-2xl shadow-[0_8px_30px_rgba(0,0,0,0.03)] px-5">
+            <motion.div
+              initial={{ opacity: 0, scale: 0.95 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.4 }}
+              className="text-center py-24 bg-white rounded-2xl shadow-[0_8px_30px_rgba(0,0,0,0.03)] px-5"
+            >
               <div className="w-16 h-16 bg-primary/5 rounded-full flex items-center justify-center mx-auto mb-4 text-primary">
                 <Search className="w-8 h-8 text-primary" />
               </div>
@@ -318,7 +376,7 @@ export default function ProductsPageContent() {
                   Reset Status Filter
                 </button>
               </div>
-            </div>
+            </motion.div>
           )}
 
         </div>

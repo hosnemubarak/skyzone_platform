@@ -82,12 +82,12 @@ export default function ProductsPageContent() {
       });
     }
 
-    // 4. Alphabetical Sorting (A-Z or Z-A)
+    // 4. Alphabetical Sorting (A-Z or Z-A) with natural alphanumeric support
     list.sort((a, b) => {
       if (sortOrder === "name-desc") {
-        return b.name.localeCompare(a.name);
+        return b.name.localeCompare(a.name, undefined, { numeric: true, sensitivity: "base" });
       }
-      return a.name.localeCompare(b.name);
+      return a.name.localeCompare(b.name, undefined, { numeric: true, sensitivity: "base" });
     });
 
     return list;

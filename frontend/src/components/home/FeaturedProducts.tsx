@@ -117,7 +117,7 @@ export default function FeaturedProducts() {
           if (a.published !== b.published) {
             return a.published ? -1 : 1;
           }
-          return a.name.localeCompare(b.name);
+          return a.name.localeCompare(b.name, undefined, { numeric: true, sensitivity: "base" });
         });
     });
 
@@ -136,7 +136,7 @@ export default function FeaturedProducts() {
       index++;
     }
 
-    return selected.sort((a, b) => a.name.localeCompare(b.name));
+    return selected.sort((a, b) => a.name.localeCompare(b.name, undefined, { numeric: true, sensitivity: "base" }));
   }, []);
 
   return (

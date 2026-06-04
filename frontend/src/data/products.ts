@@ -733,6 +733,9 @@ monitoringModels.forEach((model) => {
   });
 });
 
+// Sort all products on the website naturally by name / capacity / model number
+productsList.sort((a, b) => a.name.localeCompare(b.name, undefined, { numeric: true, sensitivity: "base" }));
+
 // Export all products on the website (both published and coming soon)
 export const products = productsList;
 

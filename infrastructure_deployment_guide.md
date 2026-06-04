@@ -73,6 +73,22 @@ sudo docker-compose up -d --build
 ```
 *It will take a few minutes to build the Next.js Standalone image and download Poste.io.*
 
+
+---
+
+## 4.5. Run Migrations & Create Superuser (Django)
+
+Once the containers are up and running, you need to execute migrations and create an administrative account to access the back-end dashboard:
+
+```bash
+# Run database migrations
+sudo docker-compose exec backend python manage.py migrate
+
+# Create a Django superuser
+sudo docker-compose exec backend python manage.py createsuperuser
+```
+Follow the interactive prompts in the terminal to configure the administrator **username**, **email**, and **password**.
+
 ---
 
 ## 5. Root Nginx Setup

@@ -46,6 +46,35 @@ npm run dev
 
 ---
 
+## 🐳 Running with Docker & Creating Superuser
+
+If you are running the platform using Docker Compose:
+
+### 1. Start the Containers
+```bash
+docker compose up -d --build
+```
+
+### 2. Run Database Migrations
+Ensure the database schema is up-to-date:
+```bash
+docker compose exec backend python manage.py migrate
+```
+
+### 3. Create a Django Superuser
+To create an administrative user for the back-end dashboard, execute:
+```bash
+docker compose exec backend python manage.py createsuperuser
+```
+Follow the interactive prompts in your terminal to set the **username**, **email**, and **password**.
+
+### 4. Access the Django Admin Panel
+Once the superuser is created, navigate to:
+- **Admin Panel URL**: `http://localhost:8000/admin/` (or your production admin route)
+- Enter your admin credentials to manage products, categories, and system data.
+
+---
+
 ## 🌐 Production Deployment
 For deploying the entire stack to your production VPS alongside Poste.io and Nginx, follow the master guide:
 * 📄 **[Infrastructure Deployment Guide (infrastructure_deployment_guide.md)](file:///opt/skyzone_platform/infrastructure_deployment_guide.md)**

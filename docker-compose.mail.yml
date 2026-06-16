@@ -18,13 +18,13 @@ services:
     restart: always
     ports:
       # Mail Ports (Bypassing Nginx, exposed directly to VPS)
-      - "25:25"
-      - "110:110"
-      - "143:143"
-      - "587:587"
-      - "993:993"
-      - "995:995"
-      - "4190:4190"
+      - "25:25"     # SMTP (Incoming)
+      - "143:143"   # IMAP
+      - "587:587"   # SMTP Submission (Outgoing secure)
+      - "993:993"   # IMAPS (Incoming secure)
+      # - "127.0.0.1:110:110"   # POP3 (Disabled to prevent public UFW bypass; bind to 127.0.0.1 if needed)
+      # - "127.0.0.1:995:995"   # POP3S (Disabled to prevent public UFW bypass; bind to 127.0.0.1 if needed)
+      # - "127.0.0.1:4190:4190" # Sieve (Disabled to prevent public UFW bypass; bind to 127.0.0.1 if needed)
       # Web UI & Admin Panel (Proxied via Nginx)
       - "127.0.0.1:${MAIL_PORT:-8080}:80"
     environment:

@@ -4,28 +4,22 @@ Django settings for JWT Auth Backend.
 import os
 from pathlib import Path
 from datetime import timedelta
-from dotenv import load_dotenv
-
-load_dotenv()
+from config import env
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-SECRET_KEY = os.getenv('SECRET_KEY', 'django-insecure-change-this-in-production-abc123xyz')
+SECRET_KEY = env.SECRET_KEY
 
-DEBUG = os.getenv('DEBUG', 'False') == 'True'
+DEBUG = env.DEBUG
 
-ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS', 'localhost,127.0.0.1,api.skyzoneintl.com').split(',')
+ALLOWED_HOSTS = env.ALLOWED_HOSTS
 
-CORS_ALLOWED_ORIGINS = [
-    'http://localhost:3000',
-    'https://skyzoneintl.com',
-    'https://www.skyzoneintl.com',
-]
+CORS_ALLOWED_ORIGINS = env.CORS_ALLOWED_ORIGINS
 
 CORS_ALLOW_CREDENTIALS = True
 
 # CSRF Production Trusted Origins
-CSRF_TRUSTED_ORIGINS = os.getenv('CSRF_TRUSTED_ORIGINS', 'https://api.skyzoneintl.com,https://skyzoneintl.com,https://www.skyzoneintl.com').split(',')
+CSRF_TRUSTED_ORIGINS = env.CSRF_TRUSTED_ORIGINS
 
 # Inform Django that it is behind Nginx SSL reverse proxy
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
@@ -79,20 +73,20 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'config.wsgi.application'
 
-if os.getenv('DATABASE_URL'):
+if env.DATABASE_URL:
     import dj_database_url
     DATABASES = {
-        'default': dj_database_url.config(default=os.getenv('DATABASE_URL'))
+        'default': dj_database_url.config(default=env.DATABASE_URL)
     }
-elif os.getenv('DB_NAME'):
+elif env.DB_NAME:
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.postgresql',
-            'NAME': os.getenv('DB_NAME'),
-            'USER': os.getenv('DB_USER'),
-            'PASSWORD': os.getenv('DB_PASSWORD'),
-            'HOST': os.getenv('DB_HOST', 'db'),
-            'PORT': os.getenv('DB_PORT', '5432'),
+            'NAME': env.DB_NAME,
+            'USER': env.DB_USER,
+            'PASSWORD': env.DB_PASSWORD,
+            'HOST': env.DB_HOST,
+            'PORT': env.DB_PORT,
         }
     }
 else:
@@ -144,8 +138,8 @@ REST_FRAMEWORK = {
 }
 
 SIMPLE_JWT = {
-    'ACCESS_TOKEN_LIFETIME': timedelta(minutes=15),
-    'REFRESH_TOKEN_LIFETIME': timedelta(days=7),
+    'ACCESS_TOKEN_LIFETIME': timedelta(minutes=env.JWT_ACCESS_TOKEN_LIFETIME_MINUTES),
+    'REFRESH_TOKEN_LIFETIME': timedelta(days=env.JWT_REFRESH_TOKEN_LIFETIME_DAYS),
     'ROTATE_REFRESH_TOKENS': True,
     'BLACKLIST_AFTER_ROTATION': True,
     'UPDATE_LAST_LOGIN': True,
@@ -190,9 +184,9 @@ AUTHENTICATION_BACKENDS = [
 # =============================================================================
 # GOOGLE RECAPTCHA SETTINGS
 # =============================================================================
-RECAPTCHA_ENABLED = os.getenv('RECAPTCHA_ENABLED', 'False').lower() in ['true', '1', 't']
-RECAPTCHA_SITE_KEY = os.getenv('RECAPTCHA_SITE_KEY', '')
-RECAPTCHA_SECRET_KEY = os.getenv('RECAPTCHA_SECRET_KEY', '')
+RECAPTCHA_ENABLED = env.RECAPTCHA_ENABLED
+RECAPTCHA_SITE_KEY = env.RECAPTCHA_SITE_KEY
+RECAPTCHA_SECRET_KEY = env.RECAPTCHA_SECRET_KEY
 RECAPTCHA_PUBLIC_KEY = RECAPTCHA_SITE_KEY
 RECAPTCHA_PRIVATE_KEY = RECAPTCHA_SECRET_KEY
 
@@ -200,10 +194,10 @@ RECAPTCHA_PRIVATE_KEY = RECAPTCHA_SECRET_KEY
 # DJANGO AXES BRUTE FORCE PROTECTION SETTINGS
 # =============================================================================
 import datetime
-AXES_ENABLED = os.getenv('AXES_ENABLED', 'True').lower() in ['true', '1', 't']
-AXES_FAILURE_LIMIT = int(os.getenv('AXES_FAILURE_LIMIT', '5'))
-AXES_COOLOFF_TIME = datetime.timedelta(hours=int(os.getenv('AXES_COOLOFF_TIME_HOURS', '1')))
-AXES_RESET_ON_SUCCESS = os.getenv('AXES_RESET_ON_SUCCESS', 'True').lower() in ['true', '1', 't']
+AXES_ENABLED = env.AXES_ENABLED
+AXES_FAILURE_LIMIT = env.AXES_FAILURE_LIMIT
+AXES_COOLOFF_TIME = datetime.timedelta(hours=env.AXES_COOLOFF_TIME_HOURS)
+AXES_RESET_ON_SUCCESS = env.AXES_RESET_ON_SUCCESS
 AXES_LOCKOUT_PARAMETERS = ["ip_address", "username"]
 AXES_LOCKOUT_TEMPLATE = 'axes/lockout.html'
 AXES_IP_RESOLVER = 'axes.helpers.DefaultIPResolver'

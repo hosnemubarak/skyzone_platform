@@ -63,15 +63,20 @@ Set your `DB_PASSWORD` and `SECRET_KEY`.
 
 ## 4. Spin Up Docker Containers
 
-We use `docker-compose` to start the entire architecture:
-- Next.js (port `3000` internal)
-- Django (port `8000` internal)
-- Poste.io (port `8080` internal for UI, and ports `25,143,587,993` external for Mail)
+We use separate `docker-compose` files to start the architecture so they can run and restart independently:
+- **Mail Server Stack**: Poste.io (port `${MAIL_PORT:-8080}` internal for UI, and ports `25,110,143,587,993,995,4190` external for Mail)
+- **Application Stack**: Django (port `8000` internal) and Next.js (port `3000` internal)
 
+### A. Start the Mail Server
+```bash
+sudo docker-compose -f docker-compose.mail.yml up -d
+```
+
+### B. Start the Application
 ```bash
 sudo docker-compose up -d --build
 ```
-*It will take a few minutes to build the Next.js Standalone image and download Poste.io.*
+*It will take a few minutes to build the Next.js Standalone image.*
 
 
 ---

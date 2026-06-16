@@ -51,6 +51,13 @@ npm run dev
 If you are running the platform using Docker Compose:
 
 ### 1. Start the Containers
+
+Start the Mail Server stack first (runs independently):
+```bash
+docker compose -f docker-compose.mail.yml up -d
+```
+
+Start the main Application stack:
 ```bash
 docker compose up -d --build
 ```

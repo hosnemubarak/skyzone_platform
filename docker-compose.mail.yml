@@ -1,0 +1,50 @@
+# =============================================================================
+# Sky Zone International - Hardened Production Mail Server (Poste.io)
+# =============================================================================
+# Usage:
+#   1. Configure .env with MAIL_PORT and TZ.
+#   2. Start stack: docker compose -f docker-compose.mail.yml up -d
+# =============================================================================
+
+version: '3.8'
+
+name: skyzone-mail
+
+services:
+  mailserver:
+    image: analogic/poste.io
+    container_name: skyzone_mailserver
+    hostname: mail.skyzoneintl.com
+    restart: always
+    ports:
+      # Mail Ports (Bypassing Nginx, exposed directly to VPS)
+      - "25:25"
+      - "110:110"
+      - "143:143"
+      - "587:587"
+      - "993:993"
+      - "995:995"
+      - "4190:4190"
+      # Web UI & Admin Panel (Proxied via Nginx)
+      - "127.0.0.1:${MAIL_PORT:-8080}:80"
+    environment:
+      - TZ=${TZ:-Asia/Dhaka}
+      - HTTPS=OFF
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - mail_data:/data
+      - /etc/letsencrypt:/etc/letsencrypt:ro
+      # - /etc/letsencrypt/live/mail.skyzoneintl.com/fullchain.pem:/data/ssl/server.crt:ro
+      # - /etc/letsencrypt/live/mail.skyzoneintl.com/privkey.pem:/data/ssl/server.key:ro
+    networks:
+      - mail_network
+
+networks:
+  mail_network:
+    name: skyzone-mail-network
+    driver: bridge
+
+volumes:
+  mail_data:
+    name: skyzone_platform_mail_data
+    driver: local

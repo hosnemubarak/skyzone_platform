@@ -1,4 +1,4 @@
-version: '3.8'
+version: "3.8"
 
 services:
   db:
@@ -12,7 +12,11 @@ services:
     volumes:
       - postgres_data:/var/lib/postgresql/data
     healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U ${DB_USER:-skyzone_user} -d ${DB_NAME:-skyzone}"]
+      test:
+        [
+          "CMD-SHELL",
+          "pg_isready -U ${DB_USER:-skyzone_user} -d ${DB_NAME:-skyzone}",
+        ]
       interval: 10s
       timeout: 5s
       retries: 5
@@ -50,32 +54,6 @@ services:
     depends_on:
       - backend
 
-  mailserver:
-    image: analogic/poste.io
-    container_name: skyzone_mailserver
-    hostname: mail.skyzoneintl.com
-    restart: always
-    ports:
-      # Mail Ports (Bypassing Nginx, exposed directly to VPS)
-      - "25:25"
-      - "110:110"
-      - "143:143"
-      - "587:587"
-      - "993:993"
-      - "995:995"
-      - "4190:4190"
-      # Web UI & Admin Panel (Proxied via Nginx)
-      - "127.0.0.1:8080:80"
-    environment:
-      - TZ=${TZ:-Asia/Dhaka}
-      - HTTPS=OFF
-    volumes:
-      - /etc/localtime:/etc/localtime:ro
-      - mail_data:/data
-      - /etc/letsencrypt:/etc/letsencrypt:ro
-      - /etc/letsencrypt/live/mail.skyzoneintl.com/fullchain.pem:/data/ssl/server.crt:ro
-      - /etc/letsencrypt/live/mail.skyzoneintl.com/privkey.pem:/data/ssl/server.key:ro
-
 volumes:
   postgres_data:
-  mail_data:
+

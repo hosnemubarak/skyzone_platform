@@ -43,6 +43,8 @@ INSTALLED_APPS = [
     'corsheaders',
     'users',
     'inquiries',
+    'django_recaptcha',
+    'axes',
 ]
 
 MIDDLEWARE = [
@@ -52,6 +54,7 @@ MIDDLEWARE = [
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
+    'axes.middleware.AxesMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
@@ -61,7 +64,7 @@ ROOT_URLCONF = 'config.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [BASE_DIR / 'templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -173,3 +176,34 @@ SIMPLE_JWT = {
     'SLIDING_TOKEN_OBTAIN_SERIALIZER': 'rest_framework_simplejwt.serializers.TokenObtainSlidingSerializer',
     'SLIDING_TOKEN_REFRESH_SERIALIZER': 'rest_framework_simplejwt.serializers.TokenRefreshSlidingSerializer',
 }
+
+# =============================================================================
+# AUTHENTICATION BACKENDS
+# =============================================================================
+AUTHENTICATION_BACKENDS = [
+    # AxesBackend should be the first backend
+    'axes.backends.AxesBackend',
+    # Default ModelBackend
+    'django.contrib.auth.backends.ModelBackend',
+]
+
+# =============================================================================
+# GOOGLE RECAPTCHA SETTINGS
+# =============================================================================
+RECAPTCHA_ENABLED = os.getenv('RECAPTCHA_ENABLED', 'False').lower() in ['true', '1', 't']
+RECAPTCHA_SITE_KEY = os.getenv('RECAPTCHA_SITE_KEY', '')
+RECAPTCHA_SECRET_KEY = os.getenv('RECAPTCHA_SECRET_KEY', '')
+RECAPTCHA_PUBLIC_KEY = RECAPTCHA_SITE_KEY
+RECAPTCHA_PRIVATE_KEY = RECAPTCHA_SECRET_KEY
+
+# =============================================================================
+# DJANGO AXES BRUTE FORCE PROTECTION SETTINGS
+# =============================================================================
+import datetime
+AXES_ENABLED = os.getenv('AXES_ENABLED', 'True').lower() in ['true', '1', 't']
+AXES_FAILURE_LIMIT = int(os.getenv('AXES_FAILURE_LIMIT', '5'))
+AXES_COOLOFF_TIME = datetime.timedelta(hours=int(os.getenv('AXES_COOLOFF_TIME_HOURS', '1')))
+AXES_RESET_ON_SUCCESS = os.getenv('AXES_RESET_ON_SUCCESS', 'True').lower() in ['true', '1', 't']
+AXES_LOCKOUT_PARAMETERS = ["ip_address", "username"]
+AXES_LOCKOUT_TEMPLATE = 'axes/lockout.html'
+AXES_IP_RESOLVER = 'axes.helpers.DefaultIPResolver'

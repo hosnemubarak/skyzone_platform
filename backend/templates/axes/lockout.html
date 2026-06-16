@@ -1,0 +1,150 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Access Blocked — Sky Zone</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0b0f19;
+            color: #f3f4f6;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            padding: 20px;
+            overflow: hidden;
+        }
+        /* Background decorative elements */
+        .glow {
+            position: absolute;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(239, 68, 68, 0.15) 0%, rgba(239, 68, 68, 0) 70%);
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 1;
+            pointer-events: none;
+        }
+        .lockout-card {
+            background: rgba(17, 24, 39, 0.8);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 24px;
+            padding: 48px 40px;
+            max-width: 500px;
+            width: 100%;
+            text-align: center;
+            box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.5);
+            z-index: 2;
+            animation: fadeIn 0.6s ease-out;
+        }
+        .shield-container {
+            margin-bottom: 28px;
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            width: 96px;
+            height: 96px;
+            border-radius: 50%;
+            background: rgba(239, 68, 68, 0.1);
+            border: 1px solid rgba(239, 68, 68, 0.2);
+            box-shadow: 0 0 20px rgba(239, 68, 68, 0.15);
+            animation: pulse 2.5s infinite;
+        }
+        .shield-icon {
+            width: 48px;
+            height: 48px;
+            fill: #ef4444;
+        }
+        h1 {
+            font-family: 'Outfit', sans-serif;
+            font-weight: 700;
+            font-size: 2rem;
+            margin-bottom: 16px;
+            color: #ffffff;
+            letter-spacing: -0.02em;
+        }
+        p {
+            color: #9ca3af;
+            font-size: 1rem;
+            line-height: 1.6;
+            margin-bottom: 36px;
+        }
+        .back-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+            color: #ffffff;
+            font-weight: 600;
+            font-size: 0.95rem;
+            padding: 14px 28px;
+            border-radius: 12px;
+            border: none;
+            cursor: pointer;
+            transition: all 0.25s ease;
+            text-decoration: none;
+            box-shadow: 0 4px 12px rgba(239, 68, 68, 0.25);
+        }
+        .back-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(239, 68, 68, 0.4);
+        }
+        .back-btn:active {
+            transform: translateY(0);
+        }
+        .meta-info {
+            margin-top: 36px;
+            padding-top: 24px;
+            border-top: 1px solid rgba(255, 255, 255, 0.06);
+            font-size: 0.8rem;
+            color: #4b5563;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.4); }
+            70% { box-shadow: 0 0 0 16px rgba(239, 68, 68, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(239, 68, 68, 0); }
+        }
+    </style>
+</head>
+<body>
+    <div class="glow"></div>
+    <div class="lockout-card">
+        <div class="shield-container">
+            <svg class="shield-icon" viewBox="0 0 24 24">
+                <path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm0 6c1.4 0 2.5 1.1 2.5 2.5 0 .8-.4 1.5-1 1.9l1.5 3.6h-6l1.5-3.6c-.6-.4-1-1.1-1-1.9 0-1.4 1.1-2.5 2.5-2.5z"/>
+            </svg>
+        </div>
+        <h1>Access Temporarily Blocked</h1>
+        <p>
+            Too many consecutive failed login attempts have been detected. For security reasons, access from this account and IP combination has been temporarily suspended for 1 hour.
+        </p>
+        <div>
+            <a href="/admin/" class="back-btn">
+                Return to Login
+            </a>
+        </div>
+        <div class="meta-info">
+            Sky Zone Security Daemon
+        </div>
+    </div>
+</body>
+</html>

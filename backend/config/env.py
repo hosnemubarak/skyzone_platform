@@ -61,10 +61,6 @@ DB_PASSWORD = os.getenv('DB_PASSWORD')
 DB_HOST = os.getenv('DB_HOST', 'db')
 DB_PORT = os.getenv('DB_PORT', '5432')
 
-# SimpleJWT Configurations
-JWT_ACCESS_TOKEN_LIFETIME_MINUTES = get_env_int('JWT_ACCESS_TOKEN_LIFETIME_MINUTES', 15)
-JWT_REFRESH_TOKEN_LIFETIME_DAYS = get_env_int('JWT_REFRESH_TOKEN_LIFETIME_DAYS', 7)
-
 # Google reCAPTCHA configurations
 RECAPTCHA_ENABLED = get_env_bool('RECAPTCHA_ENABLED', default=False)
 RECAPTCHA_SITE_KEY = os.getenv('RECAPTCHA_SITE_KEY', '')

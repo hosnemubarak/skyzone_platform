@@ -35,8 +35,6 @@ The frontend environment variables are loaded and validated in [src/config/env.t
 | `DB_PASSWORD` | Backend | PostgreSQL user password. | Optional | `super_secure...` | `p@ssword123` |
 | `DB_HOST` | Backend | Database hostname within Docker or external. | Optional | `db` | `127.0.0.1` |
 | `DB_PORT` | Backend | Database port. | Optional | `5432` | `5432` |
-| `JWT_ACCESS_TOKEN_LIFETIME_MINUTES` | Backend | Lifetime duration for SimpleJWT access tokens. | Optional | `15` | `30` |
-| `JWT_REFRESH_TOKEN_LIFETIME_DAYS` | Backend | Lifetime duration for SimpleJWT refresh tokens. | Optional | `7` | `14` |
 | `RECAPTCHA_ENABLED` | Backend | Enables Google reCAPTCHA v3 verification for admin login. | Optional | `False` | `True` |
 | `RECAPTCHA_SITE_KEY` | Backend | Google reCAPTCHA v3 public site key (for backend validation). | Optional | `""` | `6Ld...` |
 | `RECAPTCHA_SECRET_KEY` | Backend | Google reCAPTCHA v3 private secret key. | Optional | `""` | `6Ld...` |

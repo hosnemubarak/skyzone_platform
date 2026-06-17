@@ -598,7 +598,7 @@ export default function ProductDetailContent({ product, relatedProducts }: Props
                         icon={<Mail className="w-4 h-4" />}
                         className="w-full justify-center"
                       >
-                        Inquire Wholesale &amp; B2B Pricing
+                        Inquire Wholesale/B2B Price &amp; Availability
                       </Button>
                     </div>
                     <Button

@@ -530,7 +530,7 @@ export default function ProductDetailContent({ product, relatedProducts }: Props
 
                   {/* Pricing Range Tag */}
                   <div className="mt-4 flex flex-wrap items-baseline gap-2 pb-5 border-b border-gray-100">
-                    <span className="text-xs md:text-sm text-gray-500 uppercase tracking-wider font-semibold">Regular Price:</span>
+                    <span className="text-xs md:text-sm text-gray-500 uppercase tracking-wider font-semibold">Price:</span>
                     <span className="text-2xl md:text-3xl font-bold text-electric text-shimmer-effect">{formatProductPrice(product.price)}</span>
                     <span className="text-xs md:text-sm text-gray-400 italic font-medium">(Contact us for wholesale pricing & B2B quotations)</span>
                   </div>

@@ -11,6 +11,6 @@ export function formatProductPrice(price?: number): string {
     minimumFractionDigits: 2,
     maximumFractionDigits: 2,
   });
-  return `BDT ${formatted} (৳${formatted})`;
+  return `BDT ${formatted}`;
 }
 

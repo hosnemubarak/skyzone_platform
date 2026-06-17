@@ -30,13 +30,16 @@ export interface ProductCategory {
 let productIndex = 1;
 const productsList: Product[] = [];
 
-// Helper function to build products programmatically
 function addProduct(data: Omit<Product, "id" | "published"> & { published?: boolean }) {
+  const { badge, ...rest } = data;
+  const hasPrice = data.price !== undefined && data.price > 0;
+  const isPublished = hasPrice ? (data.published !== false) : false;
+
   productsList.push({
     id: (productIndex++).toString(),
-    ...data,
+    ...rest,
     price: data.price ?? 0.00,
-    published: data.published !== false, // Defaults to true unless explicitly false
+    published: isPublished,
   } as Product);
 }
 

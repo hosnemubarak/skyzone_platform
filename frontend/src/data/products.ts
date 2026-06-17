@@ -559,7 +559,9 @@ zapherModels.forEach((model, idx) => {
 });
 
 // ===========================================
-// 11. Powerwall Series Lithium ESSconst powerwallModels = [
+// 11. Powerwall Series Lithium ESS Batteries
+// ===========================================
+const powerwallModels = [
   { name: "Lithium Battery 12.8V 200Ah", modelNo: "LIO 2.56-IP20-12", capacity: "200 Ah", voltage: "12.8 V", energy: "2.56 kWh", ip: "IP20", weight: "25.6 kg", dim: "470 × 300 × 150 mm", price: 46000.00, published: true, series: "Powerwall" },
   { name: "Lithium Battery 25.6V 100Ah", modelNo: "LIO 2.56-IP20", capacity: "100 Ah", voltage: "25.6 V", energy: "2.56 kWh", ip: "IP20", weight: "25.6 kg", dim: "470 × 300 × 150 mm", price: 60500.00, published: true, series: "Powerwall" },
   { name: "Lithium Battery 25.6V 200Ah", modelNo: "LIO 5.12-IP20-200", capacity: "200 Ah", voltage: "25.6 V", energy: "5.12 kWh", ip: "IP20", weight: "48 kg", dim: "470 × 300 × 280 mm", price: 92000.00, published: true, series: "Powerwall" },

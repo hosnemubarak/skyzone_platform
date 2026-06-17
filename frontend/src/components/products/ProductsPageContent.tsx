@@ -7,6 +7,7 @@ import { useSearchParams, useRouter } from "next/navigation";
 import { ArrowRight, Search, X } from "lucide-react";
 import Dropdown from "@/components/ui/Dropdown";
 import { products, productCategories } from "@/data/products";
+import { formatProductPrice } from "@/lib/utils";
 
 export default function ProductsPageContent() {
   const searchParams = useSearchParams();
@@ -266,7 +267,7 @@ export default function ProductsPageContent() {
                     </div>
                   </div>
                   <div className="flex justify-between items-center mt-6 pt-4 border-t border-gray-100/70">
-                    <span className="text-sm font-bold text-primary">{product.priceRange}</span>
+                    <span className="text-sm font-bold text-primary">{formatProductPrice(product.price)}</span>
                     <span className="text-electric font-semibold text-sm flex items-center gap-1 group-hover:gap-2 transition-all">
                       View Details
                       <ArrowRight className="w-4 h-4" />

@@ -25,7 +25,7 @@ import Button from "@/components/ui/Button";
 import SectionHeader from "@/components/ui/SectionHeader";
 import ScrollReveal from "@/components/ui/ScrollReveal";
 import type { Product } from "@/data/products";
-import { cn } from "@/lib/utils";
+import { cn, formatProductPrice } from "@/lib/utils";
 import { companyInfo } from "@/data/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import { submitInquiry } from "@/services/api/inquiries";
@@ -530,8 +530,8 @@ export default function ProductDetailContent({ product, relatedProducts }: Props
 
                   {/* Pricing Range Tag */}
                   <div className="mt-4 flex flex-wrap items-baseline gap-2 pb-5 border-b border-gray-100">
-                    <span className="text-xs md:text-sm text-gray-500 uppercase tracking-wider font-semibold">Pricing Status:</span>
-                    <span className="text-2xl md:text-3xl font-bold text-electric text-shimmer-effect">{product.priceRange || "Contact for Price"}</span>
+                    <span className="text-xs md:text-sm text-gray-500 uppercase tracking-wider font-semibold">Price:</span>
+                    <span className="text-2xl md:text-3xl font-bold text-electric text-shimmer-effect">{formatProductPrice(product.price)}</span>
                     <span className="text-xs md:text-sm text-gray-400 italic font-medium">(B2B wholesale pricing available)</span>
                   </div>
 

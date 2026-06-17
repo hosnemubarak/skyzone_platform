@@ -15,6 +15,7 @@ export interface Product {
   series?: string;
   brand?: string;
   inverterType?: "hybrid" | "on-grid" | "off-grid";
+  price?: number;
 }
 
 export interface ProductCategory {
@@ -34,6 +35,7 @@ function addProduct(data: Omit<Product, "id" | "published"> & { published?: bool
   productsList.push({
     id: (productIndex++).toString(),
     ...data,
+    price: data.price ?? 0.00,
     published: data.published !== false, // Defaults to true unless explicitly false
   } as Product);
 }

@@ -45,6 +45,7 @@ export default async function ProductDetailPage({ params }: Props) {
       "@type": "Offer",
       "url": `https://skyzoneintl.com/products/${product.id}`,
       "priceCurrency": "BDT",
+      "price": (product.price ?? 0).toFixed(2),
       "availability": product.published ? "https://schema.org/InStock" : "https://schema.org/PreOrder",
       "seller": {
         "@type": "Organization",

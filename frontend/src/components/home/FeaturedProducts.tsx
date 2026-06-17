@@ -8,6 +8,7 @@ import { motion, useInView } from "framer-motion";
 import SectionHeader from "@/components/ui/SectionHeader";
 
 import { products } from "@/data/products";
+import { formatProductPrice } from "@/lib/utils";
 
 /* ── Animated title with typewriter effect ── */
 function AnimatedTitle() {
@@ -212,7 +213,7 @@ export default function FeaturedProducts() {
                     {/* Bottom */}
                     <div className="flex justify-between items-center mt-4 pt-4 border-t border-gray-100">
                       <span className="text-sm text-gray-500">
-                        {product.priceRange}
+                        {formatProductPrice(product.price)}
                       </span>
                       <span className="text-electric font-medium text-sm flex items-center gap-1 group-hover:gap-2 transition-all">
                         Details

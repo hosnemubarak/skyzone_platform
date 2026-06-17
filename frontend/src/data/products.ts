@@ -254,13 +254,14 @@ xeroxG4Models.forEach((model) => {
 // 5. Argon Series Single Phase Hybrid Inverters
 // ===========================================
 const argonModels = [
-  { name: "1500", modelNo: "1.5kW-12-pV2000", power: "1.5 kW", pv: "2,000 W", bat: "12 VDC", weight: "3.8 kg", parallel: "No" },
-  { name: "2500", modelNo: "2.5kW-24-pV3000", power: "2.5 kW", pv: "3,000 W", bat: "24 VDC", weight: "3.95 kg", parallel: "No" },
-  { name: "3500", modelNo: "3.5kW-24-pV4000", power: "3.5 kW", pv: "4,000 W", bat: "24 VDC", weight: "3.95 kg", parallel: "No" },
-  { name: "4200", modelNo: "4.2kW-24-pV5000-Twin", power: "4.2 kW", pv: "5,000 W", bat: "24 VDC", weight: "6.7 kg", parallel: "No" },
-  { name: "6200", modelNo: "6.2kW-48-pV6500-Twin", power: "6.2 kW", pv: "6,500 W", bat: "48 VDC", weight: "11.0 kg", parallel: "No" },
-  { name: "8500", modelNo: "8.5kW-48-pV10000-TwinPL", power: "8.5 kW", pv: "10,000 W", bat: "48 VDC", weight: "14.5 kg", parallel: "Yes, up to 6 units" },
-  { name: "11000", modelNo: "11kW-48-pV11000-TwinPL", power: "11.0 kW", pv: "11,000 W", bat: "48 VDC", weight: "14.8 kg", parallel: "Yes, up to 6 units" },
+  { name: "1500 (12V)", modelNo: "1.5kW-12-pV2000", power: "1.5 kW", pv: "2,000 W", bat: "12 VDC", weight: "3.8 kg", parallel: "No", price: 22500.00 },
+  { name: "2500 (12V)", modelNo: "2.5kW-12-pV3000", power: "2.5 kW", pv: "3,000 W", bat: "12 VDC", weight: "3.95 kg", parallel: "No", price: 28600.00 },
+  { name: "2500 (24V)", modelNo: "2.5kW-24-pV3000", power: "2.5 kW", pv: "3,000 W", bat: "24 VDC", weight: "3.95 kg", parallel: "No", price: 28000.00 },
+  { name: "3500 (24V)", modelNo: "3.5kW-24-pV4000", power: "3.5 kW", pv: "4,000 W", bat: "24 VDC", weight: "3.95 kg", parallel: "No", price: 33000.00 },
+  { name: "4200 (24V)", modelNo: "4.2kW-24-pV5000-Twin", power: "4.2 kW", pv: "5,000 W", bat: "24 VDC", weight: "6.7 kg", parallel: "No", price: 41200.00 },
+  { name: "6200 (48V)", modelNo: "6.2kW-48-pV6500-Twin", power: "6.2 kW", pv: "6,500 W", bat: "48 VDC", weight: "11.0 kg", parallel: "No", price: 54000.00 },
+  { name: "8500 (48V)", modelNo: "8.5kW-48-pV10000-TwinPL", power: "8.5 kW", pv: "10,000 W", bat: "48 VDC", weight: "14.5 kg", parallel: "Yes, up to 6 units", price: 84500.00 },
+  { name: "11000 (48V)", modelNo: "11kW-48-pV11000-TwinPL", power: "11.0 kW", pv: "11,000 W", bat: "48 VDC", weight: "14.8 kg", parallel: "Yes, up to 6 units", price: 98500.00 },
 ];
 
 const argonFeatures = [
@@ -274,7 +275,7 @@ const argonFeatures = [
 
 argonModels.forEach((model, idx) => {
   addProduct({
-    slug: `argon-${model.name.toLowerCase()}`,
+    slug: `argon-${model.name.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "")}`,
     name: `Argon ${model.name} Single Phase Hybrid Inverter`,
     category: "Inverter",
     categorySlug: "inverter",
@@ -298,8 +299,9 @@ argonModels.forEach((model, idx) => {
       { label: "Ingress Protection", value: "IP21" },
     ],
     features: argonFeatures,
-    priceRange: "Contact for Price",
-    published: (model as any).published,
+    priceRange: model.price ? undefined : "Contact for Price",
+    price: model.price,
+    published: true,
   });
 });
 
@@ -501,13 +503,13 @@ zynexModels.forEach((model) => {
 // 10. Zapher Series Hybrid Inverters (6.6-50kW)
 // ===========================================
 const zapherModels = [
-  { name: "XZ-6.6kW-12000pV", phase: "Single Phase", power: "6.6 kW", pv: "12,000 W", weight: "16 kg", dim: "435 × 325 × 171 mm" },
-  { name: "XZ-9.2kW-16000pV", phase: "Single Phase", power: "9.2 kW", pv: "16,000 W", weight: "28 kg", dim: "192 × 418 × 633 mm" },
-  { name: "XZ-11.2kW-18000pV", phase: "Single Phase", power: "11.2 kW", pv: "18,000 W", weight: "29 kg", dim: "192 × 418 × 633 mm" },
-  { name: "XZ-12kW-18000pV.3P", phase: "Three Phase", power: "12.0 kW", pv: "18,000 W", weight: "54 kg", dim: "247 × 500 × 650 mm" },
-  { name: "XZ-15kW-24000pV.3P", phase: "Three Phase", power: "15.0 kW", pv: "24,000 W", weight: "59 kg", dim: "247 × 504.4 × 714.4 mm" },
-  { name: "XZ-30kW-48000pV", phase: "Three Phase", power: "30.0 kW", pv: "48,000 W", weight: "90 kg", dim: "290 × 580 × 900 mm" },
-  { name: "XZ-50kW-65000pV", phase: "Three Phase", power: "50.0 kW", pv: "65,000 W", weight: "90 kg", dim: "290 × 580 × 900 mm" },
+  { name: "Zapher 6.6KW (48V)", modelNo: "XZ-6.6kW-12000pV", phase: "Single Phase", power: "6.6 kW", pv: "12,000 W", weight: "16 kg", dim: "435 × 325 × 171 mm", price: 88000.00, published: true },
+  { name: "Zapher 9.2KW (48V)", modelNo: "XZ-9.2kW-16000pV", phase: "Single Phase", power: "9.2 kW", pv: "16,000 W", weight: "28 kg", dim: "192 × 418 × 633 mm", price: 115000.00, published: true },
+  { name: "Zapher 11.2KW (48V)", modelNo: "XZ-11.2kW-18000pV", phase: "Single Phase", power: "11.2 kW", pv: "18,000 W", weight: "29 kg", dim: "192 × 418 × 633 mm", price: 132000.00, published: true },
+  { name: "Zapher 12.0KW (48V)", modelNo: "XZ-12kW-18000pV.3P", phase: "Three Phase", power: "12.0 kW", pv: "18,000 W", weight: "54 kg", dim: "247 × 500 × 650 mm", price: 210000.00, published: true },
+  { name: "XZ-15kW-24000pV.3P", modelNo: "XZ-15kW-24000pV.3P", phase: "Three Phase", power: "15.0 kW", pv: "24,000 W", weight: "59 kg", dim: "247 × 504.4 × 714.4 mm" },
+  { name: "XZ-30kW-48000pV", modelNo: "XZ-30kW-48000pV", phase: "Three Phase", power: "30.0 kW", pv: "48,000 W", weight: "90 kg", dim: "290 × 580 × 900 mm" },
+  { name: "XZ-50kW-65000pV", modelNo: "XZ-50kW-65000pV", phase: "Three Phase", power: "50.0 kW", pv: "65,000 W", weight: "90 kg", dim: "290 × 580 × 900 mm" },
 ];
 
 const zapherFeatures = [
@@ -520,9 +522,14 @@ const zapherFeatures = [
 ];
 
 zapherModels.forEach((model, idx) => {
+  const isCustom = model.name.startsWith("Zapher");
+  const displayName = isCustom ? `${model.name} ${model.phase} Hybrid Inverter` : `Zapher ${model.name} ${model.phase} Hybrid Inverter`;
+  const displaySlug = isCustom
+    ? model.name.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "")
+    : `zapher-${model.name.replace(".3P", "-3p").toLowerCase()}`;
   addProduct({
-    slug: `zapher-${model.name.replace(".3P", "-3p").toLowerCase()}`,
-    name: `Zapher ${model.name} ${model.phase} Hybrid Inverter`,
+    slug: displaySlug,
+    name: displayName,
     category: "Inverter",
     categorySlug: "inverter",
     brand: "Knox",
@@ -533,30 +540,32 @@ zapherModels.forEach((model, idx) => {
     image: "/images/Zapher-XZ-Single-Phase-Hybrid-Inverter.png",
     badge: idx === 5 ? "New" : undefined,
     specs: [
-      { label: "Model", value: model.name },
+      { label: "Model", value: isCustom ? model.name : `Zapher ${model.name}` },
+      { label: "Model Number", value: model.modelNo },
       { label: "Phase Type", value: model.phase },
       { label: "Rated Power", value: model.power },
       { label: "Max. PV Input Power", value: model.pv },
       { label: "MPPT Trackers", value: idx < 5 ? "2" : "4" },
-      { label: "Battery Voltage Range", value: idx < 5 ? "40 ~ 60 VDC" : "200 ~ 900 VDC" },
+      { label: "Battery Voltage Range", value: idx < 5 ? "48 VDC (40 ~ 60 VDC)" : "200 ~ 900 VDC" },
       { label: "Protection Rating", value: idx < 5 ? "IP66" : "IP65" },
       { label: "Weight", value: model.weight },
       { label: "Dimensions", value: model.dim },
     ],
     features: zapherFeatures,
-    priceRange: "Contact for Price",
-    published: (model as any).published,
+    priceRange: model.price ? undefined : "Contact for Price",
+    price: model.price,
+    published: model.published !== undefined ? model.published : true,
   });
 });
 
 // ===========================================
-// 11. Powerwall Series Lithium ESS Batteries
-// ===========================================
-const powerwallModels = [
-  { name: "3.0", modelNo: "LIO 2.56-IP20", capacity: "100 Ah", voltage: "25.6 V", energy: "2.56 kWh", ip: "IP20", weight: "25.6 kg", dim: "470 × 300 × 150 mm" },
+// 11. Powerwall Series Lithium ESSconst powerwallModels = [
+  { name: "Lithium Battery 12.8V 200Ah", modelNo: "LIO 2.56-IP20-12", capacity: "200 Ah", voltage: "12.8 V", energy: "2.56 kWh", ip: "IP20", weight: "25.6 kg", dim: "470 × 300 × 150 mm", price: 46000.00, published: true, series: "Powerwall" },
+  { name: "Lithium Battery 25.6V 100Ah", modelNo: "LIO 2.56-IP20", capacity: "100 Ah", voltage: "25.6 V", energy: "2.56 kWh", ip: "IP20", weight: "25.6 kg", dim: "470 × 300 × 150 mm", price: 60500.00, published: true, series: "Powerwall" },
+  { name: "Lithium Battery 25.6V 200Ah", modelNo: "LIO 5.12-IP20-200", capacity: "200 Ah", voltage: "25.6 V", energy: "5.12 kWh", ip: "IP20", weight: "48 kg", dim: "470 × 300 × 280 mm", price: 92000.00, published: true, series: "Powerwall" },
+  { name: "Lithium Battery 51.2V 100Ah", modelNo: "LIO 5.20-IP20", capacity: "100 Ah", voltage: "51.2 V", energy: "5.12 kWh", ip: "IP20", weight: "44.5 kg", dim: "500 × 470 × 150 mm", price: 102000.00, published: true, series: "Powerwall" },
   { name: "4.15", modelNo: "LIO 3.84-IP54", capacity: "150 Ah", voltage: "25.6 V", energy: "3.84 kWh", ip: "IP54", weight: "25.6 kg", dim: "350 × 180 × 450 mm" },
-  { name: "6.0", modelNo: "LIO 5.20-IP20", capacity: "100 Ah", voltage: "51.2 V", energy: "5.12 kWh", ip: "IP20", weight: "44.5 kg", dim: "500 × 470 × 150 mm" },
-  { name: "6.11", modelNo: "LIO 5.32-IP54", capacity: "100 Ah", voltage: "51.2 V", energy: "5.12 kWh", ip: "IP54", weight: "44.1 kg", dim: "460 × 180 × 500 mm" },
+  { name: "6.11", modelNo: "LIO 5.32-IP54", capacity: "100 Ah", voltage: "51.2 V", energy: "5.32 kWh", ip: "IP54", weight: "44.1 kg", dim: "460 × 180 × 500 mm" },
 ];
 
 const powerwallFeatures = [
@@ -569,19 +578,24 @@ const powerwallFeatures = [
 ];
 
 powerwallModels.forEach((model, idx) => {
+  const isCustom = model.name.startsWith("Lithium");
+  const displayName = isCustom ? `Knox ${model.name} ESS Battery` : `Knox Powerwall ${model.name} Lithium ESS Battery`;
+  const displaySlug = isCustom 
+    ? model.name.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "")
+    : `powerwall-${model.name.replace(".", "-").toLowerCase()}`;
   addProduct({
-    slug: `powerwall-${model.name.replace(".", "-").toLowerCase()}`,
-    name: `Knox Powerwall ${model.name} Lithium ESS Battery`,
+    slug: displaySlug,
+    name: displayName,
     category: "Battery",
     categorySlug: "battery",
     brand: "Knox",
-    series: "Powerwall",
+    series: model.series || "Powerwall",
     description: `The Knox Powerwall ${model.name} is a high-density, wall-mounted lithium energy storage system (ESS). Utilizing Grade-A brand new prismatic LiFePO4 cells, it offers a nominal voltage of ${model.voltage}, energy capacity of ${model.energy}, and integrates a smart PACE BMS. Built for safety and reliability, it offers up to 6000+ cycles at 90% DOD, LCD touch display monitoring, and compatibility with top hybrid inverters.`,
     shortDescription: `Wall-mounted Lithium ESS battery, capacity ${model.energy} with smart PACE BMS.`,
     image: "/images/Knox-Powerwall-Lithium-ESS-Battery.png",
     badge: idx === 3 ? "Popular" : undefined,
     specs: [
-      { label: "Model", value: `Powerwall ${model.name}` },
+      { label: "Model", value: isCustom ? model.name : `Powerwall ${model.name}` },
       { label: "Model Number", value: model.modelNo },
       { label: "Energy Capacity", value: model.energy },
       { label: "Nominal Capacity", value: model.capacity },
@@ -589,13 +603,14 @@ powerwallModels.forEach((model, idx) => {
       { label: "Battery Chemistry", value: "LiFePO4 (Lithium Iron Phosphate)" },
       { label: "Cycle Life", value: "6000+ Cycles @ 90% DOD" },
       { label: "BMS Type", value: "Integrated Smart PACE BMS" },
-      { label: "Protection Rating", value: "IP66" },
+      { label: "Protection Rating", value: model.ip || "IP66" },
       { label: "Dimensions", value: model.dim },
       { label: "Weight", value: model.weight },
     ],
     features: powerwallFeatures,
-    priceRange: "Contact for Price",
-    published: (model as any).published,
+    priceRange: model.price ? undefined : "Contact for Price",
+    price: model.price,
+    published: model.published !== undefined ? model.published : true,
   });
 });
 
@@ -603,7 +618,7 @@ powerwallModels.forEach((model, idx) => {
 // 12. Powerbase Series Wheeled ESS Batteries
 // ==========================================
 const powerbaseModels = [
-  { name: "Powerbase 10", capacity: "200 Ah", energy: "10.24 kWh", weight: "88.5 kg", dim: "615 × 500 × 260 mm", current: "200 A" },
+  { name: "Lithium Battery 51.2V 200Ah", modelNo: "Powerbase 10", capacity: "200 Ah", energy: "10.24 kWh", weight: "88.5 kg", dim: "615 × 500 × 260 mm", current: "200 A", price: 163000.00, published: true, series: "Powerbase" },
   { name: "Powerbase 16", capacity: "314 Ah", energy: "16.07 kWh", weight: "119.5 kg", dim: "520 × 245 × 880 mm", current: "200 A" },
   { name: "Powerbase 32", capacity: "628 Ah", energy: "32.15 kWh", weight: "248.0 kg", dim: "760 × 400 × 760 mm", current: "300 A" },
 ];
@@ -618,18 +633,23 @@ const powerbaseFeatures = [
 ];
 
 powerbaseModels.forEach((model) => {
+  const isCustom = model.name.startsWith("Lithium");
+  const displayName = isCustom ? `Knox ${model.name} ESS Battery` : `Knox ${model.name} Wheeled ESS Battery`;
+  const displaySlug = isCustom
+    ? model.name.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "")
+    : model.name.toLowerCase().replace(" ", "-");
   addProduct({
-    slug: model.name.toLowerCase().replace(" ", "-"),
-    name: `Knox ${model.name} Wheeled ESS Battery`,
+    slug: displaySlug,
+    name: displayName,
     category: "Battery",
     categorySlug: "battery",
     brand: "Knox",
-    series: "Powerbase",
+    series: model.series || "Powerbase",
     description: `The Knox ${model.name} is a high-capacity floor-standing wheeled Lithium energy storage system (ESS). Specifically designed for heavy-duty residential and commercial solar backup, it offers a huge energy capacity of ${model.energy} at 51.2V. Features heavy-duty lockable caster wheels, IP54 splash protection, and a smart touchable HMI diagnostics screen.`,
     shortDescription: `Floor-standing wheeled Lithium storage battery, capacity ${model.energy} with touch HMI.`,
     image: "/images/Knox-Powerbase-Lithium-ESS-Battery.png",
     specs: [
-      { label: "Model", value: model.name },
+      { label: "Model", value: model.modelNo || model.name },
       { label: "Energy Capacity", value: model.energy },
       { label: "Nominal Capacity", value: model.capacity },
       { label: "Nominal Voltage", value: "51.2 V" },
@@ -641,8 +661,9 @@ powerbaseModels.forEach((model) => {
       { label: "Weight", value: model.weight },
     ],
     features: powerbaseFeatures,
-    priceRange: "Contact for Price",
-    published: (model as any).published,
+    priceRange: model.price ? undefined : "Contact for Price",
+    price: model.price,
+    published: model.published !== undefined ? model.published : true,
   });
 });
 
@@ -650,8 +671,9 @@ powerbaseModels.forEach((model) => {
 // 13. Xentra VFD Series Solar Pump Inverters
 // ===========================================
 const xentraModels = [
-  { name: "Xentra VFD 0.75K-3.7K", power: "0.75 kW - 3.7 kW", input: "1PH 220-240V / 3PH 380-440V" },
-  { name: "Xentra VFD 5.5K-22K", power: "5.5 kW - 22 kW", input: "3PH 380V - 480V" },
+  { name: "VFD 4KW", power: "4.0 kW", input: "3PH 380V - 440V", price: 12000.00, published: true },
+  { name: "VFD 5.5KW", power: "5.5 kW", input: "3PH 380V - 480V", price: 14000.00, published: true },
+  { name: "VFD 7.5KW", power: "7.5 kW", input: "3PH 380V - 480V", price: 17000.00, published: true },
 ];
 
 const xentraFeatures = [
@@ -671,8 +693,8 @@ xentraModels.forEach((model) => {
     categorySlug: "vfd",
     brand: "Knox",
     series: "Xentra VFD",
-    description: `The Knox ${model.name} is a specialized solar variable frequency drive (VFD) optimized for agricultural pumping. Supporting a power output range of ${model.power}, it includes multiple control modes (V/F, SVC, FVC), 99.9% MPPT efficiency to maximize pump flow, conformal board coating for outdoor agriculture environments, and dynamic braking.`,
-    shortDescription: `Solar variable frequency drive (VFD) pump inverter, supporting ${model.power}.`,
+    description: `The Knox ${model.name} is a specialized solar variable frequency drive (VFD) optimized for agricultural pumping. Supporting a rated power output of ${model.power}, it includes multiple control modes (V/F, SVC, FVC), 99.9% MPPT efficiency to maximize pump flow, conformal board coating for outdoor agriculture environments, and dynamic braking.`,
+    shortDescription: `Solar variable frequency drive (VFD) pump inverter, rated at ${model.power}.`,
     image: "/images/Knox-Xentra-VFD-Solar-Pump-Inverter.png",
     specs: [
       { label: "Model", value: model.name },
@@ -687,8 +709,9 @@ xentraModels.forEach((model) => {
       { label: "Communication", value: "RS-485 MODBUS" },
     ],
     features: xentraFeatures,
-    priceRange: "Contact for Price",
-    published: (model as any).published,
+    priceRange: model.price ? undefined : "Contact for Price",
+    price: model.price,
+    published: true,
   });
 });
 

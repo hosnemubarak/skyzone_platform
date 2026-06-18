@@ -33,7 +33,7 @@ const productsList: Product[] = [];
 function addProduct(data: Omit<Product, "id" | "published"> & { published?: boolean }) {
   const { badge, ...rest } = data;
   const hasPrice = data.price !== undefined && data.price > 0;
-  const isPublished = hasPrice ? (data.published !== false) : false;
+  const isPublished = data.published !== undefined ? data.published : hasPrice;
 
   productsList.push({
     id: (productIndex++).toString(),
@@ -745,7 +745,7 @@ monitoringModels.forEach((model) => {
     categorySlug: "accessories",
     description: `The Knox ${model.name} is a plug-and-play datalogger designed to connect Knox inverters directly to the Knox Cloud monitoring portal. It collects operational status, battery levels, and energy generation data, uploading it via ${model.network}. Rated IP66, it operates reliably in outdoor setups and has local storage to safeguard data during network downtime.`,
     shortDescription: `Plug-and-play datalogger stick supporting ${model.network} and IP66 casing.`,
-    image: "/images/no-image.svg",
+    image: "/images/wifi-stick.png",
     specs: [
       { label: "Model", value: model.name },
       { label: "Network Connectivity", value: model.network },

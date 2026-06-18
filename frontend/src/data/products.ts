@@ -746,6 +746,7 @@ powergoModels.forEach((model) => {
       { label: "Weight", value: model.weight },
       { label: "Terminal", value: "M8 bolt" },
     ],
+    features: powergoFeatures,
     published: false,
   });
 });

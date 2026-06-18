@@ -565,7 +565,7 @@ zapherModels.forEach((model, idx) => {
 // 11. Powerwall Series Lithium ESS Batteries
 // ===========================================
 const powerwallModels = [
-  { name: "Lithium Battery 12.8V 200Ah", modelNo: "LIO 2.56-IP20-12", capacity: "200 Ah", voltage: "12.8 V", energy: "2.56 kWh", ip: "IP20", weight: "25.6 kg", dim: "470 × 300 × 150 mm", price: 49500.00, published: true, series: "Powerwall" },
+  { name: "Lithium Battery 12.8V 200Ah", modelNo: "LIO 2.56-IP20-12", capacity: "200 Ah", voltage: "12.8 V", energy: "2.56 kWh", ip: "IP20", weight: "25.6 kg", dim: "470 × 300 × 150 mm", price: 49500.00, published: true, series: "Powerwall", image: "/images/no-image.svg" },
   { name: "Lithium Battery 25.6V 100Ah", modelNo: "LIO 2.56-IP20", capacity: "100 Ah", voltage: "25.6 V", energy: "2.56 kWh", ip: "IP20", weight: "25.6 kg", dim: "470 × 300 × 150 mm", price: 62300.00, published: true, series: "Powerwall" },
   { name: "Lithium Battery 25.6V 200Ah", modelNo: "LIO 5.12-IP20-200", capacity: "200 Ah", voltage: "25.6 V", energy: "5.12 kWh", ip: "IP20", weight: "48 kg", dim: "470 × 300 × 280 mm", price: 98400.00, published: true, series: "Powerwall" },
   { name: "Lithium Battery 51.2V 100Ah", modelNo: "LIO 5.20-IP20", capacity: "100 Ah", voltage: "51.2 V", energy: "5.12 kWh", ip: "IP20", weight: "44.5 kg", dim: "500 × 470 × 150 mm", price: 108500.00, published: true, series: "Powerwall" },
@@ -597,7 +597,7 @@ powerwallModels.forEach((model, idx) => {
     series: model.series || "Powerwall",
     description: `The Knox Powerwall ${model.name} is a high-density, wall-mounted lithium energy storage system (ESS). Utilizing Grade-A brand new prismatic LiFePO4 cells, it offers a nominal voltage of ${model.voltage}, energy capacity of ${model.energy}, and integrates a smart PACE BMS. Built for safety and reliability, it offers up to 6000+ cycles at 90% DOD, LCD touch display monitoring, and compatibility with top hybrid inverters.`,
     shortDescription: `Wall-mounted Lithium ESS battery, capacity ${model.energy} with smart PACE BMS.`,
-    image: "/images/Knox-Powerwall-Lithium-ESS-Battery.png",
+    image: model.image || "/images/Knox-Powerwall-Lithium-ESS-Battery.png",
     badge: idx === 3 ? "Popular" : undefined,
     specs: [
       { label: "Model", value: isCustom ? model.name : `Powerwall ${model.name}` },

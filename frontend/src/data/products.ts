@@ -672,6 +672,84 @@ powerbaseModels.forEach((model) => {
   });
 });
 
+// ==========================================
+// 12.1. PowerGo Series Lithium Batteries
+// ==========================================
+const powergoModels = [
+  {
+    name: "PowerGo 1280",
+    modelNo: "PowerGo 1280",
+    capacity: "100Ah",
+    voltage: "12.8V",
+    energy: "1280 Wh",
+    weight: "11.3 kg",
+    dim: "260 mm × 168 mm × 212 mm",
+  }
+];
+
+const powergoFeatures = [
+  "High lifespan: 3000 cycles and more (see chart)",
+  "High performance active cell balancing (up to 1A current)",
+  "Bluetooth monitoring (SOC, cell voltage, SOH, etc.)",
+  "Deep discharge allowed up to 100 %",
+  "Ultra safe Lithium Iron Phosphate chemistry (no thermal run-away, no fire or explosion risks)",
+  "Embedded BMS (Battery Management System) improve lifespan AND secure the battery",
+  "No Lead, no rare earths, no acid, no degassing",
+  "Calendar life > 10 years",
+  "Excellent temperature robustness (-20 °C up to +60 °C)",
+  "Flexible deployment : up to 16 packs in parallel and 4 in series",
+  "Constant power during discharge (very low internal resistance)",
+  "Very low Peukert’s losses (energy efficiency >98 %)",
+  "Very low self discharge (<3 % per month)",
+  "No memory effect",
+  "About 50 % lighter and 40% smaller than equivalent Lead-AGM battery with same usable energy",
+  "Certification : CE, RoHS, UN 38.3",
+];
+
+powergoModels.forEach((model) => {
+  addProduct({
+    slug: `knox-${model.name.toLowerCase().replace(/ /g, "-")}-lithium-battery`,
+    name: `Knox ${model.name} Lithium Iron Phosphate Battery`,
+    category: "Battery",
+    categorySlug: "battery",
+    brand: "Knox",
+    series: "PowerGo",
+    description: `The Knox ${model.name} is a high-performance 12.8V 100Ah Lithium Iron Phosphate (LiFePO4) battery designed for reliable, easy-to-install, and user-friendly energy storage. Featuring built-in Bluetooth monitoring for tracking SOC, cell voltage, and SOH, it offers a high lifespan of over 3000 cycles and features active cell balancing (up to 1A current). The embedded BMS ensures optimal lifespan and safety with zero fire or explosion risks.`,
+    shortDescription: `Reliable and user-friendly 12.8V 100Ah LiFePO4 battery with Bluetooth monitoring, 3000+ cycles, and active balancing.`,
+    image: "/images/Knox-PowerGo-Lithium-Battery.png",
+    specs: [
+      { label: "Model", value: model.modelNo },
+      { label: "Nominal Voltage", value: model.voltage },
+      { label: "Nominal Capacity", value: model.capacity },
+      { label: "Stored Energy", value: model.energy },
+      { label: "Volumetric Energy Density", value: "138.2 Wh/L" },
+      { label: "Specific Energy", value: "113.3 Wh/Kg" },
+      { label: "Internal Resistance", value: "≤ 50mΩ" },
+      { label: "Cycle Life", value: ">3000 cycles" },
+      { label: "Self Discharge", value: "< 3% per month" },
+      { label: "Energy Efficiency", value: "> 98%" },
+      { label: "Charge Voltage", value: "14.4 V ± 0.2 V (Optional floating voltage: 13.36V max)" },
+      { label: "Charge Mode", value: "CC/CV : Constant Current / Constant Voltage" },
+      { label: "Continuous Charge Current", value: "50A" },
+      { label: "Maximum Charge Current", value: "100A" },
+      { label: "BMS Charge Cut-off Voltage", value: "14.8 V ± 0.1 V" },
+      { label: "Instant Peak Discharge Current", value: "300A ± 30 A (max 100mS)" },
+      { label: "Continuous Discharge Current", value: "125A (1.6 kW)" },
+      { label: "Maximum Discharge Current", value: "200A (< 30s) (2.56 kW)" },
+      { label: "BMS Discharge Cut-off Voltage", value: "10 V" },
+      { label: "Charge Temperature Range", value: "0°C to +60°C" },
+      { label: "Discharge Temperature Range", value: "-20°C to +60°C" },
+      { label: "Storage Temperature", value: "0°C to +50°C @60±25% relative humidity" },
+      { label: "Type Of Cells", value: "Cylindrical" },
+      { label: "Casing Material", value: "ABS" },
+      { label: "Dimensions", value: model.dim },
+      { label: "Weight", value: model.weight },
+      { label: "Terminal", value: "M8 bolt" },
+    ],
+    published: false,
+  });
+});
+
 // ===========================================
 // 13. Xentra VFD Series Solar Pump Inverters
 // ===========================================

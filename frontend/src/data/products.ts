@@ -565,10 +565,10 @@ zapherModels.forEach((model, idx) => {
 // 11. Powerwall Series Lithium ESS Batteries
 // ===========================================
 const powerwallModels = [
-  { name: "Lithium Battery 12.8V 200Ah", modelNo: "LIO 2.56-IP20-12", capacity: "200 Ah", voltage: "12.8 V", energy: "2.56 kWh", ip: "IP20", weight: "25.6 kg", dim: "470 × 300 × 150 mm", price: 46000.00, published: true, series: "Powerwall" },
-  { name: "Lithium Battery 25.6V 100Ah", modelNo: "LIO 2.56-IP20", capacity: "100 Ah", voltage: "25.6 V", energy: "2.56 kWh", ip: "IP20", weight: "25.6 kg", dim: "470 × 300 × 150 mm", price: 60500.00, published: true, series: "Powerwall" },
-  { name: "Lithium Battery 25.6V 200Ah", modelNo: "LIO 5.12-IP20-200", capacity: "200 Ah", voltage: "25.6 V", energy: "5.12 kWh", ip: "IP20", weight: "48 kg", dim: "470 × 300 × 280 mm", price: 92000.00, published: true, series: "Powerwall" },
-  { name: "Lithium Battery 51.2V 100Ah", modelNo: "LIO 5.20-IP20", capacity: "100 Ah", voltage: "51.2 V", energy: "5.12 kWh", ip: "IP20", weight: "44.5 kg", dim: "500 × 470 × 150 mm", price: 102000.00, published: true, series: "Powerwall" },
+  { name: "Lithium Battery 12.8V 200Ah", modelNo: "LIO 2.56-IP20-12", capacity: "200 Ah", voltage: "12.8 V", energy: "2.56 kWh", ip: "IP20", weight: "25.6 kg", dim: "470 × 300 × 150 mm", price: 49500.00, published: true, series: "Powerwall" },
+  { name: "Lithium Battery 25.6V 100Ah", modelNo: "LIO 2.56-IP20", capacity: "100 Ah", voltage: "25.6 V", energy: "2.56 kWh", ip: "IP20", weight: "25.6 kg", dim: "470 × 300 × 150 mm", price: 62300.00, published: true, series: "Powerwall" },
+  { name: "Lithium Battery 25.6V 200Ah", modelNo: "LIO 5.12-IP20-200", capacity: "200 Ah", voltage: "25.6 V", energy: "5.12 kWh", ip: "IP20", weight: "48 kg", dim: "470 × 300 × 280 mm", price: 98400.00, published: true, series: "Powerwall" },
+  { name: "Lithium Battery 51.2V 100Ah", modelNo: "LIO 5.20-IP20", capacity: "100 Ah", voltage: "51.2 V", energy: "5.12 kWh", ip: "IP20", weight: "44.5 kg", dim: "500 × 470 × 150 mm", price: 108500.00, published: true, series: "Powerwall" },
   { name: "4.15", modelNo: "LIO 3.84-IP54", capacity: "150 Ah", voltage: "25.6 V", energy: "3.84 kWh", ip: "IP54", weight: "25.6 kg", dim: "350 × 180 × 450 mm" },
   { name: "6.11", modelNo: "LIO 5.32-IP54", capacity: "100 Ah", voltage: "51.2 V", energy: "5.32 kWh", ip: "IP54", weight: "44.1 kg", dim: "460 × 180 × 500 mm" },
 ];
@@ -623,7 +623,7 @@ powerwallModels.forEach((model, idx) => {
 // 12. Powerbase Series Wheeled ESS Batteries
 // ==========================================
 const powerbaseModels = [
-  { name: "Lithium Battery 51.2V 200Ah", modelNo: "Powerbase 10", capacity: "200 Ah", energy: "10.24 kWh", weight: "88.5 kg", dim: "615 × 500 × 260 mm", current: "200 A", price: 163000.00, published: true, series: "Powerbase" },
+  { name: "Lithium Battery 51.2V 200Ah", modelNo: "Powerbase 10", capacity: "200 Ah", energy: "10.24 kWh", weight: "88.5 kg", dim: "615 × 500 × 260 mm", current: "200 A", price: 183600.00, published: true, series: "Powerbase" },
   { name: "Powerbase 16", capacity: "314 Ah", energy: "16.07 kWh", weight: "119.5 kg", dim: "520 × 245 × 880 mm", current: "200 A" },
   { name: "Powerbase 32", capacity: "628 Ah", energy: "32.15 kWh", weight: "248.0 kg", dim: "760 × 400 × 760 mm", current: "300 A" },
 ];

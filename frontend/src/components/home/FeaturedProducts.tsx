@@ -213,7 +213,7 @@ export default function FeaturedProducts() {
                     {/* Bottom */}
                     <div className="flex justify-between items-center mt-4 pt-4 border-t border-gray-100">
                       <span className="text-sm text-gray-500">
-                        MRP Price: {formatProductPrice(product.price)}
+                        MRP: {formatProductPrice(product.price)}
                       </span>
                       <span className="text-electric font-medium text-sm flex items-center gap-1 group-hover:gap-2 transition-all">
                         Details

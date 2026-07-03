@@ -130,7 +130,7 @@ export default function FeaturedProducts({ products }: { products: Pick<Product,
                     <Image
                       src={product.image}
                       alt={product.name}
-                      fill
+                      fill sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                       className="object-cover group-hover:scale-105 transition-transform duration-500"
                     />
                     {/* Gradient overlay on hover */}

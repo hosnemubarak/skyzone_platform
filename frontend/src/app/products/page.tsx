@@ -1,3 +1,4 @@
+export const dynamic = 'force-static';
 import { Suspense } from "react";
 import ProductsPageContent from "@/components/products/ProductsPageContent";
 import { getProductSummaries } from "@/lib/api";

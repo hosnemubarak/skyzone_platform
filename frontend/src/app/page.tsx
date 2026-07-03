@@ -1,3 +1,4 @@
+export const dynamic = 'force-static';
 import dynamic from "next/dynamic";
 import Hero from "@/components/home/Hero";
 

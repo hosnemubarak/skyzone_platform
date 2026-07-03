@@ -1,3 +1,4 @@
+export const dynamic = 'force-static';
 import Image from "next/image";
 import { Target, Eye, Shield, Lightbulb, Award, Heart, BadgeCheck, ArrowRight } from "lucide-react";
 import SectionHeader from "@/components/ui/SectionHeader";
@@ -42,6 +43,7 @@ export default function AboutPage() {
           src="/images/solar-hero-bg.png"
           alt=""
           fill
+          sizes="100vw"
           className="object-cover opacity-40 pointer-events-none z-0"
           priority
         />

@@ -108,7 +108,7 @@ export default function ProductsPageContent({ products }: Props) {
         <Image
           src="/images/products-hero-bg.png"
           alt=""
-          fill
+          fill sizes="100vw"
           className="object-cover opacity-40 pointer-events-none z-0"
           priority
         />
@@ -237,7 +237,7 @@ export default function ProductsPageContent({ products }: Props) {
                   <Image
                     src={product.image}
                     alt={product.name}
-                    fill
+                    fill sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                     className="object-cover group-hover:scale-105 transition-transform duration-500"
                   />
                   {!product.published ? (

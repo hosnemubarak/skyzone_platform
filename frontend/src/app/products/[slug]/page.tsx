@@ -71,6 +71,7 @@ export default async function ProductDetailPage({ params }: Props) {
           src="/images/products-hero-bg.png"
           alt=""
           fill
+          sizes="100vw"
           className="object-cover opacity-40 pointer-events-none z-0"
           priority
         />

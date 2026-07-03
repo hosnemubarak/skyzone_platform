@@ -1,3 +1,4 @@
+export const dynamic = 'force-static';
 import ContactPageContent from "@/components/contact/ContactPageContent";
 
 export const metadata = {

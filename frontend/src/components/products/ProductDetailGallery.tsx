@@ -41,7 +41,7 @@ export default function ProductDetailGallery({ product }: { product: Product }) 
             <Image
               src={product.image}
               alt={product.name}
-              fill
+              fill sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
               priority
               className="object-contain p-6 transition-transform duration-250 ease-out"
               style={

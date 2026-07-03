@@ -36,6 +36,7 @@ export default function Hero() {
           src="/images/hero-bg.png"
           alt=""
           fill
+          sizes="100vw"
           className="object-cover opacity-50"
           priority
         />

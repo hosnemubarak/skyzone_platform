@@ -70,8 +70,6 @@ export default function ProductsPageContent({ products }: Props) {
           p.name.toLowerCase().includes(q) ||
           p.category.toLowerCase().includes(q) ||
           p.shortDescription.toLowerCase().includes(q) ||
-          p.description.toLowerCase().includes(q) ||
-          (p.series && p.series.toLowerCase().includes(q)) ||
           p.specs.some(
             (spec) =>
               spec.label.toLowerCase().includes(q) ||

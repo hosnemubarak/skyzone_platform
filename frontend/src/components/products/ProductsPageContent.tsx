@@ -21,7 +21,8 @@ export default function ProductsPageContent() {
   // Retrieve parameters directly from URL after mount to avoid server hydration mismatches and out-of-sync state bugs
   const searchQuery = mounted ? (searchParams.get("search") || "") : "";
   const activeCategory = mounted ? (searchParams.get("category") || "all") : "all";
-  const statusFilter = mounted ? (searchParams.get("status") as "all" | "available" | "coming-soon" || "all") : "all";
+  // Default to "available" so the Products page only shows products that are actually in stock/published
+  const statusFilter = mounted ? (searchParams.get("status") as "all" | "available" | "coming-soon" || "available") : "available";
   const sortOrder = mounted ? (searchParams.get("sort") as "name-asc" | "name-desc" || "name-asc") : "name-asc";
 
   // Update URL search parameters
@@ -29,7 +30,7 @@ export default function ProductsPageContent() {
     const params = new URLSearchParams();
     if (searchQuery) params.set("search", searchQuery);
     if (category !== "all") params.set("category", category);
-    if (status !== "all") params.set("status", status);
+    if (status !== "available") params.set("status", status);
     if (sort !== "name-asc") params.set("sort", sort);
 
     router.push(`/products?${params.toString()}`);

@@ -79,7 +79,7 @@ export default function AboutPage() {
               <div className="relative rounded-xl overflow-hidden shadow-2xl hover:shadow-[0_30px_60px_rgba(11,42,74,0.2)] transition-all duration-500">
                 <Image
                   src="/images/about-team.png"
-                  alt="Sky Zone International team"
+                  alt="Sky Zone International — trusted importer, supplier, and distributor of solar and renewable energy solutions in Bangladesh"
                   width={600}
                   height={450}
                   className="w-full h-auto rounded-xl"

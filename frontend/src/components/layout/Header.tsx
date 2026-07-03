@@ -4,11 +4,15 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
+import dynamic from "next/dynamic";
 import { Menu, Search, Sun, Zap, Battery, Power, Gauge, Cable, Wrench, Rocket, ChevronDown } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { navigation } from "@/data/navigation";
-import MobileMenu from "./MobileMenu";
-import SearchBar from "./SearchBar";
+
+// Lazy-load SearchBar (imports 48KB products data) and MobileMenu
+// so they are NOT included in the initial page bundle
+const MobileMenu = dynamic(() => import("./MobileMenu"), { ssr: false });
+const SearchBar = dynamic(() => import("./SearchBar"), { ssr: false });
 
 const iconMap: Record<string, React.ElementType> = {
   Sun, Zap, Battery, Power, Gauge, Cable, Wrench, Rocket,

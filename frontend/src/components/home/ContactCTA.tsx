@@ -1,7 +1,7 @@
 "use client";
 
 import { Phone, MessageCircle } from "lucide-react";
-import { motion } from "framer-motion";
+import { m as motion } from "framer-motion";
 import Button from "@/components/ui/Button";
 import ParticleField from "@/components/ui/ParticleField";
 import { companyInfo } from "@/data/navigation";

@@ -4,11 +4,11 @@ import { useMemo, useState, useEffect, useRef, useCallback } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
-import { motion, useInView } from "framer-motion";
+import { m as motion, useInView } from "framer-motion";
 import SectionHeader from "@/components/ui/SectionHeader";
 
-import { products } from "@/data/products";
 import { formatProductPrice } from "@/lib/utils";
+import type { Product } from "@/data/products";
 
 /* ── Animated title with typewriter effect ── */
 function AnimatedTitle() {
@@ -100,46 +100,7 @@ const itemVariants = {
 };
 
 /* ── Main component ── */
-export default function FeaturedProducts() {
-  const featured = useMemo(() => {
-    const categoryCounts = products.reduce((acc, p) => {
-      acc[p.categorySlug] = (acc[p.categorySlug] || 0) + 1;
-      return acc;
-    }, {} as Record<string, number>);
-
-    const categories = Array.from(new Set(products.map((p) => p.categorySlug)))
-      .sort((a, b) => categoryCounts[b] - categoryCounts[a]);
-
-    const groups: Record<string, typeof products> = {};
-    categories.forEach((cat) => {
-      groups[cat] = products
-        .filter((p) => p.categorySlug === cat)
-        .sort((a, b) => {
-          if (a.published !== b.published) {
-            return a.published ? -1 : 1;
-          }
-          return a.name.localeCompare(b.name, undefined, { numeric: true, sensitivity: "base" });
-        });
-    });
-
-    const selected: typeof products = [];
-    let index = 0;
-    while (selected.length < 6) {
-      let addedAny = false;
-      for (const cat of categories) {
-        if (groups[cat] && groups[cat].length > index) {
-          selected.push(groups[cat][index]);
-          addedAny = true;
-          if (selected.length === 6) break;
-        }
-      }
-      if (!addedAny) break;
-      index++;
-    }
-
-    return selected.sort((a, b) => a.name.localeCompare(b.name, undefined, { numeric: true, sensitivity: "base" }));
-  }, []);
-
+export default function FeaturedProducts({ products }: { products: Pick<Product, "id" | "name" | "slug" | "image" | "category" | "badge" | "published" | "shortDescription" | "price" | "specs">[] }) {
   return (
     <section className="bg-bg-light py-16 md:py-24">
       <div className="max-w-[1200px] mx-auto px-5">
@@ -155,7 +116,7 @@ export default function FeaturedProducts() {
           whileInView="visible"
           viewport={{ once: true, amount: 0.1 }}
         >
-          {featured.map((product) => (
+          {products.map((product) => (
             <motion.div key={product.id} variants={itemVariants}>
               <ProductTiltCard>
                 <Link

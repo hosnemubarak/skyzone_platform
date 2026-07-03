@@ -2,7 +2,7 @@
 
 import { useRef } from "react";
 import Image from "next/image";
-import { motion, useScroll, useTransform } from "framer-motion";
+import { m as motion, useScroll, useTransform } from "framer-motion";
 import Button from "@/components/ui/Button";
 import { ArrowRight, Phone } from "lucide-react";
 import ParticleField from "@/components/ui/ParticleField";

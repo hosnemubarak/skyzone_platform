@@ -60,6 +60,8 @@ export const metadata: Metadata = {
   },
 };
 
+import FramerLazyProvider from "@/components/layout/FramerLazyProvider";
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -94,11 +96,13 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
           suppressHydrationWarning
         />
-        <Header />
-        <main className="overflow-x-hidden">{children}</main>
-        <Footer />
-        <WhatsAppButton />
-        <BackToTop />
+        <FramerLazyProvider>
+          <Header />
+          <main className="overflow-x-hidden">{children}</main>
+          <Footer />
+          <WhatsAppButton />
+          <BackToTop />
+        </FramerLazyProvider>
       </body>
     </html>
   );

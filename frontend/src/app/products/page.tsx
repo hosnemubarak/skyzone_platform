@@ -1,5 +1,6 @@
 import { Suspense } from "react";
 import ProductsPageContent from "@/components/products/ProductsPageContent";
+import { getProductSummaries } from "@/lib/api";
 
 export const metadata = {
   title: "Products",
@@ -7,10 +8,12 @@ export const metadata = {
     "Browse Sky Zone International's complete range of solar panels, inverters, batteries, IPS/UPS systems, and electrical equipment. Quality certified products with nationwide delivery.",
 };
 
-export default function ProductsPage() {
+export default async function ProductsPage() {
+  const products = await getProductSummaries();
+  
   return (
     <Suspense fallback={<div className="min-h-screen bg-bg-light" />}>
-      <ProductsPageContent />
+      <ProductsPageContent products={products} />
     </Suspense>
   );
 }

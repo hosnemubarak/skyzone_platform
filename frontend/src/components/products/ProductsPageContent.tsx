@@ -6,10 +6,15 @@ import Link from "next/link";
 import { useSearchParams, useRouter } from "next/navigation";
 import { ArrowRight, Search, X } from "lucide-react";
 import Dropdown from "@/components/ui/Dropdown";
-import { products, productCategories } from "@/data/products";
+import { productCategories } from "@/data/products";
 import { formatProductPrice } from "@/lib/utils";
+import type { Product } from "@/data/products";
 
-export default function ProductsPageContent() {
+interface Props {
+  products: Pick<Product, "id" | "name" | "slug" | "image" | "category" | "categorySlug" | "badge" | "published" | "shortDescription" | "price" | "specs">[];
+}
+
+export default function ProductsPageContent({ products }: Props) {
   const searchParams = useSearchParams();
   const router = useRouter();
 

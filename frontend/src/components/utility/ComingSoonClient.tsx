@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, FormEvent } from "react";
-import { motion } from "framer-motion";
+import { m as motion } from "framer-motion";
 import { Clock, Home, Mail, ArrowRight, CheckCircle2 } from "lucide-react";
 import Button from "@/components/ui/Button";
 

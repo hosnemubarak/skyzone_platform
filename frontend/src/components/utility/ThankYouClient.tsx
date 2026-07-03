@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { m as motion } from "framer-motion";
 import { CheckCircle2, Home, ArrowRight, ClipboardList, ShieldCheck, MailCheck, Truck } from "lucide-react";
 import Button from "@/components/ui/Button";
 

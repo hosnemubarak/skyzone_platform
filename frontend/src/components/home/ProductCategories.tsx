@@ -3,7 +3,7 @@
 import { useState, useCallback, useRef } from "react";
 import Link from "next/link";
 import { Sun, Zap, Battery, Power, Gauge, Cable, Wrench, Rocket, ArrowRight } from "lucide-react";
-import { motion } from "framer-motion";
+import { m as motion } from "framer-motion";
 import SectionHeader from "@/components/ui/SectionHeader";
 import { productCategories } from "@/data/products";
 

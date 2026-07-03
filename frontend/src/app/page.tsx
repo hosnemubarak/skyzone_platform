@@ -1,6 +1,8 @@
 import dynamic from "next/dynamic";
 import Hero from "@/components/home/Hero";
 
+import { getFeaturedProducts } from "@/lib/api";
+
 // Lazy load below-the-fold components for faster initial page load (code splitting)
 const AboutPreview = dynamic(() => import("@/components/home/AboutPreview"));
 const ProductCategories = dynamic(() => import("@/components/home/ProductCategories"));
@@ -9,13 +11,15 @@ const BrandsPartners = dynamic(() => import("@/components/home/BrandsPartners"))
 const DealerOpportunity = dynamic(() => import("@/components/home/DealerOpportunity"));
 const ContactCTA = dynamic(() => import("@/components/home/ContactCTA"));
 
-export default function HomePage() {
+export default async function HomePage() {
+  const featuredProducts = await getFeaturedProducts();
+
   return (
     <>
       <Hero />
       <AboutPreview />
       <ProductCategories />
-      <FeaturedProducts />
+      <FeaturedProducts products={featuredProducts} />
       <BrandsPartners />
       <DealerOpportunity />
       <ContactCTA />

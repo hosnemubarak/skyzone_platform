@@ -3,7 +3,7 @@
 import { useState, type FormEvent } from "react";
 import Image from "next/image";
 import { MapPin, Phone, Mail, Clock, MessageCircle, Send } from "lucide-react";
-import { motion } from "framer-motion";
+import { m as motion } from "framer-motion";
 import SocialIcon from "@/components/ui/SocialIcon";
 import ScrollReveal from "@/components/ui/ScrollReveal";
 import Button from "@/components/ui/Button";

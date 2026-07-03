@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
-import { motion, AnimatePresence } from "framer-motion";
+import { m as motion, AnimatePresence } from "framer-motion";
 import { X, ChevronDown, Phone, Mail, Search } from "lucide-react";
 import { navigation, companyInfo } from "@/data/navigation";
 import SocialIcon from "@/components/ui/SocialIcon";

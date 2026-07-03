@@ -4,7 +4,7 @@ import { useState, useMemo } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { FileText, Download, Eye, Search, X, ShieldCheck, Award, FileSpreadsheet } from "lucide-react";
-import { motion } from "framer-motion";
+import { m as motion } from "framer-motion";
 import ParticleField from "@/components/ui/ParticleField";
 import MouseGlow from "@/components/ui/MouseGlow";
 

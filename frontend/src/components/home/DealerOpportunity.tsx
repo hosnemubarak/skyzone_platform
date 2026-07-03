@@ -1,7 +1,7 @@
 "use client";
 
 import { ArrowRight, TrendingUp, Truck, HandshakeIcon, BadgeDollarSign } from "lucide-react";
-import { motion } from "framer-motion";
+import { m as motion } from "framer-motion";
 import SectionHeader from "@/components/ui/SectionHeader";
 import ScrollReveal from "@/components/ui/ScrollReveal";
 import Button from "@/components/ui/Button";

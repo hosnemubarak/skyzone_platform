@@ -1,14 +1,13 @@
 import dynamic from "next/dynamic";
 import Hero from "@/components/home/Hero";
 
-// Lazy load below-the-fold components with ssr: false
-// so they don't block server-side rendering or inflate the initial JS bundle
-const AboutPreview = dynamic(() => import("@/components/home/AboutPreview"), { ssr: false });
-const ProductCategories = dynamic(() => import("@/components/home/ProductCategories"), { ssr: false });
-const FeaturedProducts = dynamic(() => import("@/components/home/FeaturedProducts"), { ssr: false });
-const BrandsPartners = dynamic(() => import("@/components/home/BrandsPartners"), { ssr: false });
-const DealerOpportunity = dynamic(() => import("@/components/home/DealerOpportunity"), { ssr: false });
-const ContactCTA = dynamic(() => import("@/components/home/ContactCTA"), { ssr: false });
+// Lazy load below-the-fold components for faster initial page load (code splitting)
+const AboutPreview = dynamic(() => import("@/components/home/AboutPreview"));
+const ProductCategories = dynamic(() => import("@/components/home/ProductCategories"));
+const FeaturedProducts = dynamic(() => import("@/components/home/FeaturedProducts"));
+const BrandsPartners = dynamic(() => import("@/components/home/BrandsPartners"));
+const DealerOpportunity = dynamic(() => import("@/components/home/DealerOpportunity"));
+const ContactCTA = dynamic(() => import("@/components/home/ContactCTA"));
 
 export default function HomePage() {
   return (

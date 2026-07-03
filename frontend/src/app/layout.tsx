@@ -3,10 +3,8 @@ import { Inter, Poppins } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
-import dynamic from "next/dynamic";
-
-const WhatsAppButton = dynamic(() => import("@/components/layout/WhatsAppButton"), { ssr: false });
-const BackToTop = dynamic(() => import("@/components/layout/BackToTop"), { ssr: false });
+import WhatsAppButton from "@/components/layout/WhatsAppButton";
+import BackToTop from "@/components/layout/BackToTop";
 
 const inter = Inter({
   subsets: ["latin"],

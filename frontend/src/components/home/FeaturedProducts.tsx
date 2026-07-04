@@ -121,7 +121,7 @@ export default function FeaturedProducts({ products }: { products: Pick<Product,
               <ProductTiltCard>
                 <Link
                   href={`/products/${product.slug}`}
-                  className="relative block bg-white rounded-xl overflow-hidden shadow-[0_4px_24px_rgba(0,0,0,0.08)] hover:-translate-y-1 hover:shadow-xl transition-all duration-300 group"
+                  className="relative block bg-white rounded-xl overflow-hidden shadow-[0_4px_24px_rgba(0,0,0,0.08)] md:hover:-translate-y-1 hover:shadow-xl transition-all duration-300 group"
                 >
 
 
@@ -131,7 +131,7 @@ export default function FeaturedProducts({ products }: { products: Pick<Product,
                       src={product.image}
                       alt={product.name}
                       fill sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                      className="object-cover group-hover:scale-105 transition-transform duration-500"
+                      className="object-cover md:group-hover:scale-105 transition-transform duration-500"
                     />
                     {/* Gradient overlay on hover */}
                     <div className="absolute inset-0 bg-gradient-to-t from-primary/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-[1]" />

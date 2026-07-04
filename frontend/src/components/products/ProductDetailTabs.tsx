@@ -25,7 +25,7 @@ export default function ProductDetailTabs({ product }: { product: Product }) {
           onClick={() => setActiveTab("specs")}
           className={cn(
             "pb-3.5 text-base md:text-lg font-bold uppercase tracking-wider relative transition-all cursor-pointer",
-            activeTab === "specs" ? "text-primary font-bold" : "text-gray-400 hover:text-text-dark"
+            activeTab === "specs" ? "text-primary font-bold" : "text-gray-400 md:hover:text-text-dark"
           )}
         >
           Technical Specifications
@@ -40,7 +40,7 @@ export default function ProductDetailTabs({ product }: { product: Product }) {
           onClick={() => setActiveTab("features")}
           className={cn(
             "pb-3.5 text-base md:text-lg font-bold uppercase tracking-wider relative transition-all cursor-pointer",
-            activeTab === "features" ? "text-primary font-bold" : "text-gray-400 hover:text-text-dark"
+            activeTab === "features" ? "text-primary font-bold" : "text-gray-400 md:hover:text-text-dark"
           )}
         >
           Features &amp; Benefits

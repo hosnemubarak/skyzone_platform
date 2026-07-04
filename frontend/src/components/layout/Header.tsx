@@ -44,7 +44,7 @@ export default function Header() {
         <div className="max-w-[1200px] mx-auto px-5 h-full flex items-center justify-between">
           {/* Logo */}
           <Link href="/" className="flex items-center gap-2 sm:gap-3 shrink-0 group">
-            <div className="relative w-9 h-9 sm:w-12 sm:h-12 flex items-center justify-center bg-white rounded-lg overflow-hidden shadow-sm transition-transform duration-300 group-hover:scale-105">
+            <div className="relative w-9 h-9 sm:w-12 sm:h-12 flex items-center justify-center bg-white rounded-lg overflow-hidden shadow-sm transition-transform duration-300 md:group-hover:scale-105">
               <Image
                 src="/images/logo.png"
                 alt="Sky Zone International Logo"
@@ -136,7 +136,7 @@ export default function Header() {
 
             <Link
               href="/contact"
-              className="hidden lg:inline-flex bg-accent text-primary font-bold px-5 py-2.5 rounded-full hover:bg-accent-dark transition-all text-sm hover:-translate-y-0.5"
+              className="hidden lg:inline-flex bg-accent text-primary font-bold px-5 py-2.5 rounded-full hover:bg-accent-dark transition-all text-sm md:hover:-translate-y-0.5"
             >
               Get a Quote
             </Link>

@@ -38,7 +38,7 @@ export default function ProductsPageContent({ products }: Props) {
     if (status !== "available") params.set("status", status);
     if (sort !== "name-asc") params.set("sort", sort);
 
-    router.push(`/products?${params.toString()}`);
+    router.replace(`/products?${params.toString()}`);
   };
 
   const handleCategoryClick = (categorySlug: string) => {
@@ -136,7 +136,7 @@ export default function ProductsPageContent({ products }: Props) {
               className={`px-5 py-2 rounded-full text-sm font-semibold transition-all duration-300 cursor-pointer ${
                 activeCategory === "all"
                   ? "bg-primary text-white shadow-md"
-                  : "bg-bg-light text-text-dark hover:bg-primary/10 hover:scale-105"
+                  : "bg-bg-light text-text-dark hover:bg-primary/10 md:hover:scale-105"
               }`}
             >
               All Products
@@ -150,7 +150,7 @@ export default function ProductsPageContent({ products }: Props) {
                   className={`px-5 py-2 rounded-full text-sm font-semibold transition-all duration-300 cursor-pointer ${
                     activeCategory === cat.slug
                       ? "bg-primary text-white shadow-md"
-                      : "bg-bg-light text-text-dark hover:bg-primary/10 hover:scale-105"
+                      : "bg-bg-light text-text-dark hover:bg-primary/10 md:hover:scale-105"
                   }`}
                 >
                   {cat.name}
@@ -229,14 +229,14 @@ export default function ProductsPageContent({ products }: Props) {
               <Link
                 key={product.id}
                 href={`/products/${product.slug}`}
-                className="block bg-white rounded-2xl overflow-hidden shadow-[0_4px_20px_rgba(0,0,0,0.04)] hover:-translate-y-1 hover:shadow-[0_12px_30px_rgba(0,0,0,0.08)] transition-all duration-300 group h-full"
+                className="block bg-white rounded-2xl overflow-hidden shadow-[0_4px_20px_rgba(0,0,0,0.04)] md:hover:-translate-y-1 md:hover:shadow-[0_12px_30px_rgba(0,0,0,0.08)] transition-all duration-300 group h-full"
               >
                 <div className="relative h-[220px] overflow-hidden bg-gray-50 flex items-center justify-center">
                   <Image
                     src={product.image}
                     alt={product.name}
                     fill sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                    className="object-cover group-hover:scale-105 transition-transform duration-500"
+                    className="object-cover md:group-hover:scale-105 transition-transform duration-500"
                   />
                   {!product.published ? (
                     <span className="absolute top-3 left-3 bg-amber-500 text-white text-[10px] font-bold px-3 py-1 rounded-full shadow-md z-10 animate-pulse uppercase tracking-wider">

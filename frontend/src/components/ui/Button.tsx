@@ -39,7 +39,7 @@ export default function Button({
   ...props
 }: ButtonProps) {
   const classes = cn(
-    "inline-flex items-center justify-center gap-2 rounded-full font-semibold transition-all duration-300 hover:-translate-y-0.5 cursor-pointer",
+    "inline-flex items-center justify-center gap-2 rounded-full font-semibold transition-all duration-300 md:hover:-translate-y-0.5 cursor-pointer",
     variants[variant],
     sizes[size],
     className

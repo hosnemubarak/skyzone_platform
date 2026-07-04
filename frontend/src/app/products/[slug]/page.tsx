@@ -219,49 +219,52 @@ export default async function ProductDetailPage({ params }: Props) {
       </section>
 
       {/* Product Inquiry Form Section */}
-      <section id="inquiry-form-section" className="py-16 md:py-24 bg-white">
+      <section id="inquiry-form-section" className="py-16 md:py-24 bg-slate-50 border-t border-slate-200">
         <div className="max-w-[1200px] mx-auto px-5">
-          <div className="bg-primary-deeper text-white rounded-3xl overflow-hidden shadow-2xl border border-white/5">
+          <div className="bg-white rounded-2xl overflow-hidden shadow-sm border border-slate-200">
             <div className="grid grid-cols-1 lg:grid-cols-12">
               
-              <div className="lg:col-span-5 p-8 md:p-12 bg-primary flex flex-col justify-between border-b lg:border-b-0 lg:border-r border-white/10">
+              <div className="lg:col-span-4 p-8 md:p-10 bg-slate-50 flex flex-col justify-between border-b lg:border-b-0 lg:border-r border-slate-200">
                 <div>
-                  <span className="text-sm md:text-base text-accent font-bold tracking-widest uppercase">B2B Direct Channel</span>
-                  <h3 className="text-3xl md:text-4xl lg:text-5xl font-heading font-bold mt-3 text-white leading-tight">
-                    Submit Inquiry for {product.name}
+                  <span className="text-xs font-bold tracking-widest uppercase text-electric flex items-center gap-2 mb-3">
+                    <div className="w-2 h-2 rounded-full bg-electric animate-pulse" />
+                    B2B Direct Channel
+                  </span>
+                  <h3 className="text-2xl md:text-3xl font-heading font-bold text-slate-900 leading-tight">
+                    Request Official Quotation
                   </h3>
-                  <p className="text-base md:text-lg text-white/80 mt-6 leading-relaxed">
+                  <p className="text-sm md:text-base text-slate-600 mt-4 leading-relaxed">
                     Sky Zone International delivers wholesale energy equipment and customized solutions nationwide. Fill out the request and our commercial sales desk will get back to you within 24 hours.
                   </p>
                 </div>
 
-                <div className="mt-10 lg:mt-0 space-y-6">
-                  <div className="flex items-center gap-4">
-                    <div className="w-12 h-12 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-accent shrink-0">
-                      <Building className="w-6 h-6" />
+                <div className="mt-8 space-y-6">
+                  <div className="flex items-start gap-4">
+                    <div className="w-10 h-10 rounded-lg bg-white border border-slate-200 flex items-center justify-center text-primary shrink-0 shadow-sm">
+                      <Building className="w-5 h-5" />
                     </div>
                     <div>
-                      <h4 className="text-base font-bold text-white uppercase tracking-wider">Wholesale Orders Only</h4>
-                      <p className="text-sm text-white/60 mt-0.5">Minimum quantities apply for dealer pricing benefits.</p>
+                      <h4 className="text-sm font-bold text-slate-900 uppercase tracking-wider">Wholesale Orders Only</h4>
+                      <p className="text-xs text-slate-500 mt-1">Minimum quantities apply for dealer pricing benefits.</p>
                     </div>
                   </div>
-                  <div className="flex items-center gap-4">
-                    <div className="w-12 h-12 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-accent shrink-0">
-                      <Phone className="w-6 h-6" />
+                  <div className="flex items-start gap-4">
+                    <div className="w-10 h-10 rounded-lg bg-white border border-slate-200 flex items-center justify-center text-primary shrink-0 shadow-sm">
+                      <Phone className="w-5 h-5" />
                     </div>
                     <div>
-                      <h4 className="text-base font-bold text-white uppercase tracking-wider">Direct Support Hotlines</h4>
-                      <p className="text-sm text-white/60 mt-0.5">{companyInfo.phone} (Commercial Desk)</p>
+                      <h4 className="text-sm font-bold text-slate-900 uppercase tracking-wider">Direct Support Hotlines</h4>
+                      <p className="text-xs text-slate-500 mt-1">{companyInfo.phone} (Commercial Desk)</p>
                     </div>
                   </div>
                 </div>
 
-                <div className="text-sm md:text-base text-white/40 mt-8 lg:mt-0">
+                <div className="text-xs text-slate-400 mt-8 pt-6 border-t border-slate-200">
                   {companyInfo.name} &middot; Jubilee Road, Chittagong
                 </div>
               </div>
 
-              <div className="lg:col-span-7 p-8 md:p-12 bg-white/5 backdrop-blur-md relative">
+              <div className="lg:col-span-8 p-8 md:p-12 relative">
                 <ProductInquiryForm product={product} />
               </div>
 

@@ -9,10 +9,9 @@ export function formatProductPrice(price?: number): string {
   if (!price || price === 0) {
     return "Contact for Price";
   }
-  const formatted = price.toLocaleString("en-US", {
-    minimumFractionDigits: 2,
-    maximumFractionDigits: 2,
+  const formatted = price.toLocaleString("en-IN", {
+    maximumFractionDigits: 0,
   });
-  return `BDT ${formatted}`;
+  return `৳ ${formatted}`;
 }
 
